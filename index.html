@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>بلاغات مبارك الكبير | شبكة الإسعاف</title>
+<meta name="theme-color" content="#0a0e13">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@500;600;700&family=IBM+Plex+Mono:wght@500;600;700&family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+    :root {
+        --bg: #0a0e13;
+        --bg-glow: radial-gradient(900px 420px at 50% -12%, rgba(239,68,68,0.10) 0%, transparent 60%);
+        --panel: #12181f;
+        --panel-2: #171e26;
+        --input-bg: #0d1218;
+        --line: #232c36;
+        --line-bright: #34404c;
+        --text: #e9eef2;
+        --muted: #8a97a6;
+        --red: #ef4444;
+        --red-dim: #3a1616;
+        --red-border: #6b2323;
+        --amber: #f5a524;
+        --amber-dim: #3a2a0d;
+        --amber-border: #6b4f18;
+        --cyan: #22d3ee;
+        --cyan-dim: #0d2a30;
+        --cyan-border: #175866;
+        --green: #22c55e;
+        --radius: 10px;
+        --shadow: 0 24px 60px -20px rgba(0,0,0,0.65);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+        font-family: 'Tajawal', 'Segoe UI', Tahoma, sans-serif;
+        background: var(--bg-glow), var(--bg);
+        color: var(--text);
+        padding: 32px 16px;
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+    }
+    h1, h2, .display-font { font-family: 'IBM Plex Sans Arabic', 'Tajawal', sans-serif; }
+    .mono { font-family: 'IBM Plex Mono', 'Consolas', monospace; }
+
+    .frame {
+        width: 100%;
+        max-width: 560px;
+        position: relative;
+        padding: 18px;
+    }
+    /* أقواس زوايا بأسلوب لوحة تحكم/رادار — العنصر المميز البصري لهذي الصفحة */
+    .frame::before, .frame::after,
+    .frame .br-tr, .frame .br-bl {
+        content: "";
+        position: absolute;
+        width: 26px; height: 26px;
+        border: 2px solid var(--red);
+        opacity: .85;
+    }
+    .frame::before { top: 0; right: 0; border-left: none; border-bottom: none; }
+    .frame .br-tr   { top: 0; left: 0; border-right: none; border-bottom: none; }
+    .frame::after   { bottom: 0; left: 0; border-right: none; border-top: none; }
+    .frame .br-bl   { bottom: 0; right: 0; border-left: none; border-top: none; }
+
+    .container {
+        width: 100%;
+        background: var(--panel);
+        border-radius: var(--radius);
+        box-shadow: var(--shadow);
+        padding: 30px 30px 26px;
+        border: 1px solid var(--line);
+    }
+
+    /* ===== شريط الحالة العلوي: ساعة الكويت الحية + حالة السيرفر ===== */
+    .console-bar {
+        display: flex; align-items: center; justify-content: space-between;
+        background: var(--panel-2); border: 1px solid var(--line);
+        border-radius: 8px; padding: 10px 14px; margin-bottom: 22px;
+        font-size: 12.5px;
+    }
+    .console-bar .clock-block { display: flex; flex-direction: column; gap: 2px; }
+    .console-bar .clock-label { color: var(--muted); font-size: 10.5px; letter-spacing: .08em; }
+    .console-bar .clock-value { font-size: 17px; font-weight: 600; color: var(--cyan); letter-spacing: .04em; }
+    .console-bar .shift-tag {
+        font-size: 10.5px; color: var(--amber); background: var(--amber-dim);
+        border: 1px solid var(--amber-border); border-radius: 5px; padding: 3px 8px;
+        letter-spacing: .04em; white-space: nowrap;
+    }
+
+    header { text-align: center; margin-bottom: 22px; }
+    .eyebrow {
+        display: inline-flex; align-items: center; gap: 7px;
+        font-size: 11px; color: var(--muted); letter-spacing: .12em;
+        margin-bottom: 10px; text-transform: uppercase;
+    }
+    .eyebrow .pip { width: 6px; height: 6px; border-radius: 50%; background: var(--red); box-shadow: 0 0 0 4px var(--red-dim); }
+    header h1 { color: var(--text); font-size: 25px; font-weight: 700; letter-spacing: -0.2px; }
+    header p { color: var(--muted); font-size: 13px; margin-top: 6px; line-height: 1.6; }
+
+    .server-status {
+        display: flex; align-items: center; justify-content: center; gap: 9px;
+        background: var(--panel-2); border: 1px solid var(--line); border-radius: 8px;
+        padding: 10px 16px; margin-bottom: 20px; font-size: 13px; font-weight: 600;
+        transition: background-color .2s, border-color .2s, color .2s;
+    }
+    .server-status .dot2 { width: 8px; height: 8px; border-radius: 50%; background: #465262; flex-shrink: 0; }
+    .server-status.checking { color: var(--amber); background: var(--amber-dim); border-color: var(--amber-border); }
+    .server-status.checking .dot2 { background: var(--amber); animation: blink-status 1s infinite; }
+    .server-status.online { color: var(--green); background: #0d2418; border-color: #1c5236; }
+    .server-status.online .dot2 { background: var(--green); box-shadow: 0 0 0 4px rgba(34,197,94,0.18); }
+    .server-status.offline { color: var(--red); background: var(--red-dim); border-color: var(--red-border); }
+    .server-status.offline .dot2 { background: var(--red); }
+    @keyframes blink-status { 50% { opacity: .3; } }
+
+    .auth-screen { background: var(--panel-2); padding: 24px; border-radius: var(--radius); border: 1px solid var(--line); }
+    .auth-title {
+        font-size: 15.5px; font-weight: 700; color: var(--text); margin-bottom: 18px;
+        padding-bottom: 12px; border-bottom: 1px solid var(--line);
+        display: flex; align-items: center; gap: 9px; letter-spacing: .01em;
+    }
+    .auth-title::before { content: ''; width: 3px; height: 15px; background: var(--red); }
+    .form-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin-bottom: 6px; }
+    .form-group { margin-bottom: 10px; }
+    label { display: block; margin-bottom: 7px; font-weight: 600; color: var(--muted); font-size: 12.5px; letter-spacing: .02em; }
+    select, input {
+        width: 100%; padding: 12px 13px; border: 1.5px solid var(--line); border-radius: 8px;
+        font-size: 15px; background-color: var(--input-bg); outline: none; color: var(--text);
+        font-family: inherit; transition: border-color .15s, box-shadow .15s;
+    }
+    input[type="number"], input[type="tel"], input[type="password"] { font-family: 'IBM Plex Mono', monospace; letter-spacing: .03em; }
+    select:focus, input:focus { border-color: var(--red); box-shadow: 0 0 0 3px var(--red-dim); }
+    select option { background: var(--input-bg); }
+
+    .auth-links { display: flex; gap: 16px; margin-top: 15px; font-size: 12.5px; flex-wrap: wrap; }
+    .auth-links span { color: var(--cyan); text-decoration: underline; text-underline-offset: 3px; cursor: pointer; }
+    .auth-links span:hover { color: var(--text); }
+
+    .alert-message { padding: 13px 16px; border-radius: 8px; margin-bottom: 20px; font-size: 14px; font-weight: 600; text-align: center; border: 1px solid transparent; }
+    .alert-danger { background-color: var(--red-dim); color: #ff8a80; border-color: var(--red-border); }
+    .alert-success { background-color: #0d2418; color: #6fe3a0; border-color: #1c5236; }
+
+    .btn-primary {
+        background-color: var(--red); color: #fff; border: none; padding: 14px 20px; font-size: 15px;
+        font-weight: 700; border-radius: 8px; cursor: pointer; width: 100%; margin-top: 16px;
+        font-family: inherit; letter-spacing: .01em; transition: background-color .15s, transform .1s;
+    }
+    .btn-primary:hover:not(:disabled) { background-color: #d33636; }
+    .btn-primary:active:not(:disabled) { transform: scale(0.99); }
+    .btn-primary:disabled { background-color: #3a444d; cursor: not-allowed; }
+    .btn-secondary-action { background-color: var(--cyan); }
+    .btn-secondary-action:hover:not(:disabled) { background-color: #1cb8d4; }
+
+    .loader { display: inline-block; width: 14px; height: 14px; border: 2px solid rgba(255,255,255,0.4); border-top: 2px solid #fff; border-radius: 50%; animation: spin 0.7s linear infinite; vertical-align: middle; margin-left: 8px; }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    .placeholder-note {
+        margin-top: 20px; padding: 15px 16px; border-radius: 8px; background: var(--cyan-dim);
+        border: 1px solid var(--cyan-border); color: #a8e6f2; font-size: 12.5px; text-align: center; line-height: 1.7;
+    }
+
+    @media (max-width: 480px) {
+        .container { padding: 24px 18px 22px; }
+        header h1 { font-size: 21px; }
+        .console-bar { flex-direction: column; align-items: flex-start; gap: 10px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        .server-status.checking .dot2 { animation: none; }
+    }
+
+    :focus-visible { outline: 2px solid var(--red); outline-offset: 2px; }
+</style>
+</head>
+<body>
+
+<div class="frame">
+    <span class="br-tr"></span><span class="br-bl"></span>
+    <div class="container">
+        <div class="console-bar">
+            <div class="clock-block">
+                <span class="clock-label mono">توقيت الكويت الآن</span>
+                <span class="clock-value mono" id="liveClock">--:--:--</span>
+            </div>
+            <span class="shift-tag mono" id="shiftTag">—</span>
+        </div>
+
+        <header>
+            <div class="eyebrow"><span class="pip"></span>محافظة مبارك الكبير</div>
+            <h1>شبكة بلاغات الإسعاف</h1>
+            <p>القرين · الزهراء · مشرف · جابر العاجلة · جابر غير العاجلة · صبحان</p>
+        </header>
+
+        <div class="server-status checking" id="serverStatus">
+            <span class="dot2" id="serverStatusDot"></span>
+            <span class="mono" id="serverStatusText">SYS.STATUS — جاري التحقق...</span>
+        </div>
+
+        <div class="alert-message alert-danger" id="errorMessage" role="alert" style="display:none;"></div>
+        <div class="alert-message alert-success" id="successMessage" role="status" style="display:none;"></div>
+
+        <!-- شاشة تسجيل الدخول -->
+        <div class="auth-screen" id="loginScreen">
+            <div class="auth-title">تسجيل الدخول</div>
+            <div class="form-grid">
+                <div class="form-group">
+                    <label for="loginEmpId">الرقم الوظيفي</label>
+                    <input type="number" id="loginEmpId" placeholder="1234" oninput="limitFourDigits(this)" inputmode="numeric">
+                </div>
+                <div class="form-group">
+                    <label for="loginPin">الرمز السري</label>
+                    <input type="password" id="loginPin" placeholder="******">
+                </div>
+            </div>
+            <button class="btn-primary" id="loginBtn" onclick="handleLogin()">دخول</button>
+            <div class="auth-links">
+                <span onclick="switchAuthScreen('registerScreen')">إنشاء حساب جديد</span>
+                <span onclick="switchAuthScreen('forgotScreen')">نسيت الرمز؟</span>
+                <span onclick="switchAuthScreen('changePinScreen')">تغيير الرمز السري</span>
+            </div>
+        </div>
+
+        <!-- شاشة إنشاء حساب -->
+        <div class="auth-screen" id="registerScreen" style="display:none;">
+            <div class="auth-title">تسجيل موظف جديد</div>
+            <div class="form-grid">
+                <div class="form-group">
+                    <label for="regEmpId">الرقم الوظيفي (4 أرقام)</label>
+                    <input type="number" id="regEmpId" placeholder="1234" oninput="limitFourDigits(this)" inputmode="numeric">
+                </div>
+                <div class="form-group">
+                    <label for="regCivilId">الرقم المدني</label>
+                    <input type="text" id="regCivilId" placeholder="الرقم المدني" inputmode="numeric">
+                </div>
+                <div class="form-group">
+                    <label for="regPhone">رقم الهاتف</label>
+                    <input type="tel" id="regPhone" placeholder="99988877">
+                </div>
+                <div class="form-group">
+                    <label for="regEmail">البريد الإلكتروني</label>
+                    <input type="email" id="regEmail" placeholder="name@example.com" style="font-family:'IBM Plex Mono',monospace;">
+                </div>
+                <div class="form-group">
+                    <label for="regCenter">اختر المركز</label>
+                    <select id="regCenter">
+                        <option value="القرين">القرين</option>
+                        <option value="الزهراء">الزهراء</option>
+                        <option value="مشرف">مشرف</option>
+                        <option value="جابر العاجلة">جابر العاجلة</option>
+                        <option value="جابر غير العاجلة">جابر غير العاجلة</option>
+                        <option value="صبحان">صبحان</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="regShift">اختر الشفت</label>
+                    <select id="regShift">
+                        <option value="الشفت الأول">الشفت الأول</option>
+                        <option value="الشفت الثاني">الشفت الثاني</option>
+                        <option value="الشفت الثالث">الشفت الثالث</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="regPin">اختر الرمز السري</label>
+                    <input type="password" id="regPin" placeholder="******">
+                </div>
+            </div>
+            <button class="btn-primary" id="registerBtn" onclick="handleRegister()">اعتماد وحفظ الحساب الجديد</button>
+            <div class="auth-links"><span onclick="switchAuthScreen('loginScreen')">العودة للدخول</span></div>
+        </div>
+
+        <!-- شاشة نسيت الرمز -->
+        <div class="auth-screen" id="forgotScreen" style="display:none;">
+            <div class="auth-title">استرجاع وتحديث الرمز السري</div>
+            <p style="font-size:12.5px; color:var(--muted); margin-bottom:14px; line-height:1.7;">يجب مطابقة البيانات الثلاثة مع بعض (الهاتف + الرقم المدني + الإيميل)</p>
+            <div class="form-grid">
+                <div class="form-group">
+                    <label for="forgotEmpId">الرقم الوظيفي</label>
+                    <input type="number" id="forgotEmpId" placeholder="1234" oninput="limitFourDigits(this)" inputmode="numeric">
+                </div>
+                <div class="form-group">
+                    <label for="forgotPhone">رقم الهاتف المسجل</label>
+                    <input type="tel" id="forgotPhone" placeholder="99988877">
+                </div>
+                <div class="form-group">
+                    <label for="forgotCivilId">الرقم المدني المسجل</label>
+                    <input type="text" id="forgotCivilId" placeholder="الرقم المدني" inputmode="numeric">
+                </div>
+                <div class="form-group">
+                    <label for="forgotEmail">البريد الإلكتروني المسجل</label>
+                    <input type="email" id="forgotEmail" placeholder="name@example.com" style="font-family:'IBM Plex Mono',monospace;">
+                </div>
+                <div class="form-group">
+                    <label for="forgotNewPin">الرمز السري الجديد</label>
+                    <input type="password" id="forgotNewPin" placeholder="******">
+                </div>
+            </div>
+            <button class="btn-primary btn-secondary-action" id="forgotBtn" onclick="handleForgot()">تحديث الرمز والتحقق</button>
+            <div class="auth-links"><span onclick="switchAuthScreen('loginScreen')">العودة للدخول</span></div>
+        </div>
+
+        <!-- شاشة تغيير الرمز -->
+        <div class="auth-screen" id="changePinScreen" style="display:none;">
+            <div class="auth-title">تغيير الرمز السري</div>
+            <div class="form-grid">
+                <div class="form-group">
+                    <label for="changeEmpId">الرقم الوظيفي</label>
+                    <input type="number" id="changeEmpId" placeholder="1234" oninput="limitFourDigits(this)" inputmode="numeric">
+                </div>
+                <div class="form-group">
+                    <label for="changeOldPin">الرمز السري الحالي</label>
+                    <input type="password" id="changeOldPin" placeholder="******">
+                </div>
+                <div class="form-group">
+                    <label for="changeNewPin">الرمز السري الجديد</label>
+                    <input type="password" id="changeNewPin" placeholder="******">
+                </div>
+            </div>
+            <button class="btn-primary" id="changePinBtn" onclick="handleChangePin()">حفظ الرمز الجديد</button>
+            <div class="auth-links"><span onclick="switchAuthScreen('loginScreen')">العودة للدخول</span></div>
+        </div>
+
+        <div class="placeholder-note">
+            هذي صفحة الدخول بس لهذا المشروع لحد الحين — بعد تسجيل الدخول بنجاح، لوحة البلاغات نفسها (الجداول، التلوين، المراكز) بنبنيها بالخطوة الجاية بعد ما تكمّل لي باقي مناطق المراكز.
+        </div>
+    </div>
+</div>
+
+<script>
+const API_URL = "PASTE_YOUR_APPS_SCRIPT_WEB_APP_URL_HERE";
+
+let session = { empId: null, token: null };
+
+function limitFourDigits(input) {
+    if (input.value.length > 4) input.value = input.value.slice(0, 4);
+}
+
+function showError(msg) {
+    const el = document.getElementById("errorMessage");
+    document.getElementById("successMessage").style.display = "none";
+    el.textContent = msg;
+    el.style.display = "block";
+    clearTimeout(el._t);
+    el._t = setTimeout(() => { el.style.display = "none"; }, 5000);
+}
+
+function showSuccess(msg) {
+    const el = document.getElementById("successMessage");
+    document.getElementById("errorMessage").style.display = "none";
+    el.textContent = msg;
+    el.style.display = "block";
+    clearTimeout(el._t);
+    el._t = setTimeout(() => { el.style.display = "none"; }, 5000);
+}
+
+function setBusy(buttonEl, busy, originalText) {
+    if (busy) {
+        buttonEl.disabled = true;
+        buttonEl.dataset.originalText = originalText;
+        buttonEl.innerHTML = originalText + '<span class="loader"></span>';
+    } else {
+        buttonEl.disabled = false;
+        buttonEl.textContent = buttonEl.dataset.originalText || originalText;
+    }
+}
+
+function switchAuthScreen(screenId) {
+    ["loginScreen", "registerScreen", "forgotScreen", "changePinScreen"].forEach(id => {
+        document.getElementById(id).style.display = (id === screenId) ? "block" : "none";
+    });
+    document.getElementById("errorMessage").style.display = "none";
+    document.getElementById("successMessage").style.display = "none";
+}
+
+async function hashPin(pin) {
+    const enc = new TextEncoder().encode(pin);
+    const buf = await crypto.subtle.digest("SHA-256", enc);
+    return Array.from(new Uint8Array(buf)).map(b => b.toString(16).padStart(2, "0")).join("");
+}
+
+async function apiPost(action, payload) {
+    const res = await fetch(API_URL, {
+        method: "POST",
+        headers: { "Content-Type": "text/plain;charset=utf-8" },
+        body: JSON.stringify({ action, ...payload })
+    });
+    return res.json();
+}
+
+async function apiGet(params) {
+    const url = new URL(API_URL);
+    Object.entries(params).forEach(([k, v]) => url.searchParams.set(k, v));
+    const res = await fetch(url.toString());
+    return res.json();
+}
+
+async function checkServerStatus() {
+    const wrap = document.getElementById("serverStatus");
+    const text = document.getElementById("serverStatusText");
+
+    if (API_URL.includes("PASTE_YOUR")) {
+        wrap.className = "server-status offline";
+        text.textContent = "لم يتم ربط رابط السيرفر بعد (API_URL)";
+        return;
+    }
+
+    try {
+        const result = await apiGet({ action: "PING" });
+        if (result && result.status === "OK") {
+            wrap.className = "server-status online";
+            text.textContent = "🟢 السيرفر متصل ويعمل بشكل طبيعي";
+        } else {
+            wrap.className = "server-status offline";
+            text.textContent = "🔴 السيرفر يستجيب لكن برد غير متوقع";
+        }
+    } catch (e) {
+        wrap.className = "server-status offline";
+        text.textContent = "🔴 تعذر الاتصال بالسيرفر، تحقق من رابط API أو النشر";
+    }
+}
+checkServerStatus();
+
+// ساعة الكويت الحية + مؤشر الشفت — بناءً على حد الساعة 6:30 صباحًا اللي يفصل بين الشفتات
+function updateLiveClock() {
+    const now = new Date();
+    const timeStr = now.toLocaleTimeString("en-GB", { timeZone: "Asia/Kuwait", hour12: false });
+    document.getElementById("liveClock").textContent = timeStr;
+
+    const kuwaitParts = new Intl.DateTimeFormat("en-GB", {
+        timeZone: "Asia/Kuwait", hour: "2-digit", minute: "2-digit", hour12: false
+    }).formatToParts(now);
+    const h = parseInt(kuwaitParts.find(p => p.type === "hour").value, 10);
+    const m = parseInt(kuwaitParts.find(p => p.type === "minute").value, 10);
+    const totalMinutes = h * 60 + m;
+    const cutoff = 6 * 60 + 30; // 6:30 صباحًا
+
+    document.getElementById("shiftTag").textContent =
+        totalMinutes >= cutoff ? "ضمن شفت اليوم" : "ضمن شفت الأمس (قبل 6:30ص)";
+}
+updateLiveClock();
+setInterval(updateLiveClock, 1000);
+
+async function handleLogin() {
+    const empId = document.getElementById("loginEmpId").value.trim();
+    const pin = document.getElementById("loginPin").value.trim();
+    const btn = document.getElementById("loginBtn");
+
+    if (!empId || !pin) { showError("الرجاء إدخال الرقم الوظيفي والرمز السري"); return; }
+    if (API_URL.includes("PASTE_YOUR")) { showError("لم يتم ربط رابط السيرفر بعد (API_URL)"); return; }
+
+    setBusy(btn, true, "تسجيل الدخول");
+    try {
+        const pinHash = await hashPin(pin);
+        const result = await apiPost("VERIFY_LOGIN", { emp_id: empId, pin_hash: pinHash });
+        if (result.status === "SUCCESS") {
+            session.empId = empId;
+            session.token = result.token;
+            showSuccess(`تم تسجيل الدخول بنجاح — المركز: ${result.center || "-"} — الشفت: ${result.shift || "-"}`);
+            // الخطوة الجاية: تحويله للوحة البلاغات (تُبنى لاحقًا)
+        } else {
+            showError("الرقم الوظيفي أو الرمز السري غير صحيح");
+        }
+    } catch (e) {
+        showError("تعذر الاتصال بالسيرفر");
+    } finally {
+        setBusy(btn, false, "تسجيل الدخول");
+    }
+}
+
+async function handleRegister() {
+    const empId = document.getElementById("regEmpId").value.trim();
+    const civilId = document.getElementById("regCivilId").value.trim();
+    const phone = document.getElementById("regPhone").value.trim();
+    const email = document.getElementById("regEmail").value.trim();
+    const center = document.getElementById("regCenter").value;
+    const shift = document.getElementById("regShift").value;
+    const pin = document.getElementById("regPin").value.trim();
+    const btn = document.getElementById("registerBtn");
+
+    if (!empId || !civilId || !phone || !email || !pin) { showError("الرجاء تعبئة جميع الحقول"); return; }
+    if (empId.length !== 4) { showError("الرقم الوظيفي يجب أن يكون 4 أرقام"); return; }
+
+    setBusy(btn, true, "اعتماد وحفظ الحساب الجديد");
+    try {
+        const pinHash = await hashPin(pin);
+        const result = await apiPost("REGISTER_SECURE", {
+            emp_id: empId, civil_id: civilId, phone, email, center, shift, pin_hash: pinHash
+        });
+        if (result.status === "SUCCESS") {
+            showSuccess("تم إنشاء الحساب بنجاح، يمكنك تسجيل الدخول الآن");
+            switchAuthScreen("loginScreen");
+        } else if (result.status === "EXISTS") {
+            showError("هذا الرقم الوظيفي مسجل مسبقًا");
+        } else {
+            showError("تعذر إنشاء الحساب، حاول مجددًا");
+        }
+    } catch (e) {
+        showError("تعذر الاتصال بالسيرفر");
+    } finally {
+        setBusy(btn, false, "اعتماد وحفظ الحساب الجديد");
+    }
+}
+
+async function handleForgot() {
+    const empId = document.getElementById("forgotEmpId").value.trim();
+    const phone = document.getElementById("forgotPhone").value.trim();
+    const civilId = document.getElementById("forgotCivilId").value.trim();
+    const email = document.getElementById("forgotEmail").value.trim();
+    const newPin = document.getElementById("forgotNewPin").value.trim();
+    const btn = document.getElementById("forgotBtn");
+
+    if (!empId || !phone || !civilId || !email || !newPin) { showError("الرجاء تعبئة جميع الحقول"); return; }
+
+    setBusy(btn, true, "تحديث الرمز والتحقق");
+    try {
+        const newPinHash = await hashPin(newPin);
+        const result = await apiPost("FORGOT_PIN_SECURE", {
+            emp_id: empId, phone, civil_id: civilId, email, new_pin_hash: newPinHash
+        });
+        if (result.status === "SUCCESS") {
+            showSuccess("تم تحديث الرمز السري بنجاح");
+            switchAuthScreen("loginScreen");
+        } else {
+            showError("لم يتم العثور على حساب مطابق لهذه البيانات");
+        }
+    } catch (e) {
+        showError("تعذر الاتصال بالسيرفر");
+    } finally {
+        setBusy(btn, false, "تحديث الرمز والتحقق");
+    }
+}
+
+async function handleChangePin() {
+    const empId = document.getElementById("changeEmpId").value.trim();
+    const oldPin = document.getElementById("changeOldPin").value.trim();
+    const newPin = document.getElementById("changeNewPin").value.trim();
+    const btn = document.getElementById("changePinBtn");
+
+    if (!empId || !oldPin || !newPin) { showError("الرجاء تعبئة جميع الحقول"); return; }
+
+    setBusy(btn, true, "حفظ الرمز الجديد");
+    try {
+        const oldPinHash = await hashPin(oldPin);
+        const newPinHash = await hashPin(newPin);
+        const result = await apiPost("CHANGE_PIN", {
+            emp_id: empId, old_pin_hash: oldPinHash, new_pin_hash: newPinHash
+        });
+        if (result.status === "SUCCESS") {
+            showSuccess("تم تغيير الرمز السري بنجاح");
+            switchAuthScreen("loginScreen");
+        } else {
+            showError("الرمز الحالي غير صحيح");
+        }
+    } catch (e) {
+        showError("تعذر الاتصال بالسيرفر");
+    } finally {
+        setBusy(btn, false, "حفظ الرمز الجديد");
+    }
+}
+</script>
+</body>
+</html>
