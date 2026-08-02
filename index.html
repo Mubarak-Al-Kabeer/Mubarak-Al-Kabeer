@@ -218,11 +218,11 @@
                     <div class="form-group"><label for="urgMedicNumber" data-i18n="medicNumberLabel">رقم المسعف</label><input type="text" id="urgMedicNumber"></div>
                     <div class="form-group" style="grid-column: 1 / -1;"><label for="urgPatientName" data-i18n="patientNameLabel">اسم المريض</label><input type="text" id="urgPatientName"></div>
                     <div class="form-group"><label for="urgGovernorate" data-i18n="governorateLabel">المحافظة</label><select id="urgGovernorate" onchange="onGovernorateChange()"></select></div>
-                    <div class="form-group"><label for="urgArea" data-i18n="areaLabel">المنطقة</label><select id="urgArea" onchange="previewZoneStatus()"></select></div>
-                    <div class="form-group"><label for="urgBlock" data-i18n="blockLabel">قطعة</label><input type="text" id="urgBlock"></div>
-                    <div class="form-group"><label for="urgStreet" data-i18n="streetLabel">شارع</label><input type="text" id="urgStreet"></div>
+                    <div class="form-group"><label for="urgArea" data-i18n="areaLabel">المنطقة</label><select id="urgArea" onchange="previewZoneStatus(); updateBlockField();"></select></div>
+                    <div class="form-group"><label for="urgBlock" data-i18n="blockLabel">قطعة</label><div id="urgBlockWrap"><input type="text" id="urgBlock"></div></div>
+                    <div class="form-group"><label for="urgStreet" data-i18n="streetLabel">شارع (اختياري)</label><input type="text" id="urgStreet"></div>
                     <div class="form-group"><label for="urgAvenue" data-i18n="avenueLabel">جادة (اختياري)</label><input type="text" id="urgAvenue"></div>
-                    <div class="form-group"><label for="urgHouse" data-i18n="houseLabel">منزل</label><input type="text" id="urgHouse"></div>
+                    <div class="form-group"><label for="urgHouse" data-i18n="houseLabel">منزل (اختياري)</label><input type="text" id="urgHouse"></div>
                 </div>
                 <div id="zonePreviewBox" style="display:none; margin-top:6px;"></div>
                 <div class="checkbox-row"><input type="checkbox" id="urgLateEntry"><label for="urgLateEntry" style="margin:0;" data-i18n="lateEntryLabel">بلاغ متأخر — يخص الشفت السابقة</label></div>
@@ -305,6 +305,22 @@
         <!-- ===== قسم إدارة المناطق (أدمن) ===== -->
         <div id="areasSection" style="display:none;">
             <div class="auth-screen">
+                <div class="auth-title" data-i18n="addCenterTitle">🏢 إضافة مركز جديد</div>
+                <div class="form-grid">
+                    <div class="form-group"><label for="newCenterNameAr" data-i18n="centerNameArLabel">اسم المركز (عربي)</label><input type="text" id="newCenterNameAr"></div>
+                    <div class="form-group"><label for="newCenterNameEn" data-i18n="centerNameEnLabel">اسم المركز (إنجليزي، اختياري)</label><input type="text" id="newCenterNameEn"></div>
+                </div>
+                <button class="btn-primary btn-admin" onclick="addCenter()" data-i18n="addCenterBtn">إضافة المركز</button>
+            </div>
+            <div class="report-section">
+                <div class="report-title"><span data-i18n="allCentersTitle">كل المراكز الرئيسية</span> (<span id="centersCount">0</span>)</div>
+                <table class="monthly-table" id="centersTable">
+                    <thead><tr><th data-i18n="centerNameArLabel">اسم المركز (عربي)</th><th data-i18n="centerNameEnLabel">اسم المركز (إنجليزي)</th><th data-i18n="actionsLabel">إجراءات</th></tr></thead>
+                    <tbody id="centersBody"><tr class="empty-row"><td colspan="3" data-i18n="loadingText">جاري التحميل...</td></tr></tbody>
+                </table>
+            </div>
+
+            <div class="auth-screen">
                 <div class="auth-title" data-i18n="addAreaTitle">إضافة منطقة جديدة</div>
                 <div class="form-grid">
                     <div class="form-group"><label for="newAreaNameAr" data-i18n="areaNameArLabel">اسم المنطقة (عربي)</label><input type="text" id="newAreaNameAr"></div>
@@ -314,14 +330,15 @@
                         <label for="newAreaCenter" data-i18n="homeCenterLabel">المركز الأساسي (فاضي = خارج تغطيتنا)</label>
                         <select id="newAreaCenter"><option value="" data-i18n="noneOutsideCoverage">— بدون (خارج تغطيتنا) —</option></select>
                     </div>
+                    <div class="form-group"><label for="newAreaBlockCount" data-i18n="blockCountLabel">عدد القطع (اختياري — لو موثّق)</label><input type="number" id="newAreaBlockCount" min="1"></div>
                 </div>
                 <button class="btn-primary btn-admin" onclick="addArea()" data-i18n="addAreaBtn">إضافة المنطقة</button>
             </div>
             <div class="report-section">
                 <div class="report-title"><span data-i18n="allAreasTitle">كل المناطق المسجّلة</span> (<span id="areasCount">0</span>)</div>
                 <table class="monthly-table" id="areasTable">
-                    <thead><tr><th data-i18n="areaNameArLabel">اسم المنطقة (عربي)</th><th data-i18n="areaNameEnLabel">اسم المنطقة (إنجليزي)</th><th data-i18n="governorateLabel">المحافظة</th><th data-i18n="homeCenterLabel">المركز الأساسي</th><th data-i18n="actionsLabel">إجراءات</th></tr></thead>
-                    <tbody id="areasBody"><tr class="empty-row"><td colspan="5" data-i18n="loadingText">جاري التحميل...</td></tr></tbody>
+                    <thead><tr><th data-i18n="areaNameArLabel">اسم المنطقة (عربي)</th><th data-i18n="areaNameEnLabel">اسم المنطقة (إنجليزي)</th><th data-i18n="governorateLabel">المحافظة</th><th data-i18n="homeCenterLabel">المركز الأساسي</th><th data-i18n="blockCountLabel">عدد القطع</th><th data-i18n="actionsLabel">إجراءات</th></tr></thead>
+                    <tbody id="areasBody"><tr class="empty-row"><td colspan="6" data-i18n="loadingText">جاري التحميل...</td></tr></tbody>
                 </table>
             </div>
         </div>
@@ -346,8 +363,8 @@
 <script>
 const API_URL = "https://script.google.com/macros/s/AKfycbzy5jv_qwEX7CYONshU5nmEgPmpLp8BWaNamKBSN7aBvfOueQWoZPaNFwlBkxryGrhF/exec";
 
-const CENTERS = ["القرين", "الزهراء", "مشرف", "جابر العاجلة", "جابر غير العاجلة", "صبحان"];
-const CENTERS_EN = { "القرين": "Al Qurain", "الزهراء": "Al-Zahra", "مشرف": "Mishref", "جابر العاجلة": "Jaber Urgent", "جابر غير العاجلة": "Jaber Non-Urgent", "صبحان": "Sabhan" };
+let CENTERS = [];
+let CENTERS_EN = {};
 const SHIFTS = ["شفت الف", "شفت باء", "شفت جيم"];
 const SHIFTS_EN = { "شفت الف": "Shift A", "شفت باء": "Shift B", "شفت جيم": "Shift C" };
 const GOVERNORATES = ["العاصمة", "حولي", "الفروانية", "الأحمدي", "الجهراء", "مبارك الكبير"];
@@ -380,7 +397,7 @@ const TRANSLATIONS = {
         typeUrgent: "🚨 Urgent Report", typePts: "🚑 Non-Urgent (Patient Transport)",
         urgentFormTitle: "Log Urgent Report", reportNumberLabel: "Report Number", ambulanceNumberLabel: "Ambulance Number",
         driverNumberLabel: "Driver Number", medicNumberLabel: "Medic Number", patientNameLabel: "Patient Name",
-        governorateLabel: "Governorate", areaLabel: "Area", blockLabel: "Block", streetLabel: "Street", avenueLabel: "Avenue (optional)", houseLabel: "House",
+        governorateLabel: "Governorate", areaLabel: "Area", blockLabel: "Block", streetLabel: "Street (optional)", avenueLabel: "Avenue (optional)", houseLabel: "House (optional)",
         lateEntryLabel: "Late entry — belongs to the previous shift", saveUrgentBtn: "Save Urgent Report",
         ptsFormTitle: "Log Patient Transport (Non-Urgent)", medicNumbersLabel: "Medic Numbers", patientNameOptionalLabel: "Patient Name (optional)",
         fromLabel: "From", toLabel: "To", savePtsBtn: "Save Transport Report",
@@ -391,6 +408,8 @@ const TRANSLATIONS = {
         adminViewTitle: "View Reports by Shift Day", shiftDayLabel: "Shift Day", centerLabel: "Center", viewReportsBtn: "View Reports",
         urgentReportsTitle: "Urgent Reports", ptsReportsTitle: "Transport Reports (PTS)",
         addAreaTitle: "Add New Area", areaNameArLabel: "Area Name (Arabic)", areaNameEnLabel: "Area Name (English)",
+        addCenterTitle: "🏢 Add New Center", centerNameArLabel: "Center Name (Arabic)", centerNameEnLabel: "Center Name (English, optional)",
+        addCenterBtn: "Add Center", allCentersTitle: "All Main Centers", blockCountLabel: "Number of Blocks (optional — if verified)",
         homeCenterLabel: "Home Center (blank = outside our coverage)", noneOutsideCoverage: "— None (outside our coverage) —",
         addAreaBtn: "Add Area", allAreasTitle: "All Registered Areas", loadingText: "Loading...",
         employeesTitle: "Manage Employees — Edit Center & Shift", empIdColLabel: "Employee ID", phoneColLabel: "Phone Number", shiftColLabel: "Shift",
@@ -457,7 +476,18 @@ function populateStaticSelects() {
     document.getElementById("urgGovernorate").innerHTML = govOptionsHTML;
     document.getElementById("newAreaGovernorate").innerHTML = GOVERNORATES.map(g => `<option value="${g}">${governorateLabel(g)}</option>`).join("");
 }
-populateStaticSelects();
+async function loadCenters() {
+    try {
+        const result = await apiGet({ action: "GET_CENTERS" });
+        if (Array.isArray(result)) {
+            CENTERS = result.map(c => c.name_ar);
+            CENTERS_EN = {};
+            result.forEach(c => { CENTERS_EN[c.name_ar] = c.name_en; });
+        }
+    } catch (e) { /* تجاهل بصمت */ }
+    populateStaticSelects();
+}
+loadCenters();
 
 function limitFourDigits(input) { if (input.value.length > 4) input.value = input.value.slice(0, 4); }
 function limitTwelveDigits(input) { if (input.value.length > 12) input.value = input.value.slice(0, 12); }
@@ -647,7 +677,7 @@ function switchTab(tab) {
     document.getElementById("tabBtnAdminView").classList.toggle("active", tab === "adminView");
     document.getElementById("tabBtnAreas").classList.toggle("active", tab === "areas");
     document.getElementById("tabBtnEmployees").classList.toggle("active", tab === "employees");
-    if (tab === "areas") loadAreasTable();
+    if (tab === "areas") { loadCentersTable(); loadAreasTable(); }
     if (tab === "employees") loadAllEmployees();
 }
 function switchReportType(type) {
@@ -673,6 +703,19 @@ function onGovernorateChange() {
     areaSelect.innerHTML = `<option value="">-</option>` + filtered.map(a =>
         `<option value="${a.area_name}">${lang() === "en" && a.area_name_en ? a.area_name_en : a.area_name}</option>`).join("");
     previewZoneStatus();
+    updateBlockField();
+}
+function updateBlockField() {
+    const areaName = document.getElementById("urgArea").value.trim();
+    const wrap = document.getElementById("urgBlockWrap");
+    const entry = findAreaEntry(areaName);
+    const blockCount = entry ? Number(entry.block_count) || 0 : 0;
+    if (blockCount > 0) {
+        const opts = Array.from({ length: blockCount }, (_, i) => i + 1).map(n => `<option value="${n}">${n}</option>`).join("");
+        wrap.innerHTML = `<select id="urgBlock"><option value="">-</option>${opts}</select>`;
+    } else {
+        wrap.innerHTML = `<input type="text" id="urgBlock">`;
+    }
 }
 function findAreaEntry(areaName) { return areasCache.find(a => a.area_name === (areaName || "").trim()); }
 function previewZoneStatus() {
@@ -868,16 +911,66 @@ function editPtsRow(id) {
     (async () => { try { const result = await apiPost("UPDATE_PTS_REPORT", { token: session.token, id, ...newVals }); if (result.status === "SUCCESS") { showSuccess("تم تحديث البلاغ"); loadAdminReports(); } else { showError("تعذر حفظ التعديل"); } } catch (e) { showError("تعذر الاتصال بالسيرفر"); } })();
 }
 
+/* ---------- إدارة المراكز الرئيسية (أدمن) ---------- */
+
+async function loadCentersTable() {
+    await loadCenters();
+    const body = document.getElementById("centersBody");
+    document.getElementById("centersCount").textContent = CENTERS.length;
+    if (!CENTERS.length) { body.innerHTML = `<tr class="empty-row"><td colspan="3">${lang()==="en"?"No centers registered yet":"ما فيه مراكز مسجّلة بعد"}</td></tr>`; return; }
+    body.innerHTML = CENTERS.map(c => `
+        <tr data-center="${c}">
+            <td>${c}</td><td>${CENTERS_EN[c] || "-"}</td>
+            <td class="cell-actions"><button class="row-btn row-edit" onclick="editCenterRow('${c}')">${t('edit')}</button><button class="row-btn row-delete" onclick="deleteCenterRow('${c}')">${t('delete')}</button></td>
+        </tr>`).join("");
+}
+
+async function addCenter() {
+    const nameAr = document.getElementById("newCenterNameAr").value.trim();
+    const nameEn = document.getElementById("newCenterNameEn").value.trim();
+    if (!nameAr) { showError("اكتب اسم المركز بالعربي"); return; }
+    try {
+        const result = await apiPost("ADD_CENTER", { token: session.token, name_ar: nameAr, name_en: nameEn });
+        if (result.status === "SUCCESS") {
+            showSuccess("تمت إضافة المركز");
+            document.getElementById("newCenterNameAr").value = ""; document.getElementById("newCenterNameEn").value = "";
+            await loadCentersTable(); populateStaticSelects();
+        } else if (result.status === "EXISTS") { showError("هذا المركز مسجّل مسبقًا"); }
+        else { showError("تعذر إضافة المركز"); }
+    } catch (e) { showError("تعذر الاتصال بالسيرفر"); }
+}
+
+function editCenterRow(nameAr) {
+    const newNameAr = prompt("اسم المركز (عربي)", nameAr); if (newNameAr === null) return;
+    const newNameEn = prompt("اسم المركز (إنجليزي)", CENTERS_EN[nameAr] || ""); if (newNameEn === null) return;
+    (async () => {
+        try {
+            const result = await apiPost("UPDATE_CENTER", { token: session.token, old_name_ar: nameAr, name_ar: newNameAr.trim(), name_en: newNameEn.trim() });
+            if (result.status === "SUCCESS") { showSuccess("تم تحديث المركز"); await loadCentersTable(); populateStaticSelects(); }
+            else { showError("تعذر حفظ التعديل"); }
+        } catch (e) { showError("تعذر الاتصال بالسيرفر"); }
+    })();
+}
+
+async function deleteCenterRow(nameAr) {
+    if (!confirm(`هل أنت متأكد من حذف مركز "${nameAr}"؟ ملاحظة: الموظفين والمناطق المرتبطين فيه بيضلون بقيمته القديمة.`)) return;
+    try {
+        const result = await apiPost("DELETE_CENTER", { token: session.token, name_ar: nameAr });
+        if (result.status === "SUCCESS") { showSuccess("تم حذف المركز"); await loadCentersTable(); populateStaticSelects(); }
+        else { showError("تعذر الحذف"); }
+    } catch (e) { showError("تعذر الاتصال بالسيرفر"); }
+}
+
 /* ---------- إدارة المناطق (أدمن) ---------- */
 
 async function loadAreasTable() {
     await loadAreas();
     const body = document.getElementById("areasBody");
     document.getElementById("areasCount").textContent = areasCache.length;
-    if (!areasCache.length) { body.innerHTML = `<tr class="empty-row"><td colspan="5">${lang()==="en"?"No areas registered yet":"ما فيه مناطق مسجّلة بعد"}</td></tr>`; return; }
+    if (!areasCache.length) { body.innerHTML = `<tr class="empty-row"><td colspan="6">${lang()==="en"?"No areas registered yet":"ما فيه مناطق مسجّلة بعد"}</td></tr>`; return; }
     body.innerHTML = areasCache.map(a => `
         <tr data-area="${a.area_name}">
-            <td>${a.area_name}</td><td>${a.area_name_en || "-"}</td><td>${governorateLabel(a.governorate)}</td><td>${a.home_center ? centerLabel(a.home_center) : "-"}</td>
+            <td>${a.area_name}</td><td>${a.area_name_en || "-"}</td><td>${governorateLabel(a.governorate)}</td><td>${a.home_center ? centerLabel(a.home_center) : "-"}</td><td>${a.block_count || "-"}</td>
             <td class="cell-actions"><button class="row-btn row-edit" onclick="editAreaRow('${a.area_name}')">${t('edit')}</button><button class="row-btn row-delete" onclick="deleteAreaRow('${a.area_name}')">${t('delete')}</button></td>
         </tr>`).join("");
 }
@@ -887,10 +980,11 @@ async function addArea() {
     const areaNameEn = document.getElementById("newAreaNameEn").value.trim();
     const governorate = document.getElementById("newAreaGovernorate").value;
     const homeCenter = document.getElementById("newAreaCenter").value;
+    const blockCount = document.getElementById("newAreaBlockCount").value.trim();
     if (!areaName) { showError("اكتب اسم المنطقة بالعربي"); return; }
     try {
-        const result = await apiPost("ADD_AREA", { token: session.token, area_name: areaName, area_name_en: areaNameEn, governorate, home_center: homeCenter });
-        if (result.status === "SUCCESS") { showSuccess("تمت إضافة المنطقة"); document.getElementById("newAreaNameAr").value = ""; document.getElementById("newAreaNameEn").value = ""; loadAreasTable(); }
+        const result = await apiPost("ADD_AREA", { token: session.token, area_name: areaName, area_name_en: areaNameEn, governorate, home_center: homeCenter, block_count: blockCount });
+        if (result.status === "SUCCESS") { showSuccess("تمت إضافة المنطقة"); document.getElementById("newAreaNameAr").value = ""; document.getElementById("newAreaNameEn").value = ""; document.getElementById("newAreaBlockCount").value = ""; loadAreasTable(); }
         else if (result.status === "EXISTS") { showError("هذه المنطقة مسجّلة مسبقًا"); }
         else { showError("تعذر إضافة المنطقة"); }
     } catch (e) { showError("تعذر الاتصال بالسيرفر"); }
@@ -904,9 +998,10 @@ function editAreaRow(oldName) {
     if (GOVERNORATES.indexOf(newGov.trim()) === -1) { showError("اسم المحافظة غير صحيح"); return; }
     const newCenter = prompt("المركز الأساسي (فاضي = خارج التغطية) — " + CENTERS.join(" / "), area.home_center || ""); if (newCenter === null) return;
     if (newCenter.trim() && CENTERS.indexOf(newCenter.trim()) === -1) { showError("اسم المركز غير صحيح"); return; }
+    const newBlockCount = prompt("عدد القطع (فاضي لو غير موثّق)", area.block_count || ""); if (newBlockCount === null) return;
     (async () => {
         try {
-            const result = await apiPost("UPDATE_AREA", { token: session.token, old_area_name: oldName, area_name: newName.trim(), area_name_en: newNameEn.trim(), governorate: newGov.trim(), home_center: newCenter.trim() });
+            const result = await apiPost("UPDATE_AREA", { token: session.token, old_area_name: oldName, area_name: newName.trim(), area_name_en: newNameEn.trim(), governorate: newGov.trim(), home_center: newCenter.trim(), block_count: newBlockCount.trim() });
             if (result.status === "SUCCESS") { showSuccess("تم تحديث المنطقة"); loadAreasTable(); } else { showError("تعذر حفظ التعديل"); }
         } catch (e) { showError("تعذر الاتصال بالسيرفر"); }
     })();
