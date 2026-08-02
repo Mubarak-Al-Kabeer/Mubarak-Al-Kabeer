@@ -3,39 +3,19 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>بلاغات مبارك الكبير</title>
+<title>بلاغات مبارك الكبير | Mubarak Al-Kabeer Dispatch</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@500;600;700&family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
     :root {
-        --ink: #1e2a4a;
-        --ink-soft: #3d4d73;
-        --accent: #2952cc;
-        --accent-dark: #1e3fa3;
-        --accent-soft: #e6ecfb;
-        --amber: #b8860b;
-        --amber-soft: #fdf3d9;
-        --amber-border: #f0dfa0;
-        --danger: #c0392b;
-        --danger-soft: #fbe7e5;
-        --danger-border: #f2c4bd;
-        --success: #1f8b4c;
-        --bg: #eef0f6;
-        --bg-glow-1: #e2e8fb;
-        --bg-glow-2: #e7edf3;
-        --card: #ffffff;
-        --surface: #f7f8fb;
-        --surface-2: #ececf4;
-        --input-bg: #ffffff;
-        --accent-border: #c3d1f5;
-        --line: #dfe2ec;
-        --text: #202535;
-        --muted-fix: #70768a;
-        --radius: 14px;
-        --shadow: 0 10px 30px -14px rgba(30,42,74,0.18);
-        --white-row: transparent;
-        --yellow-row: #fdf3d9;
-        --red-row: #fbe7e5;
+        --ink: #1e2a4a; --ink-soft: #3d4d73; --accent: #2952cc; --accent-dark: #1e3fa3; --accent-soft: #e6ecfb;
+        --amber: #b8860b; --amber-soft: #fdf3d9; --amber-border: #f0dfa0;
+        --danger: #c0392b; --danger-soft: #fbe7e5; --danger-border: #f2c4bd;
+        --success: #1f8b4c; --bg: #eef0f6; --bg-glow-1: #e2e8fb; --bg-glow-2: #e7edf3;
+        --card: #ffffff; --surface: #f7f8fb; --surface-2: #ececf4; --input-bg: #ffffff;
+        --accent-border: #c3d1f5; --line: #dfe2ec; --text: #202535; --muted-fix: #70768a;
+        --radius: 14px; --shadow: 0 10px 30px -14px rgba(30,42,74,0.18);
+        --white-row: transparent; --yellow-row: #fdf3d9; --red-row: #fbe7e5;
     }
     body.dark-mode {
         --ink: #eef1f8; --ink-soft: #c2c9de; --accent: #6d8bff; --accent-dark: #a9bcff;
@@ -45,8 +25,7 @@
         --surface: #1b2233; --surface-2: #222a3e; --input-bg: #1b2233; --accent-border: #2c3a63;
         --line: #29314a; --text: #dde1ee; --muted-fix: #8890a6;
         --white-row: transparent; --yellow-row: #3d2f10; --red-row: #3d201c;
-        --shadow: 0 12px 34px -14px rgba(0,0,0,0.6);
-        color-scheme: dark;
+        --shadow: 0 12px 34px -14px rgba(0,0,0,0.6); color-scheme: dark;
     }
     * { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; overflow-x: hidden; width: 100%; }
@@ -64,7 +43,7 @@
     header h1 { color: var(--ink); font-size: 26px; font-weight: 700; font-family: 'IBM Plex Sans Arabic', sans-serif; }
     header p { color: var(--muted-fix); font-size: 14px; margin-top: 4px; }
 
-    .server-status { display: flex; align-items: center; justify-content: center; gap: 9px; background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 11px 16px; margin-bottom: 16px; font-size: 13.5px; font-weight: 700; }
+    .server-status, .duty-banner { display: flex; align-items: center; justify-content: center; gap: 9px; background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 11px 16px; margin-bottom: 16px; font-size: 13.5px; font-weight: 700; }
     .server-status .dot2 { width: 9px; height: 9px; border-radius: 50%; background: #b7c2ca; flex-shrink: 0; }
     .server-status.checking { color: #8a6d1f; background: var(--amber-soft); border-color: var(--amber-border); }
     .server-status.checking .dot2 { background: #d4a017; animation: blink-status 1s infinite; }
@@ -72,6 +51,7 @@
     .server-status.online .dot2 { background: var(--success); }
     .server-status.offline { color: #7d241a; background: var(--danger-soft); border-color: var(--danger-border); }
     .server-status.offline .dot2 { background: var(--danger); }
+    .duty-banner { color: var(--accent-dark); background: var(--accent-soft); border-color: var(--accent-border); display: none; }
     @keyframes blink-status { 50% { opacity: .35; } }
 
     .auth-screen { background: var(--surface); padding: 26px; border-radius: var(--radius); margin-bottom: 24px; border: 1px solid var(--line); }
@@ -92,7 +72,6 @@
     .alert-success { background-color: var(--accent-soft); color: var(--accent-dark); border-color: var(--accent-border); }
 
     #mainDashboard { display: none; }
-
     .tab-switcher { display: flex; margin-bottom: 20px; background: var(--surface-2); border: 1.5px solid var(--line); border-radius: 12px; padding: 4px; gap: 4px; flex-wrap: wrap; }
     .tab-btn { flex: 1; min-width: 140px; background: transparent; color: var(--ink-soft); border: none; padding: 12px 14px; font-size: 14px; font-weight: 700; border-radius: 9px; cursor: pointer; font-family: inherit; }
     .tab-btn:hover:not(.active) { color: var(--ink); }
@@ -110,7 +89,6 @@
     .btn-secondary:hover { border-color: var(--ink-soft); color: var(--ink); }
     .btn-admin { background-color: var(--amber); }
     .btn-admin:hover:not(:disabled) { background-color: #96690a; }
-    .btn-danger-outline { background: var(--card); border: 1.5px solid var(--danger-border); color: var(--danger); }
 
     .report-section { background: var(--card); border: 1px solid var(--line); padding: 20px; border-radius: var(--radius); margin-top: 18px; overflow-x: auto; }
     .report-title { font-size: 16.5px; font-weight: 700; color: var(--ink); margin-bottom: 14px; text-align: center; }
@@ -149,158 +127,145 @@
 
 <div class="container" id="appContainer">
     <div style="display:flex; justify-content:flex-end; gap:8px; margin-bottom:10px;">
+        <button class="btn-secondary" id="langToggleBtn" onclick="toggleLanguage()" style="margin-top:0; padding:8px 14px; font-size:13px;">English</button>
         <button class="btn-secondary" id="darkModeToggleBtn" onclick="toggleDarkMode()" style="margin-top:0; padding:8px 14px; font-size:13px;">🌙</button>
     </div>
     <header>
-        <div class="brand-row"><span class="brand-dot"></span><span style="font-size:12.5px; font-weight:700; color:var(--accent-dark);">نظام البلاغات الذكي</span></div>
-        <h1>بلاغات مبارك الكبير</h1>
-        <p>تسجيل وتوثيق بلاغات الإسعاف — المراكز الستة</p>
+        <div class="brand-row"><span class="brand-dot"></span><span style="font-size:12.5px; font-weight:700; color:var(--accent-dark);" data-i18n="brandLine">نظام البلاغات الذكي</span></div>
+        <h1 data-i18n="mainTitle">بلاغات مبارك الكبير</h1>
+        <p data-i18n="mainSubtitle">تسجيل وتوثيق بلاغات الإسعاف — المراكز الستة</p>
     </header>
 
-    <div class="server-status checking" id="serverStatus">
-        <span class="dot2"></span><span id="serverStatusText">يتم التحقق من حالة السيرفر...</span>
-    </div>
+    <div class="server-status checking" id="serverStatus"><span class="dot2"></span><span id="serverStatusText" data-i18n="serverChecking">يتم التحقق من حالة السيرفر...</span></div>
+    <div class="duty-banner" id="dutyBanner"><span>🕐</span><span id="dutyBannerText"></span></div>
 
     <div class="alert-message alert-danger" id="errorMessage" role="alert" style="display:none;"></div>
     <div class="alert-message alert-success" id="successMessage" role="status" style="display:none;"></div>
 
-    <div class="auth-screen" id="authCheckingScreen" style="text-align:center; color: var(--muted-fix);">جاري التحقق من الجلسة...</div>
+    <div class="auth-screen" id="authCheckingScreen" style="text-align:center; color: var(--muted-fix);" data-i18n="checkingSession">جاري التحقق من الجلسة...</div>
 
     <!-- تسجيل الدخول -->
     <div class="auth-screen" id="loginScreen" style="display:none;">
-        <div class="auth-title">تسجيل الدخول إلى النظام</div>
+        <div class="auth-title" data-i18n="loginTitle">تسجيل الدخول إلى النظام</div>
         <div class="form-grid">
-            <div class="form-group">
-                <label for="loginEmpId">الرقم الوظيفي</label>
-                <input type="number" id="loginEmpId" placeholder="1234" oninput="limitFourDigits(this); checkLoginEmpIdPreview();" inputmode="numeric">
-            </div>
-            <div class="form-group">
-                <label for="loginPin">الرمز السري</label>
-                <input type="password" id="loginPin" placeholder="******">
-            </div>
+            <div class="form-group"><label for="loginEmpId" data-i18n="empIdLabel">الرقم الوظيفي</label><input type="number" id="loginEmpId" placeholder="1234" oninput="limitFourDigits(this); checkLoginEmpIdPreview();" inputmode="numeric"></div>
+            <div class="form-group"><label for="loginPin" data-i18n="passwordLabel">الرمز السري</label><input type="password" id="loginPin" placeholder="******"></div>
         </div>
-        <div class="form-group" id="loginCenterPreviewGroup" style="display:none;">
-            <label>المركز المسجّل</label>
-            <input type="text" id="loginCenterPreview" disabled style="background:var(--surface-2); color:var(--muted-fix); cursor:not-allowed;">
+        <div class="form-group" id="loginPreviewGroup" style="display:none;">
+            <label data-i18n="centerShiftPreviewLabel">المركز والشفت المسجّل</label>
+            <input type="text" id="loginPreview" disabled style="background:var(--surface-2); color:var(--muted-fix); cursor:not-allowed;">
         </div>
-        <button class="btn-primary" id="loginBtn" onclick="handleLogin()">تسجيل الدخول وتأكيد الهوية</button>
+        <button class="btn-primary" id="loginBtn" onclick="handleLogin()" data-i18n="loginBtn">تسجيل الدخول وتأكيد الهوية</button>
         <div class="auth-links">
-            <span onclick="switchAuthScreen('registerScreen')">إنشاء حساب جديد</span>
-            <span onclick="switchAuthScreen('forgotScreen')">استرجاع الرمز</span>
+            <span onclick="switchAuthScreen('registerScreen')" data-i18n="createAccountLink">إنشاء حساب جديد</span>
+            <span onclick="switchAuthScreen('forgotScreen')" data-i18n="forgotPinLink">استرجاع الرمز</span>
         </div>
     </div>
 
     <!-- تسجيل حساب -->
     <div class="auth-screen" id="registerScreen" style="display:none;">
-        <div class="auth-title">تسجيل موظف جديد برقم وظيفي</div>
+        <div class="auth-title" data-i18n="registerTitle">تسجيل موظف جديد برقم وظيفي</div>
         <div class="form-grid">
-            <div class="form-group"><label for="regEmpId">الرقم الوظيفي (4 أرقام)</label><input type="number" id="regEmpId" placeholder="1234" oninput="limitFourDigits(this)" inputmode="numeric"></div>
-            <div class="form-group"><label for="regPhone">رقم الهاتف</label><input type="tel" id="regPhone" placeholder="99988877"></div>
-            <div class="form-group"><label for="regCivilId">الرقم المدني</label><input type="text" id="regCivilId" placeholder="الرقم المدني" inputmode="numeric" maxlength="12" oninput="limitTwelveDigits(this)"></div>
-            <div class="form-group"><label for="regEmail">البريد الإلكتروني</label><input type="email" id="regEmail" placeholder="name@example.com"></div>
-            <div class="form-group">
-                <label for="regCenter">اختر المركز</label>
-                <select id="regCenter"></select>
-            </div>
-            <div class="form-group"><label for="regPin">اختر الرمز السري</label><input type="password" id="regPin" placeholder="******"></div>
+            <div class="form-group"><label for="regEmpId" data-i18n="empIdRegLabel">الرقم الوظيفي (4 أرقام)</label><input type="number" id="regEmpId" placeholder="1234" oninput="limitFourDigits(this)" inputmode="numeric"></div>
+            <div class="form-group"><label for="regPhone" data-i18n="phoneLabel">رقم الهاتف</label><input type="tel" id="regPhone" placeholder="99988877"></div>
+            <div class="form-group"><label for="regCivilId" data-i18n="civilIdLabel">الرقم المدني</label><input type="text" id="regCivilId" placeholder="الرقم المدني" inputmode="numeric" maxlength="12" oninput="limitTwelveDigits(this)"></div>
+            <div class="form-group"><label for="regEmail" data-i18n="emailLabel">البريد الإلكتروني</label><input type="email" id="regEmail" placeholder="name@example.com"></div>
+            <div class="form-group"><label for="regCenter" data-i18n="chooseCenterLabel">اختر المركز</label><select id="regCenter"></select></div>
+            <div class="form-group"><label for="regShift" data-i18n="chooseShiftLabel">اختر شفتك (الف/باء/جيم)</label><select id="regShift"></select></div>
+            <div class="form-group"><label for="regPin" data-i18n="choosePinLabel">اختر الرمز السري</label><input type="password" id="regPin" placeholder="******"></div>
         </div>
-        <button class="btn-primary" id="registerBtn" onclick="handleRegister()">اعتماد وحفظ الحساب الجديد</button>
-        <div class="auth-links"><span onclick="switchAuthScreen('loginScreen')">العودة للدخول</span></div>
+        <p style="font-size:12px; color:var(--muted-fix); margin-bottom:6px;" data-i18n="shiftLockNote">ملاحظة: شفتك يتقفل بعد التسجيل — المسؤول بس يقدر يعدّله لاحقًا.</p>
+        <button class="btn-primary" id="registerBtn" onclick="handleRegister()" data-i18n="registerBtn">اعتماد وحفظ الحساب الجديد</button>
+        <div class="auth-links"><span onclick="switchAuthScreen('loginScreen')" data-i18n="backToLogin">العودة للدخول</span></div>
     </div>
 
     <!-- استرجاع الرمز -->
     <div class="auth-screen" id="forgotScreen" style="display:none;">
-        <div class="auth-title">استرجاع وتحديث الرمز الخاص</div>
+        <div class="auth-title" data-i18n="forgotTitle">استرجاع وتحديث الرمز الخاص</div>
         <div class="form-grid">
-            <div class="form-group"><label for="forgotEmpId">الرقم الوظيفي</label><input type="number" id="forgotEmpId" placeholder="1234" oninput="limitFourDigits(this)" inputmode="numeric"></div>
-            <div class="form-group"><label for="forgotPhone">رقم الهاتف المسجل</label><input type="tel" id="forgotPhone" placeholder="99988877"></div>
-            <div class="form-group"><label for="forgotCivilId">الرقم المدني المسجل</label><input type="text" id="forgotCivilId" placeholder="الرقم المدني" inputmode="numeric" maxlength="12" oninput="limitTwelveDigits(this)"></div>
-            <div class="form-group"><label for="forgotEmail">البريد الإلكتروني المسجل</label><input type="email" id="forgotEmail" placeholder="name@example.com"></div>
-            <div class="form-group"><label for="forgotNewPin">الرمز السري الجديد</label><input type="password" id="forgotNewPin" placeholder="******"></div>
+            <div class="form-group"><label for="forgotEmpId" data-i18n="empIdLabel">الرقم الوظيفي</label><input type="number" id="forgotEmpId" placeholder="1234" oninput="limitFourDigits(this)" inputmode="numeric"></div>
+            <div class="form-group"><label for="forgotPhone" data-i18n="phoneRegisteredLabel">رقم الهاتف المسجل</label><input type="tel" id="forgotPhone" placeholder="99988877"></div>
+            <div class="form-group"><label for="forgotCivilId" data-i18n="civilIdRegisteredLabel">الرقم المدني المسجل</label><input type="text" id="forgotCivilId" placeholder="الرقم المدني" inputmode="numeric" maxlength="12" oninput="limitTwelveDigits(this)"></div>
+            <div class="form-group"><label for="forgotEmail" data-i18n="emailRegisteredLabel">البريد الإلكتروني المسجل</label><input type="email" id="forgotEmail" placeholder="name@example.com"></div>
+            <div class="form-group"><label for="forgotNewPin" data-i18n="newPinLabel">الرمز السري الجديد</label><input type="password" id="forgotNewPin" placeholder="******"></div>
         </div>
-        <button class="btn-primary btn-admin" id="forgotBtn" onclick="handleForgot()">تحديث الرمز بالتحقق</button>
-        <div class="auth-links"><span onclick="switchAuthScreen('loginScreen')">العودة للدخول</span></div>
+        <button class="btn-primary btn-admin" id="forgotBtn" onclick="handleForgot()" data-i18n="forgotBtn">تحديث الرمز بالتحقق</button>
+        <div class="auth-links"><span onclick="switchAuthScreen('loginScreen')" data-i18n="backToLogin">العودة للدخول</span></div>
     </div>
 
     <!-- لوحة التحكم -->
     <div id="mainDashboard">
         <div class="tab-switcher">
-            <button class="tab-btn active" id="tabBtnReports" onclick="switchTab('reports')">🚨 إضافة بلاغ</button>
-            <button class="tab-btn" id="tabBtnAdminView" onclick="switchTab('adminView')" style="display:none;">📋 عرض البلاغات</button>
-            <button class="tab-btn" id="tabBtnAreas" onclick="switchTab('areas')" style="display:none;">🗺️ إدارة المناطق</button>
-            <button class="tab-btn" id="tabBtnEmployees" onclick="switchTab('employees')" style="display:none;">🛠️ إدارة الموظفين</button>
+            <button class="tab-btn active" id="tabBtnReports" onclick="switchTab('reports')" data-i18n="tabAddReport">🚨 إضافة بلاغ</button>
+            <button class="tab-btn" id="tabBtnAdminView" onclick="switchTab('adminView')" style="display:none;" data-i18n="tabAdminView">📋 عرض البلاغات</button>
+            <button class="tab-btn" id="tabBtnAreas" onclick="switchTab('areas')" style="display:none;" data-i18n="tabAreas">🗺️ إدارة المناطق</button>
+            <button class="tab-btn" id="tabBtnEmployees" onclick="switchTab('employees')" style="display:none;" data-i18n="tabEmployees">🛠️ إدارة الموظفين</button>
         </div>
 
         <!-- ===== قسم إضافة بلاغ ===== -->
         <div id="reportsSection">
             <div class="type-switcher">
-                <button class="type-btn urgent active" id="typeBtnUrgent" onclick="switchReportType('urgent')">🚨 بلاغ عاجل</button>
-                <button class="type-btn pts" id="typeBtnPts" onclick="switchReportType('pts')">🚑 بلاغ غير عاجل (نقل مرضى)</button>
+                <button class="type-btn urgent active" id="typeBtnUrgent" onclick="switchReportType('urgent')" data-i18n="typeUrgent">🚨 بلاغ عاجل</button>
+                <button class="type-btn pts" id="typeBtnPts" onclick="switchReportType('pts')" data-i18n="typePts">🚑 بلاغ غير عاجل (نقل مرضى)</button>
             </div>
 
-            <!-- نموذج البلاغ العاجل -->
             <div class="auth-screen" id="urgentFormWrap">
-                <div class="auth-title">تسجيل بلاغ عاجل</div>
+                <div class="auth-title" data-i18n="urgentFormTitle">تسجيل بلاغ عاجل</div>
                 <div class="form-grid">
-                    <div class="form-group"><label for="urgReportNumber">رقم البلاغ</label><input type="text" id="urgReportNumber" placeholder="رقم البلاغ"></div>
-                    <div class="form-group"><label for="urgAmbulanceNumber">رقم الإسعاف</label><input type="text" id="urgAmbulanceNumber" placeholder="رقم الإسعاف"></div>
-                    <div class="form-group"><label for="urgDriverNumber">رقم السائق</label><input type="text" id="urgDriverNumber" placeholder="رقم السائق"></div>
-                    <div class="form-group"><label for="urgMedicNumber">رقم المسعف</label><input type="text" id="urgMedicNumber" placeholder="رقم المسعف"></div>
-                    <div class="form-group" style="grid-column: 1 / -1;"><label for="urgPatientName">اسم المريض</label><input type="text" id="urgPatientName" placeholder="اسم المريض"></div>
-                    <div class="form-group">
-                        <label for="urgArea">اسم المنطقة</label>
-                        <input type="text" id="urgArea" list="areasDatalist" placeholder="اكتب اسم المنطقة" oninput="previewZoneStatus()">
-                        <datalist id="areasDatalist"></datalist>
-                    </div>
-                    <div class="form-group"><label for="urgBlock">قطعة</label><input type="text" id="urgBlock" placeholder="قطعة"></div>
-                    <div class="form-group"><label for="urgStreet">شارع</label><input type="text" id="urgStreet" placeholder="شارع"></div>
-                    <div class="form-group"><label for="urgAvenue">جادة (اختياري)</label><input type="text" id="urgAvenue" placeholder="جادة"></div>
-                    <div class="form-group"><label for="urgHouse">منزل</label><input type="text" id="urgHouse" placeholder="رقم المنزل"></div>
+                    <div class="form-group"><label for="urgReportNumber" data-i18n="reportNumberLabel">رقم البلاغ</label><input type="text" id="urgReportNumber"></div>
+                    <div class="form-group"><label for="urgAmbulanceNumber" data-i18n="ambulanceNumberLabel">رقم الإسعاف</label><input type="text" id="urgAmbulanceNumber"></div>
+                    <div class="form-group"><label for="urgDriverNumber" data-i18n="driverNumberLabel">رقم السائق</label><input type="text" id="urgDriverNumber"></div>
+                    <div class="form-group"><label for="urgMedicNumber" data-i18n="medicNumberLabel">رقم المسعف</label><input type="text" id="urgMedicNumber"></div>
+                    <div class="form-group" style="grid-column: 1 / -1;"><label for="urgPatientName" data-i18n="patientNameLabel">اسم المريض</label><input type="text" id="urgPatientName"></div>
+                    <div class="form-group"><label for="urgGovernorate" data-i18n="governorateLabel">المحافظة</label><select id="urgGovernorate" onchange="onGovernorateChange()"></select></div>
+                    <div class="form-group"><label for="urgArea" data-i18n="areaLabel">المنطقة</label><select id="urgArea" onchange="previewZoneStatus()"></select></div>
+                    <div class="form-group"><label for="urgBlock" data-i18n="blockLabel">قطعة</label><input type="text" id="urgBlock"></div>
+                    <div class="form-group"><label for="urgStreet" data-i18n="streetLabel">شارع</label><input type="text" id="urgStreet"></div>
+                    <div class="form-group"><label for="urgAvenue" data-i18n="avenueLabel">جادة (اختياري)</label><input type="text" id="urgAvenue"></div>
+                    <div class="form-group"><label for="urgHouse" data-i18n="houseLabel">منزل</label><input type="text" id="urgHouse"></div>
                 </div>
                 <div id="zonePreviewBox" style="display:none; margin-top:6px;"></div>
-                <div class="checkbox-row"><input type="checkbox" id="urgLateEntry"><label for="urgLateEntry" style="margin:0;">بلاغ متأخر — يخص الشفت السابقة</label></div>
-                <button class="btn-primary" id="saveUrgentBtn" onclick="saveUrgentReport()">حفظ البلاغ العاجل</button>
+                <div class="checkbox-row"><input type="checkbox" id="urgLateEntry"><label for="urgLateEntry" style="margin:0;" data-i18n="lateEntryLabel">بلاغ متأخر — يخص الشفت السابقة</label></div>
+                <button class="btn-primary" id="saveUrgentBtn" onclick="saveUrgentReport()" data-i18n="saveUrgentBtn">حفظ البلاغ العاجل</button>
             </div>
 
-            <!-- نموذج بلاغ PTS -->
             <div class="auth-screen" id="ptsFormWrap" style="display:none;">
-                <div class="auth-title">تسجيل بلاغ نقل مرضى (غير عاجل)</div>
+                <div class="auth-title" data-i18n="ptsFormTitle">تسجيل بلاغ نقل مرضى (غير عاجل)</div>
                 <div class="form-grid">
-                    <div class="form-group"><label for="ptsReportNumber">رقم البلاغ</label><input type="text" id="ptsReportNumber" placeholder="رقم البلاغ"></div>
-                    <div class="form-group"><label for="ptsAmbulanceNumber">رقم الإسعاف</label><input type="text" id="ptsAmbulanceNumber" placeholder="رقم الإسعاف"></div>
-                    <div class="form-group"><label for="ptsMedicNumbers">أرقام المسعفين</label><input type="text" id="ptsMedicNumbers" placeholder="مثال: 1023، 1044"></div>
-                    <div class="form-group"><label for="ptsPatientName">اسم المريض (اختياري)</label><input type="text" id="ptsPatientName" placeholder="اسم المريض"></div>
-                    <div class="form-group"><label for="ptsFrom">من</label><input type="text" id="ptsFrom" placeholder="مكان الانطلاق"></div>
-                    <div class="form-group"><label for="ptsTo">إلى</label><input type="text" id="ptsTo" placeholder="الوجهة"></div>
+                    <div class="form-group"><label for="ptsReportNumber" data-i18n="reportNumberLabel">رقم البلاغ</label><input type="text" id="ptsReportNumber"></div>
+                    <div class="form-group"><label for="ptsAmbulanceNumber" data-i18n="ambulanceNumberLabel">رقم الإسعاف</label><input type="text" id="ptsAmbulanceNumber"></div>
+                    <div class="form-group"><label for="ptsMedicNumbers" data-i18n="medicNumbersLabel">أرقام المسعفين</label><input type="text" id="ptsMedicNumbers"></div>
+                    <div class="form-group"><label for="ptsPatientName" data-i18n="patientNameOptionalLabel">اسم المريض (اختياري)</label><input type="text" id="ptsPatientName"></div>
+                    <div class="form-group"><label for="ptsFrom" data-i18n="fromLabel">من</label><input type="text" id="ptsFrom"></div>
+                    <div class="form-group"><label for="ptsTo" data-i18n="toLabel">إلى</label><input type="text" id="ptsTo"></div>
                 </div>
-                <div class="checkbox-row"><input type="checkbox" id="ptsLateEntry"><label for="ptsLateEntry" style="margin:0;">بلاغ متأخر — يخص الشفت السابقة</label></div>
-                <button class="btn-primary" id="savePtsBtn" onclick="savePtsReport()">حفظ بلاغ النقل</button>
+                <div class="checkbox-row"><input type="checkbox" id="ptsLateEntry"><label for="ptsLateEntry" style="margin:0;" data-i18n="lateEntryLabel">بلاغ متأخر — يخص الشفت السابقة</label></div>
+                <button class="btn-primary" id="savePtsBtn" onclick="savePtsReport()" data-i18n="savePtsBtn">حفظ بلاغ النقل</button>
             </div>
 
-            <!-- بلاغات الشفت الحالية -->
             <div class="report-section">
                 <div class="report-title" style="display:flex; align-items:center; justify-content:space-between; gap:10px;">
-                    <span>البلاغات العاجلة — الشفت الحالي (<span id="urgentTodayCount">0</span>)</span>
-                    <button class="row-btn row-edit" onclick="loadTodayReports()">🔄 تحديث</button>
+                    <span><span data-i18n="urgentTodayTitle">البلاغات العاجلة — الشفت الحالي</span> (<span id="urgentTodayCount">0</span>)</span>
+                    <button class="row-btn row-edit" onclick="loadTodayReports()" data-i18n="refreshBtn">🔄 تحديث</button>
                 </div>
                 <table class="monthly-table" id="urgentTodayTable">
                     <thead><tr>
-                        <th>الوقت</th><th>رقم البلاغ</th><th>رقم الإسعاف</th><th>السائق</th><th>المسعف</th><th>المريض</th>
-                        <th>المنطقة</th><th>قطعة</th><th>شارع</th><th>التغطية</th>
+                        <th data-i18n="timeColLabel">الوقت</th><th data-i18n="reportNumberLabel">رقم البلاغ</th><th data-i18n="ambulanceNumberLabel">رقم الإسعاف</th><th data-i18n="driverColLabel">السائق</th><th data-i18n="medicColLabel">المسعف</th><th data-i18n="patientColLabel">المريض</th>
+                        <th data-i18n="areaLabel">المنطقة</th><th data-i18n="blockLabel">قطعة</th><th data-i18n="streetLabel">شارع</th><th data-i18n="coverageColLabel">التغطية</th>
                     </tr></thead>
-                    <tbody id="urgentTodayBody"><tr class="empty-row"><td colspan="10">ما فيه بلاغات عاجلة مسجّلة بعد بهالشفت</td></tr></tbody>
+                    <tbody id="urgentTodayBody"><tr class="empty-row"><td colspan="10" data-i18n="noUrgentToday">ما فيه بلاغات عاجلة مسجّلة بعد بهالشفت</td></tr></tbody>
                 </table>
                 <div class="summary-bar" id="urgentSummaryBar"></div>
             </div>
 
             <div class="report-section">
                 <div class="report-title" style="display:flex; align-items:center; justify-content:space-between; gap:10px;">
-                    <span>بلاغات النقل (PTS) — الشفت الحالي (<span id="ptsTodayCount">0</span>)</span>
-                    <button class="row-btn row-edit" onclick="loadTodayReports()">🔄 تحديث</button>
+                    <span><span data-i18n="ptsTodayTitle">بلاغات النقل (PTS) — الشفت الحالي</span> (<span id="ptsTodayCount">0</span>)</span>
+                    <button class="row-btn row-edit" onclick="loadTodayReports()" data-i18n="refreshBtn">🔄 تحديث</button>
                 </div>
                 <table class="monthly-table" id="ptsTodayTable">
-                    <thead><tr><th>الوقت</th><th>رقم البلاغ</th><th>رقم الإسعاف</th><th>المسعفين</th><th>المريض</th><th>من</th><th>إلى</th></tr></thead>
-                    <tbody id="ptsTodayBody"><tr class="empty-row"><td colspan="7">ما فيه بلاغات نقل مسجّلة بعد بهالشفت</td></tr></tbody>
+                    <thead><tr><th data-i18n="timeColLabel">الوقت</th><th data-i18n="reportNumberLabel">رقم البلاغ</th><th data-i18n="ambulanceNumberLabel">رقم الإسعاف</th><th data-i18n="medicsColLabel">المسعفين</th><th data-i18n="patientColLabel">المريض</th><th data-i18n="fromLabel">من</th><th data-i18n="toLabel">إلى</th></tr></thead>
+                    <tbody id="ptsTodayBody"><tr class="empty-row"><td colspan="7" data-i18n="noPtsToday">ما فيه بلاغات نقل مسجّلة بعد بهالشفت</td></tr></tbody>
                 </table>
             </div>
         </div>
@@ -308,23 +273,20 @@
         <!-- ===== قسم عرض البلاغات (أدمن) ===== -->
         <div id="adminViewSection" style="display:none;">
             <div class="auth-screen">
-                <div class="auth-title">عرض البلاغات حسب يوم الشفت</div>
+                <div class="auth-title" data-i18n="adminViewTitle">عرض البلاغات حسب يوم الشفت</div>
                 <div class="form-grid">
-                    <div class="form-group"><label for="adminShiftDay">يوم الشفت</label><input type="date" id="adminShiftDay"></div>
-                    <div class="form-group">
-                        <label for="adminCenterSelect">المركز</label>
-                        <select id="adminCenterSelect"><option value="all">كل المراكز</option></select>
-                    </div>
+                    <div class="form-group"><label for="adminShiftDay" data-i18n="shiftDayLabel">يوم الشفت</label><input type="date" id="adminShiftDay"></div>
+                    <div class="form-group"><label for="adminCenterSelect" data-i18n="centerLabel">المركز</label><select id="adminCenterSelect"></select></div>
                 </div>
-                <button class="btn-primary btn-admin" onclick="loadAdminReports()">عرض البلاغات</button>
+                <button class="btn-primary btn-admin" onclick="loadAdminReports()" data-i18n="viewReportsBtn">عرض البلاغات</button>
             </div>
 
             <div class="report-section" id="adminUrgentSection" style="display:none;">
-                <div class="report-title">البلاغات العاجلة</div>
+                <div class="report-title" data-i18n="urgentReportsTitle">البلاغات العاجلة</div>
                 <table class="monthly-table" id="adminUrgentTable">
                     <thead><tr>
-                        <th>الوقت</th><th>المركز</th><th>رقم البلاغ</th><th>رقم الإسعاف</th><th>السائق</th><th>المسعف</th>
-                        <th>المريض</th><th>المنطقة</th><th>قطعة</th><th>شارع</th><th>جادة</th><th>منزل</th><th>التغطية</th><th>إجراءات</th>
+                        <th data-i18n="timeColLabel">الوقت</th><th data-i18n="centerLabel">المركز</th><th data-i18n="reportNumberLabel">رقم البلاغ</th><th data-i18n="ambulanceNumberLabel">رقم الإسعاف</th><th data-i18n="driverColLabel">السائق</th><th data-i18n="medicColLabel">المسعف</th>
+                        <th data-i18n="patientColLabel">المريض</th><th data-i18n="areaLabel">المنطقة</th><th data-i18n="blockLabel">قطعة</th><th data-i18n="streetLabel">شارع</th><th data-i18n="avenueColLabel">جادة</th><th data-i18n="houseColLabel">منزل</th><th data-i18n="coverageColLabel">التغطية</th><th data-i18n="actionsLabel">إجراءات</th>
                     </tr></thead>
                     <tbody id="adminUrgentBody"></tbody>
                 </table>
@@ -332,9 +294,9 @@
             </div>
 
             <div class="report-section" id="adminPtsSection" style="display:none;">
-                <div class="report-title">بلاغات النقل (PTS)</div>
+                <div class="report-title" data-i18n="ptsReportsTitle">بلاغات النقل (PTS)</div>
                 <table class="monthly-table" id="adminPtsTable">
-                    <thead><tr><th>الوقت</th><th>المركز</th><th>رقم البلاغ</th><th>رقم الإسعاف</th><th>المسعفين</th><th>المريض</th><th>من</th><th>إلى</th><th>إجراءات</th></tr></thead>
+                    <thead><tr><th data-i18n="timeColLabel">الوقت</th><th data-i18n="centerLabel">المركز</th><th data-i18n="reportNumberLabel">رقم البلاغ</th><th data-i18n="ambulanceNumberLabel">رقم الإسعاف</th><th data-i18n="medicsColLabel">المسعفين</th><th data-i18n="patientColLabel">المريض</th><th data-i18n="fromLabel">من</th><th data-i18n="toLabel">إلى</th><th data-i18n="actionsLabel">إجراءات</th></tr></thead>
                     <tbody id="adminPtsBody"></tbody>
                 </table>
             </div>
@@ -343,21 +305,23 @@
         <!-- ===== قسم إدارة المناطق (أدمن) ===== -->
         <div id="areasSection" style="display:none;">
             <div class="auth-screen">
-                <div class="auth-title">إضافة منطقة جديدة</div>
+                <div class="auth-title" data-i18n="addAreaTitle">إضافة منطقة جديدة</div>
                 <div class="form-grid">
-                    <div class="form-group"><label for="newAreaName">اسم المنطقة</label><input type="text" id="newAreaName" placeholder="اسم المنطقة"></div>
+                    <div class="form-group"><label for="newAreaNameAr" data-i18n="areaNameArLabel">اسم المنطقة (عربي)</label><input type="text" id="newAreaNameAr"></div>
+                    <div class="form-group"><label for="newAreaNameEn" data-i18n="areaNameEnLabel">اسم المنطقة (إنجليزي، اختياري)</label><input type="text" id="newAreaNameEn"></div>
+                    <div class="form-group"><label for="newAreaGovernorate" data-i18n="governorateLabel">المحافظة</label><select id="newAreaGovernorate"></select></div>
                     <div class="form-group">
-                        <label for="newAreaCenter">المركز الأساسي</label>
-                        <select id="newAreaCenter"></select>
+                        <label for="newAreaCenter" data-i18n="homeCenterLabel">المركز الأساسي (فاضي = خارج تغطيتنا)</label>
+                        <select id="newAreaCenter"><option value="" data-i18n="noneOutsideCoverage">— بدون (خارج تغطيتنا) —</option></select>
                     </div>
                 </div>
-                <button class="btn-primary btn-admin" onclick="addArea()">إضافة المنطقة</button>
+                <button class="btn-primary btn-admin" onclick="addArea()" data-i18n="addAreaBtn">إضافة المنطقة</button>
             </div>
             <div class="report-section">
-                <div class="report-title">كل المناطق المسجّلة (<span id="areasCount">0</span>)</div>
+                <div class="report-title"><span data-i18n="allAreasTitle">كل المناطق المسجّلة</span> (<span id="areasCount">0</span>)</div>
                 <table class="monthly-table" id="areasTable">
-                    <thead><tr><th>اسم المنطقة</th><th>المركز الأساسي</th><th>إجراءات</th></tr></thead>
-                    <tbody id="areasBody"><tr class="empty-row"><td colspan="3">جاري التحميل...</td></tr></tbody>
+                    <thead><tr><th data-i18n="areaNameArLabel">اسم المنطقة (عربي)</th><th data-i18n="areaNameEnLabel">اسم المنطقة (إنجليزي)</th><th data-i18n="governorateLabel">المحافظة</th><th data-i18n="homeCenterLabel">المركز الأساسي</th><th data-i18n="actionsLabel">إجراءات</th></tr></thead>
+                    <tbody id="areasBody"><tr class="empty-row"><td colspan="5" data-i18n="loadingText">جاري التحميل...</td></tr></tbody>
                 </table>
             </div>
         </div>
@@ -365,24 +329,29 @@
         <!-- ===== قسم إدارة الموظفين (أدمن) ===== -->
         <div id="employeesSection" style="display:none;">
             <div class="report-section">
-                <div class="report-title">إدارة الموظفين — تعديل المركز</div>
+                <div class="report-title" data-i18n="employeesTitle">إدارة الموظفين — تعديل المركز والشفت</div>
                 <table class="monthly-table" id="employeesTable">
-                    <thead><tr><th>الرقم الوظيفي</th><th>رقم الهاتف</th><th>المركز الحالي</th><th>إجراءات</th></tr></thead>
-                    <tbody id="employeesBody"><tr class="empty-row"><td colspan="4">جاري التحميل...</td></tr></tbody>
+                    <thead><tr><th data-i18n="empIdColLabel">الرقم الوظيفي</th><th data-i18n="phoneColLabel">رقم الهاتف</th><th data-i18n="centerLabel">المركز</th><th data-i18n="shiftColLabel">الشفت</th><th data-i18n="actionsLabel">إجراءات</th></tr></thead>
+                    <tbody id="employeesBody"><tr class="empty-row"><td colspan="5" data-i18n="loadingText">جاري التحميل...</td></tr></tbody>
                 </table>
             </div>
         </div>
 
-        <button class="btn-secondary" onclick="logout()">تسجيل الخروج</button>
+        <button class="btn-secondary" onclick="logout()" data-i18n="logoutBtn">تسجيل الخروج</button>
     </div>
 
-    <div class="footer-note">جميع البلاغات تُحفظ وتُوثّق آليًا لحظة الضغط على زر الحفظ — التوقيت بتوقيت الكويت</div>
+    <div class="footer-note" data-i18n="footerNote">جميع البلاغات تُحفظ وتُوثّق آليًا لحظة الضغط على زر الحفظ — التوقيت بتوقيت الكويت</div>
 </div>
 
 <script>
 const API_URL = "https://script.google.com/macros/s/AKfycbzy5jv_qwEX7CYONshU5nmEgPmpLp8BWaNamKBSN7aBvfOueQWoZPaNFwlBkxryGrhF/exec";
 
 const CENTERS = ["القرين", "الزهراء", "مشرف", "جابر العاجلة", "جابر غير العاجلة", "صبحان"];
+const CENTERS_EN = { "القرين": "Al Qurain", "الزهراء": "Al-Zahra", "مشرف": "Mishref", "جابر العاجلة": "Jaber Urgent", "جابر غير العاجلة": "Jaber Non-Urgent", "صبحان": "Sabhan" };
+const SHIFTS = ["شفت الف", "شفت باء", "شفت جيم"];
+const SHIFTS_EN = { "شفت الف": "Shift A", "شفت باء": "Shift B", "شفت جيم": "Shift C" };
+const GOVERNORATES = ["العاصمة", "حولي", "الفروانية", "الأحمدي", "الجهراء", "مبارك الكبير"];
+const GOVERNORATES_EN = { "العاصمة": "Al Asimah", "حولي": "Hawalli", "الفروانية": "Farwaniya", "الأحمدي": "Ahmadi", "الجهراء": "Jahra", "مبارك الكبير": "Mubarak Al-Kabeer" };
 
 window.addEventListener("error", (e) => {
     console.error("خطأ غير متوقع:", e.error || e.message);
@@ -390,63 +359,124 @@ window.addEventListener("error", (e) => {
     if (el) { el.textContent = "صار خطأ غير متوقع، جرّب تحدّث الصفحة. لو تكرر، بلّغ الأدمن."; el.style.display = "block"; }
 });
 
-let session = { empId: null, center: null, isAdmin: false, token: null };
-let areasCache = []; // {area_name, home_center}
+let session = { empId: null, center: null, shift: null, isAdmin: false, token: null };
+let areasCache = [];
 
+const TRANSLATIONS = {
+    en: {
+        brandLine: "Smart Dispatch System", mainTitle: "Mubarak Al-Kabeer Dispatch", mainSubtitle: "Ambulance dispatch logging — all six centers",
+        serverChecking: "Checking server status...", checkingSession: "Checking session...",
+        loginTitle: "Login to the System", empIdLabel: "Employee ID", passwordLabel: "Password",
+        centerShiftPreviewLabel: "Registered Center & Shift", loginBtn: "Login & Verify",
+        createAccountLink: "Create New Account", forgotPinLink: "Recover Password",
+        registerTitle: "Register New Employee", empIdRegLabel: "Employee ID (4 digits)", phoneLabel: "Phone Number",
+        civilIdLabel: "Civil ID", emailLabel: "Email", chooseCenterLabel: "Choose Center", chooseShiftLabel: "Choose Your Shift (A/B/C)",
+        choosePinLabel: "Choose Password", shiftLockNote: "Note: your shift locks after registration — only the admin can change it later.",
+        registerBtn: "Confirm & Save New Account", backToLogin: "Back to Login",
+        forgotTitle: "Recover & Reset Password", phoneRegisteredLabel: "Registered Phone Number",
+        civilIdRegisteredLabel: "Registered Civil ID", emailRegisteredLabel: "Registered Email", newPinLabel: "New Password",
+        forgotBtn: "Verify & Reset Password",
+        tabAddReport: "🚨 Add Report", tabAdminView: "📋 View Reports", tabAreas: "🗺️ Manage Areas", tabEmployees: "🛠️ Manage Employees",
+        typeUrgent: "🚨 Urgent Report", typePts: "🚑 Non-Urgent (Patient Transport)",
+        urgentFormTitle: "Log Urgent Report", reportNumberLabel: "Report Number", ambulanceNumberLabel: "Ambulance Number",
+        driverNumberLabel: "Driver Number", medicNumberLabel: "Medic Number", patientNameLabel: "Patient Name",
+        governorateLabel: "Governorate", areaLabel: "Area", blockLabel: "Block", streetLabel: "Street", avenueLabel: "Avenue (optional)", houseLabel: "House",
+        lateEntryLabel: "Late entry — belongs to the previous shift", saveUrgentBtn: "Save Urgent Report",
+        ptsFormTitle: "Log Patient Transport (Non-Urgent)", medicNumbersLabel: "Medic Numbers", patientNameOptionalLabel: "Patient Name (optional)",
+        fromLabel: "From", toLabel: "To", savePtsBtn: "Save Transport Report",
+        urgentTodayTitle: "Urgent Reports — Current Shift", ptsTodayTitle: "Transport Reports (PTS) — Current Shift",
+        refreshBtn: "🔄 Refresh", noUrgentToday: "No urgent reports logged this shift yet", noPtsToday: "No transport reports logged this shift yet",
+        timeColLabel: "Time", driverColLabel: "Driver", medicColLabel: "Medic", medicsColLabel: "Medics", patientColLabel: "Patient",
+        coverageColLabel: "Coverage", avenueColLabel: "Avenue", houseColLabel: "House", actionsLabel: "Actions",
+        adminViewTitle: "View Reports by Shift Day", shiftDayLabel: "Shift Day", centerLabel: "Center", viewReportsBtn: "View Reports",
+        urgentReportsTitle: "Urgent Reports", ptsReportsTitle: "Transport Reports (PTS)",
+        addAreaTitle: "Add New Area", areaNameArLabel: "Area Name (Arabic)", areaNameEnLabel: "Area Name (English)",
+        homeCenterLabel: "Home Center (blank = outside our coverage)", noneOutsideCoverage: "— None (outside our coverage) —",
+        addAreaBtn: "Add Area", allAreasTitle: "All Registered Areas", loadingText: "Loading...",
+        employeesTitle: "Manage Employees — Edit Center & Shift", empIdColLabel: "Employee ID", phoneColLabel: "Phone Number", shiftColLabel: "Shift",
+        logoutBtn: "Logout", footerNote: "All reports are saved and timestamped automatically the moment you press save — times in Kuwait timezone",
+        allCentersOption: "All Centers", zoneWhite: "In coverage", zoneYellow: "Acceptable coverage", zoneRed: "Out of coverage",
+        totalLabel: "Total", editBtn: "Edit", deleteBtn: "Delete", saveBtn: "Save", cancelBtn: "Cancel", deleteAccountBtn: "Delete Account",
+        onDutyPrefix: "On-duty shift today:"
+    }
+};
+
+function applyLanguage(langCode) {
+    const html = document.documentElement;
+    if (langCode === "en") { html.setAttribute("lang", "en"); html.setAttribute("dir", "ltr"); document.getElementById("langToggleBtn").textContent = "عربي"; }
+    else { html.setAttribute("lang", "ar"); html.setAttribute("dir", "rtl"); document.getElementById("langToggleBtn").textContent = "English"; }
+
+    document.querySelectorAll("[data-i18n]").forEach(el => {
+        const key = el.getAttribute("data-i18n");
+        if (langCode === "en" && TRANSLATIONS.en[key]) {
+            if (!el.dataset.arOriginal) el.dataset.arOriginal = el.textContent;
+            el.textContent = TRANSLATIONS.en[key];
+        } else if (el.dataset.arOriginal) { el.textContent = el.dataset.arOriginal; }
+    });
+    localStorage.setItem("balaghatLang", langCode);
+}
+function toggleLanguage() {
+    const current = localStorage.getItem("balaghatLang") || "ar";
+    applyLanguage(current === "ar" ? "en" : "ar");
+    populateStaticSelects();
+    refreshDynamicContentForLanguage();
+}
+function refreshDynamicContentForLanguage() {
+    if (!session.token) return;
+    loadTodayReports();
+    rebuildAreaSelects();
+    if (document.getElementById("areasSection").style.display !== "none") loadAreasTable();
+    if (document.getElementById("employeesSection").style.display !== "none") loadAllEmployees();
+    updateDutyBanner();
+}
 function toggleDarkMode() {
     const isDark = document.body.classList.toggle("dark-mode");
     document.getElementById("darkModeToggleBtn").textContent = isDark ? "☀️" : "🌙";
     localStorage.setItem("balaghatDarkMode", isDark ? "1" : "0");
 }
+function lang() { return localStorage.getItem("balaghatLang") || "ar"; }
+const JS_TEXT_AR = { edit: "تعديل", delete: "حذف", save: "حفظ", cancel: "إلغاء", deleteAccount: "حذف حساب" };
+const JS_TEXT_EN = { edit: "Edit", delete: "Delete", save: "Save", cancel: "Cancel", deleteAccount: "Delete Account" };
+function t(key) { return (lang() === "en" ? JS_TEXT_EN[key] : JS_TEXT_AR[key]) || key; }
+function centerLabel(c) { return lang() === "en" ? (CENTERS_EN[c] || c) : c; }
+function shiftLabel(s) { return lang() === "en" ? (SHIFTS_EN[s] || s) : s; }
+function governorateLabel(g) { return lang() === "en" ? (GOVERNORATES_EN[g] || g) : g; }
+
 (function initPreferences() {
-    if (localStorage.getItem("balaghatDarkMode") === "1") {
-        document.body.classList.add("dark-mode");
-        document.getElementById("darkModeToggleBtn").textContent = "☀️";
-    }
+    applyLanguage(lang());
+    if (localStorage.getItem("balaghatDarkMode") === "1") { document.body.classList.add("dark-mode"); document.getElementById("darkModeToggleBtn").textContent = "☀️"; }
 })();
 
-function populateCenterSelects() {
-    const targets = ["regCenter", "newAreaCenter"];
-    targets.forEach(id => {
-        const el = document.getElementById(id);
-        el.innerHTML = CENTERS.map(c => `<option value="${c}">${c}</option>`).join("");
-    });
-    document.getElementById("adminCenterSelect").innerHTML =
-        `<option value="all">كل المراكز</option>` + CENTERS.map(c => `<option value="${c}">${c}</option>`).join("");
+function populateStaticSelects() {
+    const centerOptionsHTML = CENTERS.map(c => `<option value="${c}">${centerLabel(c)}</option>`).join("");
+    document.getElementById("regCenter").innerHTML = centerOptionsHTML;
+    document.getElementById("newAreaCenter").innerHTML = `<option value="">${lang()==="en"?TRANSLATIONS.en.noneOutsideCoverage:"— بدون (خارج تغطيتنا) —"}</option>` + centerOptionsHTML;
+    document.getElementById("adminCenterSelect").innerHTML = `<option value="all">${lang()==="en"?TRANSLATIONS.en.allCentersOption:"كل المراكز"}</option>` + centerOptionsHTML;
+    document.getElementById("regShift").innerHTML = SHIFTS.map(s => `<option value="${s}">${shiftLabel(s)}</option>`).join("");
+    const govOptionsHTML = `<option value="">-</option>` + GOVERNORATES.map(g => `<option value="${g}">${governorateLabel(g)}</option>`).join("");
+    document.getElementById("urgGovernorate").innerHTML = govOptionsHTML;
+    document.getElementById("newAreaGovernorate").innerHTML = GOVERNORATES.map(g => `<option value="${g}">${governorateLabel(g)}</option>`).join("");
 }
-populateCenterSelects();
+populateStaticSelects();
 
 function limitFourDigits(input) { if (input.value.length > 4) input.value = input.value.slice(0, 4); }
 function limitTwelveDigits(input) { if (input.value.length > 12) input.value = input.value.slice(0, 12); }
 
-function showError(msg) {
-    const el = document.getElementById("errorMessage");
-    document.getElementById("successMessage").style.display = "none";
-    el.textContent = msg; el.style.display = "block";
-    clearTimeout(el._t); el._t = setTimeout(() => { el.style.display = "none"; }, 5000);
-}
-function showSuccess(msg) {
-    const el = document.getElementById("successMessage");
-    document.getElementById("errorMessage").style.display = "none";
-    el.textContent = msg; el.style.display = "block";
-    clearTimeout(el._t); el._t = setTimeout(() => { el.style.display = "none"; }, 5000);
-}
+function showError(msg) { const el = document.getElementById("errorMessage"); document.getElementById("successMessage").style.display = "none"; el.textContent = msg; el.style.display = "block"; clearTimeout(el._t); el._t = setTimeout(() => { el.style.display = "none"; }, 5000); }
+function showSuccess(msg) { const el = document.getElementById("successMessage"); document.getElementById("errorMessage").style.display = "none"; el.textContent = msg; el.style.display = "block"; clearTimeout(el._t); el._t = setTimeout(() => { el.style.display = "none"; }, 5000); }
 function setBusy(buttonEl, busy, originalText) {
     if (busy) { buttonEl.disabled = true; buttonEl.dataset.originalText = originalText; buttonEl.innerHTML = '<span class="loader"></span>' + originalText; }
     else { buttonEl.disabled = false; buttonEl.textContent = buttonEl.dataset.originalText || originalText; }
 }
 function switchAuthScreen(screenId) {
     ["loginScreen", "registerScreen", "forgotScreen"].forEach(id => { document.getElementById(id).style.display = (id === screenId) ? "block" : "none"; });
-    document.getElementById("errorMessage").style.display = "none";
-    document.getElementById("successMessage").style.display = "none";
+    document.getElementById("errorMessage").style.display = "none"; document.getElementById("successMessage").style.display = "none";
 }
-
 async function hashPin(pin) {
     const enc = new TextEncoder().encode(pin);
     const buf = await crypto.subtle.digest("SHA-256", enc);
     return Array.from(new Uint8Array(buf)).map(b => b.toString(16).padStart(2, "0")).join("");
 }
-
 async function apiPost(action, payload) {
     const res = await fetch(API_URL, { method: "POST", headers: { "Content-Type": "text/plain;charset=utf-8" }, body: JSON.stringify({ action, ...payload }) });
     return res.json();
@@ -457,10 +487,8 @@ async function apiGet(params) {
     const res = await fetch(url.toString());
     return res.json();
 }
-
 async function checkServerStatus() {
-    const wrap = document.getElementById("serverStatus");
-    const text = document.getElementById("serverStatusText");
+    const wrap = document.getElementById("serverStatus"); const text = document.getElementById("serverStatusText");
     if (API_URL.includes("PASTE_YOUR")) { wrap.className = "server-status offline"; text.textContent = "لم يتم ربط رابط السيرفر بعد (API_URL)"; return; }
     try {
         const result = await apiGet({ action: "PING" });
@@ -469,6 +497,19 @@ async function checkServerStatus() {
     } catch (e) { wrap.className = "server-status offline"; text.textContent = "🔴 تعذر الاتصال بالسيرفر، تحقق من رابط API أو النشر"; }
 }
 checkServerStatus();
+
+async function updateDutyBanner() {
+    try {
+        const result = await apiGet({ action: "GET_ON_DUTY_SHIFT" });
+        if (result && result.on_duty_shift) {
+            const banner = document.getElementById("dutyBanner");
+            const prefix = lang() === "en" ? TRANSLATIONS.en.onDutyPrefix : "الشفت المناوب اليوم:";
+            document.getElementById("dutyBannerText").textContent = `${prefix} ${shiftLabel(result.on_duty_shift)}`;
+            banner.style.display = "flex";
+        }
+    } catch (e) { /* تجاهل بصمت */ }
+}
+updateDutyBanner();
 
 const SESSION_STORAGE_KEY = "balaghatSession";
 function persistSession() { localStorage.setItem(SESSION_STORAGE_KEY, JSON.stringify(session)); }
@@ -483,7 +524,7 @@ async function restoreSession() {
     try {
         const result = await apiGet({ action: "VALIDATE_SESSION", token: parsed.token });
         if (result && result.status === "VALID") {
-            session = { empId: parsed.empId, center: parsed.center, isAdmin: result.isAdmin, token: parsed.token };
+            session = { empId: parsed.empId, center: parsed.center, shift: parsed.shift, isAdmin: result.isAdmin, token: parsed.token };
             await enterDashboard();
         } else { clearPersistedSession(); showLoginScreenNow(); }
     } catch (e) { showLoginScreenNow(); }
@@ -495,14 +536,13 @@ let empIdPreviewTimer = null;
 function checkLoginEmpIdPreview() {
     clearTimeout(empIdPreviewTimer);
     const empId = document.getElementById("loginEmpId").value.trim();
-    const group = document.getElementById("loginCenterPreviewGroup");
-    const preview = document.getElementById("loginCenterPreview");
+    const group = document.getElementById("loginPreviewGroup"); const preview = document.getElementById("loginPreview");
     if (empId.length !== 4) { group.style.display = "none"; return; }
     empIdPreviewTimer = setTimeout(async () => {
         try {
             const result = await apiGet({ action: "GET_USER_CENTER", emp_id: empId });
             if (result && result.status === "FOUND") {
-                preview.value = result.isAdmin ? "حساب مسؤول" : (result.center || "-");
+                preview.value = result.isAdmin ? "حساب مسؤول" : `${result.center || "-"} — ${shiftLabel(result.shift) || "-"}`;
                 group.style.display = "block";
             } else { group.style.display = "none"; }
         } catch (e) { group.style.display = "none"; }
@@ -522,12 +562,12 @@ async function handleLogin() {
         if (result.status === "SUCCESS") {
             session.empId = empId; session.isAdmin = !!result.isAdmin; session.token = result.token;
             session.center = result.isAdmin ? null : (result.center || null);
-            if (!session.isAdmin && !session.center) {
-                showError("حسابك ما فيه مركز مسجّل. تواصل مع المسؤول، أو سجّل حساب جديد.");
+            session.shift = result.isAdmin ? null : (result.shift || null);
+            if (!session.isAdmin && (!session.center || !session.shift)) {
+                showError("حسابك ما فيه مركز/شفت مسجّل. تواصل مع المسؤول.");
                 setBusy(btn, false, "تسجيل الدخول وتأكيد الهوية"); return;
             }
-            persistSession();
-            await enterDashboard();
+            persistSession(); await enterDashboard();
         } else { showError("الرقم الوظيفي أو الرمز السري غير صحيح"); }
     } catch (e) { showError("تعذر الاتصال بالسيرفر، تحقق من رابط API"); }
     finally { setBusy(btn, false, "تسجيل الدخول وتأكيد الهوية"); }
@@ -539,6 +579,7 @@ async function handleRegister() {
     const civilId = document.getElementById("regCivilId").value.trim();
     const email = document.getElementById("regEmail").value.trim();
     const center = document.getElementById("regCenter").value;
+    const shift = document.getElementById("regShift").value;
     const pin = document.getElementById("regPin").value.trim();
     const btn = document.getElementById("registerBtn");
     if (!empId || !phone || !civilId || !email || !pin) { showError("الرجاء تعبئة جميع الحقول"); return; }
@@ -546,7 +587,7 @@ async function handleRegister() {
     setBusy(btn, true, "اعتماد وحفظ الحساب الجديد");
     try {
         const pinHash = await hashPin(pin);
-        const result = await apiPost("REGISTER_SECURE", { emp_id: empId, phone, pin_hash: pinHash, civil_id: civilId, email, center });
+        const result = await apiPost("REGISTER_SECURE", { emp_id: empId, phone, pin_hash: pinHash, civil_id: civilId, email, center, shift });
         if (result.status === "SUCCESS") { showSuccess("تم إنشاء الحساب بنجاح، يمكنك تسجيل الدخول الآن"); switchAuthScreen("loginScreen"); }
         else if (result.status === "EXISTS") { showError("هذا الرقم الوظيفي مسجل مسبقًا"); }
         else { showError("تعذر إنشاء الحساب، حاول مجددًا"); }
@@ -573,7 +614,7 @@ async function handleForgot() {
 }
 
 function logout() {
-    session = { empId: null, center: null, isAdmin: false, token: null };
+    session = { empId: null, center: null, shift: null, isAdmin: false, token: null };
     clearPersistedSession();
     document.getElementById("mainDashboard").style.display = "none";
     document.getElementById("loginEmpId").value = ""; document.getElementById("loginPin").value = "";
@@ -593,8 +634,7 @@ async function enterDashboard() {
         document.getElementById("adminShiftDay").value = new Date().toLocaleDateString("en-CA");
         switchTab("adminView");
     } else {
-        switchTab("reports");
-        loadTodayReports();
+        switchTab("reports"); loadTodayReports();
     }
 }
 
@@ -610,7 +650,6 @@ function switchTab(tab) {
     if (tab === "areas") loadAreasTable();
     if (tab === "employees") loadAllEmployees();
 }
-
 function switchReportType(type) {
     document.getElementById("urgentFormWrap").style.display = type === "urgent" ? "block" : "none";
     document.getElementById("ptsFormWrap").style.display = type === "pts" ? "block" : "none";
@@ -618,33 +657,34 @@ function switchReportType(type) {
     document.getElementById("typeBtnPts").classList.toggle("active", type === "pts");
 }
 
-/* ---------- المناطق (تحميل + اقتراحات + معاينة لون التغطية) ---------- */
+/* ---------- المناطق (محافظة ← منطقة) ---------- */
 
 async function loadAreas() {
     try {
         const result = await apiGet({ action: "GET_AREAS", token: session.token });
-        if (Array.isArray(result)) {
-            areasCache = result;
-            const datalist = document.getElementById("areasDatalist");
-            if (datalist) datalist.innerHTML = areasCache.map(a => `<option value="${a.area_name}"></option>`).join("");
-        }
+        if (Array.isArray(result)) { areasCache = result; rebuildAreaSelects(); }
     } catch (e) { /* تجاهل بصمت */ }
 }
-
-function findAreaHomeCenter(areaName) {
-    const found = areasCache.find(a => a.area_name === (areaName || "").trim());
-    return found ? found.home_center : null;
+function rebuildAreaSelects() { onGovernorateChange(); }
+function onGovernorateChange() {
+    const gov = document.getElementById("urgGovernorate").value;
+    const areaSelect = document.getElementById("urgArea");
+    const filtered = gov ? areasCache.filter(a => a.governorate === gov) : areasCache;
+    areaSelect.innerHTML = `<option value="">-</option>` + filtered.map(a =>
+        `<option value="${a.area_name}">${lang() === "en" && a.area_name_en ? a.area_name_en : a.area_name}</option>`).join("");
+    previewZoneStatus();
 }
-
+function findAreaEntry(areaName) { return areasCache.find(a => a.area_name === (areaName || "").trim()); }
 function previewZoneStatus() {
     const box = document.getElementById("zonePreviewBox");
     const areaName = document.getElementById("urgArea").value.trim();
     if (!areaName) { box.style.display = "none"; return; }
-    const homeCenter = findAreaHomeCenter(areaName);
+    const entry = findAreaEntry(areaName);
+    const homeCenter = entry ? entry.home_center : "";
     let status, label;
-    if (!homeCenter) { status = "red"; label = "⚠️ منطقة غير موجودة بقائمة المراكز الستة — بلاغ خارج التغطية"; }
-    else if (homeCenter === session.center) { status = "white"; label = "✅ ضمن تغطية مركزك"; }
-    else { status = "yellow"; label = `تغطية من مركز آخر (${homeCenter}) — ضمن مبارك الكبير`; }
+    if (!homeCenter) { status = "red"; label = lang() === "en" ? "⚠️ Outside our six centers' coverage" : "⚠️ منطقة خارج تغطية مراكزنا الستة"; }
+    else if (homeCenter === session.center) { status = "white"; label = lang() === "en" ? "✅ Within your center's coverage" : "✅ ضمن تغطية مركزك"; }
+    else { status = "yellow"; label = (lang() === "en" ? "Covered by another center (" + centerLabel(homeCenter) + ")" : `تغطية من مركز آخر (${homeCenter})`); }
     box.style.display = "block";
     box.innerHTML = `<span class="zone-badge ${status}">${label}</span>`;
 }
@@ -668,29 +708,21 @@ async function saveUrgentReport() {
         late_entry: document.getElementById("urgLateEntry").checked
     };
     if (!payload.report_number || !payload.ambulance_number) { showError("الرجاء إدخال رقم البلاغ ورقم الإسعاف على الأقل"); return; }
-    if (API_URL.includes("PASTE_YOUR")) { showError("لم يتم ربط رابط السيرفر بعد (API_URL)"); return; }
-
     setBusy(btn, true, "حفظ البلاغ العاجل");
     try {
         const result = await apiPost("ADD_URGENT_REPORT", payload);
-        if (result.status === "SUCCESS") {
-            showSuccess("تم حفظ البلاغ بنجاح");
-            clearUrgentForm();
-            loadTodayReports();
-        } else { showError("فشل الحفظ، حاول مرة أخرى"); }
+        if (result.status === "SUCCESS") { showSuccess("تم حفظ البلاغ بنجاح"); clearUrgentForm(); loadTodayReports(); }
+        else { showError("فشل الحفظ، حاول مرة أخرى"); }
     } catch (e) { showError("تعذر الاتصال بالسيرفر أثناء الحفظ"); }
     finally { setBusy(btn, false, "حفظ البلاغ العاجل"); }
 }
-
 function clearUrgentForm() {
-    ["urgReportNumber","urgAmbulanceNumber","urgDriverNumber","urgMedicNumber","urgPatientName","urgArea","urgBlock","urgStreet","urgAvenue","urgHouse"]
-        .forEach(id => document.getElementById(id).value = "");
+    ["urgReportNumber","urgAmbulanceNumber","urgDriverNumber","urgMedicNumber","urgPatientName","urgBlock","urgStreet","urgAvenue","urgHouse"].forEach(id => document.getElementById(id).value = "");
+    document.getElementById("urgGovernorate").value = ""; onGovernorateChange();
     document.getElementById("urgLateEntry").checked = false;
     document.getElementById("zonePreviewBox").style.display = "none";
     document.getElementById("urgReportNumber").focus();
 }
-
-/* ---------- إضافة بلاغ PTS ---------- */
 
 async function savePtsReport() {
     const btn = document.getElementById("savePtsBtn");
@@ -705,20 +737,14 @@ async function savePtsReport() {
         late_entry: document.getElementById("ptsLateEntry").checked
     };
     if (!payload.report_number || !payload.ambulance_number) { showError("الرجاء إدخال رقم البلاغ ورقم الإسعاف على الأقل"); return; }
-    if (API_URL.includes("PASTE_YOUR")) { showError("لم يتم ربط رابط السيرفر بعد (API_URL)"); return; }
-
     setBusy(btn, true, "حفظ بلاغ النقل");
     try {
         const result = await apiPost("ADD_PTS_REPORT", payload);
-        if (result.status === "SUCCESS") {
-            showSuccess("تم حفظ بلاغ النقل بنجاح");
-            clearPtsForm();
-            loadTodayReports();
-        } else { showError("فشل الحفظ، حاول مرة أخرى"); }
+        if (result.status === "SUCCESS") { showSuccess("تم حفظ بلاغ النقل بنجاح"); clearPtsForm(); loadTodayReports(); }
+        else { showError("فشل الحفظ، حاول مرة أخرى"); }
     } catch (e) { showError("تعذر الاتصال بالسيرفر أثناء الحفظ"); }
     finally { setBusy(btn, false, "حفظ بلاغ النقل"); }
 }
-
 function clearPtsForm() {
     ["ptsReportNumber","ptsAmbulanceNumber","ptsMedicNumbers","ptsPatientName","ptsFrom","ptsTo"].forEach(id => document.getElementById(id).value = "");
     document.getElementById("ptsLateEntry").checked = false;
@@ -739,45 +765,48 @@ async function loadTodayReports() {
     } catch (e) { /* تجاهل بصمت */ }
 }
 
-function zoneLabel(status) { return status === "white" ? "ضمن التغطية" : status === "yellow" ? "تغطية مقبولة" : "خارج التغطية"; }
+function zoneLabelText(status) {
+    if (lang() === "en") return status === "white" ? TRANSLATIONS.en.zoneWhite : status === "yellow" ? TRANSLATIONS.en.zoneYellow : TRANSLATIONS.en.zoneRed;
+    return status === "white" ? "ضمن التغطية" : status === "yellow" ? "تغطية مقبولة" : "خارج التغطية";
+}
+function areaDisplay(areaName) {
+    if (!areaName) return "-";
+    if (lang() === "en") { const entry = findAreaEntry(areaName); if (entry && entry.area_name_en) return entry.area_name_en; }
+    return areaName;
+}
 
 function renderUrgentTable(rows, bodyId, countId, summaryId, withActions) {
     const body = document.getElementById(bodyId);
     if (countId) document.getElementById(countId).textContent = rows.length;
-
     if (!rows.length) {
         const colspan = withActions ? 14 : 10;
-        body.innerHTML = `<tr class="empty-row"><td colspan="${colspan}">ما فيه بلاغات مسجّلة</td></tr>`;
+        body.innerHTML = `<tr class="empty-row"><td colspan="${colspan}">${lang()==="en"?"No reports logged":"ما فيه بلاغات مسجّلة"}</td></tr>`;
         if (summaryId) document.getElementById(summaryId).innerHTML = "";
         return;
     }
-
     let white = 0, yellow = 0, red = 0;
     rows.forEach(r => { if (r.zone_status === "white") white++; else if (r.zone_status === "yellow") yellow++; else red++; });
 
     body.innerHTML = rows.slice().reverse().map(r => {
         const rowClass = "row-" + (r.zone_status || "white");
-        const centerCell = withActions ? `<td>${r.center}</td>` : "";
-        const actionsCell = withActions ? `
-            <td class="cell-actions">
-                <button class="row-btn row-edit" onclick="editUrgentRow('${r.id}')">تعديل</button>
-                <button class="row-btn row-delete" onclick="deleteUrgentRow('${r.id}')">حذف</button>
-            </td>` : "";
+        const centerCell = withActions ? `<td>${centerLabel(r.center)}</td>` : "";
+        const actionsCell = withActions ? `<td class="cell-actions"><button class="row-btn row-edit" onclick="editUrgentRow('${r.id}')">${t('edit')}</button><button class="row-btn row-delete" onclick="deleteUrgentRow('${r.id}')">${t('delete')}</button></td>` : "";
         const extraCols = withActions ? `<td>${r.avenue || "-"}</td><td>${r.house || "-"}</td>` : "";
         return `<tr class="${rowClass}" data-id="${r.id}">
             <td>${r.time || "-"}</td>${centerCell}<td>${r.report_number}</td><td>${r.ambulance_number}</td>
             <td>${r.driver_number || "-"}</td><td>${r.medic_number || "-"}</td><td>${r.patient_name || "-"}</td>
-            <td>${r.area_name || "-"}</td><td>${r.block || "-"}</td><td>${r.street || "-"}</td>${extraCols}
-            <td><span class="zone-badge ${r.zone_status}">${zoneLabel(r.zone_status)}</span></td>${actionsCell}
+            <td>${areaDisplay(r.area_name)}</td><td>${r.block || "-"}</td><td>${r.street || "-"}</td>${extraCols}
+            <td><span class="zone-badge ${r.zone_status}">${zoneLabelText(r.zone_status)}</span></td>${actionsCell}
         </tr>`;
     }).join("");
 
     if (summaryId) {
+        const totalLbl = lang() === "en" ? TRANSLATIONS.en.totalLabel : "الإجمالي";
         document.getElementById(summaryId).innerHTML = `
-            <div class="summary-chip">الإجمالي <b>${rows.length}</b></div>
-            <div class="summary-chip">ضمن التغطية <b>${white}</b></div>
-            <div class="summary-chip yellow">تغطية مقبولة <b>${yellow}</b></div>
-            <div class="summary-chip red">خارج التغطية <b>${red}</b></div>`;
+            <div class="summary-chip">${totalLbl} <b>${rows.length}</b></div>
+            <div class="summary-chip">${zoneLabelText("white")} <b>${white}</b></div>
+            <div class="summary-chip yellow">${zoneLabelText("yellow")} <b>${yellow}</b></div>
+            <div class="summary-chip red">${zoneLabelText("red")} <b>${red}</b></div>`;
     }
 }
 
@@ -786,114 +815,57 @@ function renderPtsTable(rows, bodyId, countId, withActions) {
     if (countId) document.getElementById(countId).textContent = rows.length;
     if (!rows.length) {
         const colspan = withActions ? 9 : 7;
-        body.innerHTML = `<tr class="empty-row"><td colspan="${colspan}">ما فيه بلاغات نقل مسجّلة</td></tr>`;
+        body.innerHTML = `<tr class="empty-row"><td colspan="${colspan}">${lang()==="en"?"No transport reports logged":"ما فيه بلاغات نقل مسجّلة"}</td></tr>`;
         return;
     }
     body.innerHTML = rows.slice().reverse().map(r => {
-        const centerCell = withActions ? `<td>${r.center}</td>` : "";
-        const actionsCell = withActions ? `
-            <td class="cell-actions">
-                <button class="row-btn row-edit" onclick="editPtsRow('${r.id}')">تعديل</button>
-                <button class="row-btn row-delete" onclick="deletePtsRow('${r.id}')">حذف</button>
-            </td>` : "";
-        return `<tr data-id="${r.id}">
-            <td>${r.time || "-"}</td>${centerCell}<td>${r.report_number}</td><td>${r.ambulance_number}</td>
-            <td>${r.medic_numbers || "-"}</td><td>${r.patient_name || "-"}</td><td>${r.from_place || "-"}</td><td>${r.to_place || "-"}</td>${actionsCell}
-        </tr>`;
+        const centerCell = withActions ? `<td>${centerLabel(r.center)}</td>` : "";
+        const actionsCell = withActions ? `<td class="cell-actions"><button class="row-btn row-edit" onclick="editPtsRow('${r.id}')">${t('edit')}</button><button class="row-btn row-delete" onclick="deletePtsRow('${r.id}')">${t('delete')}</button></td>` : "";
+        return `<tr data-id="${r.id}"><td>${r.time || "-"}</td>${centerCell}<td>${r.report_number}</td><td>${r.ambulance_number}</td><td>${r.medic_numbers || "-"}</td><td>${r.patient_name || "-"}</td><td>${r.from_place || "-"}</td><td>${r.to_place || "-"}</td>${actionsCell}</tr>`;
     }).join("");
 }
 
 /* ---------- عرض البلاغات (أدمن) ---------- */
 
-let adminUrgentCache = [];
-let adminPtsCache = [];
+let adminUrgentCache = [], adminPtsCache = [];
 
 async function loadAdminReports() {
     const shiftDay = document.getElementById("adminShiftDay").value;
     if (!shiftDay) { showError("اختر يوم الشفت أولاً"); return; }
     const center = document.getElementById("adminCenterSelect").value;
-
     try {
         const [urgent, pts] = await Promise.all([
             apiGet({ action: "GET_URGENT_REPORTS", token: session.token, center, shift_day: shiftDay }),
             apiGet({ action: "GET_PTS_REPORTS", token: session.token, center, shift_day: shiftDay })
         ]);
-        if (Array.isArray(urgent)) {
-            adminUrgentCache = urgent;
-            renderUrgentTable(urgent, "adminUrgentBody", null, "adminUrgentSummaryBar", true);
-            document.getElementById("adminUrgentSection").style.display = "block";
-        }
-        if (Array.isArray(pts)) {
-            adminPtsCache = pts;
-            renderPtsTable(pts, "adminPtsBody", null, true);
-            document.getElementById("adminPtsSection").style.display = "block";
-        }
+        if (Array.isArray(urgent)) { adminUrgentCache = urgent; renderUrgentTable(urgent, "adminUrgentBody", null, "adminUrgentSummaryBar", true); document.getElementById("adminUrgentSection").style.display = "block"; }
+        if (Array.isArray(pts)) { adminPtsCache = pts; renderPtsTable(pts, "adminPtsBody", null, true); document.getElementById("adminPtsSection").style.display = "block"; }
     } catch (e) { showError("تعذر الاتصال بالسيرفر أثناء جلب البلاغات"); }
 }
 
 async function deleteUrgentRow(id) {
     if (!confirm("هل أنت متأكد من حذف هذا البلاغ نهائيًا؟")) return;
-    try {
-        const result = await apiPost("DELETE_URGENT_REPORT", { token: session.token, id });
-        if (result.status === "SUCCESS") { showSuccess("تم حذف البلاغ"); loadAdminReports(); }
-        else { showError("تعذر الحذف"); }
-    } catch (e) { showError("تعذر الاتصال بالسيرفر"); }
+    try { const result = await apiPost("DELETE_URGENT_REPORT", { token: session.token, id }); if (result.status === "SUCCESS") { showSuccess("تم حذف البلاغ"); loadAdminReports(); } else { showError("تعذر الحذف"); } }
+    catch (e) { showError("تعذر الاتصال بالسيرفر"); }
 }
-
 async function deletePtsRow(id) {
     if (!confirm("هل أنت متأكد من حذف هذا البلاغ نهائيًا؟")) return;
-    try {
-        const result = await apiPost("DELETE_PTS_REPORT", { token: session.token, id });
-        if (result.status === "SUCCESS") { showSuccess("تم حذف البلاغ"); loadAdminReports(); }
-        else { showError("تعذر الحذف"); }
-    } catch (e) { showError("تعذر الاتصال بالسيرفر"); }
+    try { const result = await apiPost("DELETE_PTS_REPORT", { token: session.token, id }); if (result.status === "SUCCESS") { showSuccess("تم حذف البلاغ"); loadAdminReports(); } else { showError("تعذر الحذف"); } }
+    catch (e) { showError("تعذر الاتصال بالسيرفر"); }
 }
-
 function editUrgentRow(id) {
-    const r = adminUrgentCache.find(x => x.id === id);
-    if (!r) return;
+    const r = adminUrgentCache.find(x => x.id === id); if (!r) return;
     const newVals = {};
-    const fields = [
-        ["report_number", "رقم البلاغ", r.report_number], ["ambulance_number", "رقم الإسعاف", r.ambulance_number],
-        ["driver_number", "رقم السائق", r.driver_number], ["medic_number", "رقم المسعف", r.medic_number],
-        ["patient_name", "اسم المريض", r.patient_name], ["area_name", "اسم المنطقة", r.area_name],
-        ["block", "قطعة", r.block], ["street", "شارع", r.street], ["avenue", "جادة", r.avenue], ["house", "منزل", r.house]
-    ];
-    for (const [key, label, current] of fields) {
-        const val = prompt(label, current || "");
-        if (val === null) return; // إلغاء التعديل بالكامل لو ألغى بأي خطوة
-        newVals[key] = val.trim();
-    }
-    (async () => {
-        try {
-            const result = await apiPost("UPDATE_URGENT_REPORT", { token: session.token, id, ...newVals });
-            if (result.status === "SUCCESS") { showSuccess("تم تحديث البلاغ"); loadAdminReports(); }
-            else { showError("تعذر حفظ التعديل"); }
-        } catch (e) { showError("تعذر الاتصال بالسيرفر"); }
-    })();
+    const fields = [["report_number","رقم البلاغ",r.report_number],["ambulance_number","رقم الإسعاف",r.ambulance_number],["driver_number","رقم السائق",r.driver_number],["medic_number","رقم المسعف",r.medic_number],["patient_name","اسم المريض",r.patient_name],["area_name","اسم المنطقة",r.area_name],["block","قطعة",r.block],["street","شارع",r.street],["avenue","جادة",r.avenue],["house","منزل",r.house]];
+    for (const [key, label, current] of fields) { const val = prompt(label, current || ""); if (val === null) return; newVals[key] = val.trim(); }
+    (async () => { try { const result = await apiPost("UPDATE_URGENT_REPORT", { token: session.token, id, ...newVals }); if (result.status === "SUCCESS") { showSuccess("تم تحديث البلاغ"); loadAdminReports(); } else { showError("تعذر حفظ التعديل"); } } catch (e) { showError("تعذر الاتصال بالسيرفر"); } })();
 }
-
 function editPtsRow(id) {
-    const r = adminPtsCache.find(x => x.id === id);
-    if (!r) return;
+    const r = adminPtsCache.find(x => x.id === id); if (!r) return;
     const newVals = {};
-    const fields = [
-        ["report_number", "رقم البلاغ", r.report_number], ["ambulance_number", "رقم الإسعاف", r.ambulance_number],
-        ["medic_numbers", "أرقام المسعفين", r.medic_numbers], ["patient_name", "اسم المريض", r.patient_name],
-        ["from_place", "من", r.from_place], ["to_place", "إلى", r.to_place]
-    ];
-    for (const [key, label, current] of fields) {
-        const val = prompt(label, current || "");
-        if (val === null) return;
-        newVals[key] = val.trim();
-    }
-    (async () => {
-        try {
-            const result = await apiPost("UPDATE_PTS_REPORT", { token: session.token, id, ...newVals });
-            if (result.status === "SUCCESS") { showSuccess("تم تحديث البلاغ"); loadAdminReports(); }
-            else { showError("تعذر حفظ التعديل"); }
-        } catch (e) { showError("تعذر الاتصال بالسيرفر"); }
-    })();
+    const fields = [["report_number","رقم البلاغ",r.report_number],["ambulance_number","رقم الإسعاف",r.ambulance_number],["medic_numbers","أرقام المسعفين",r.medic_numbers],["patient_name","اسم المريض",r.patient_name],["from_place","من",r.from_place],["to_place","إلى",r.to_place]];
+    for (const [key, label, current] of fields) { const val = prompt(label, current || ""); if (val === null) return; newVals[key] = val.trim(); }
+    (async () => { try { const result = await apiPost("UPDATE_PTS_REPORT", { token: session.token, id, ...newVals }); if (result.status === "SUCCESS") { showSuccess("تم تحديث البلاغ"); loadAdminReports(); } else { showError("تعذر حفظ التعديل"); } } catch (e) { showError("تعذر الاتصال بالسيرفر"); } })();
 }
 
 /* ---------- إدارة المناطق (أدمن) ---------- */
@@ -902,56 +874,47 @@ async function loadAreasTable() {
     await loadAreas();
     const body = document.getElementById("areasBody");
     document.getElementById("areasCount").textContent = areasCache.length;
-    if (!areasCache.length) { body.innerHTML = `<tr class="empty-row"><td colspan="3">ما فيه مناطق مسجّلة بعد</td></tr>`; return; }
+    if (!areasCache.length) { body.innerHTML = `<tr class="empty-row"><td colspan="5">${lang()==="en"?"No areas registered yet":"ما فيه مناطق مسجّلة بعد"}</td></tr>`; return; }
     body.innerHTML = areasCache.map(a => `
         <tr data-area="${a.area_name}">
-            <td>${a.area_name}</td><td>${a.home_center}</td>
-            <td class="cell-actions">
-                <button class="row-btn row-edit" onclick="editAreaRow('${a.area_name}')">تعديل</button>
-                <button class="row-btn row-delete" onclick="deleteAreaRow('${a.area_name}')">حذف</button>
-            </td>
+            <td>${a.area_name}</td><td>${a.area_name_en || "-"}</td><td>${governorateLabel(a.governorate)}</td><td>${a.home_center ? centerLabel(a.home_center) : "-"}</td>
+            <td class="cell-actions"><button class="row-btn row-edit" onclick="editAreaRow('${a.area_name}')">${t('edit')}</button><button class="row-btn row-delete" onclick="deleteAreaRow('${a.area_name}')">${t('delete')}</button></td>
         </tr>`).join("");
 }
 
 async function addArea() {
-    const areaName = document.getElementById("newAreaName").value.trim();
+    const areaName = document.getElementById("newAreaNameAr").value.trim();
+    const areaNameEn = document.getElementById("newAreaNameEn").value.trim();
+    const governorate = document.getElementById("newAreaGovernorate").value;
     const homeCenter = document.getElementById("newAreaCenter").value;
-    if (!areaName) { showError("اكتب اسم المنطقة"); return; }
+    if (!areaName) { showError("اكتب اسم المنطقة بالعربي"); return; }
     try {
-        const result = await apiPost("ADD_AREA", { token: session.token, area_name: areaName, home_center: homeCenter });
-        if (result.status === "SUCCESS") {
-            showSuccess("تمت إضافة المنطقة");
-            document.getElementById("newAreaName").value = "";
-            loadAreasTable();
-        } else if (result.status === "EXISTS") { showError("هذه المنطقة مسجّلة مسبقًا"); }
+        const result = await apiPost("ADD_AREA", { token: session.token, area_name: areaName, area_name_en: areaNameEn, governorate, home_center: homeCenter });
+        if (result.status === "SUCCESS") { showSuccess("تمت إضافة المنطقة"); document.getElementById("newAreaNameAr").value = ""; document.getElementById("newAreaNameEn").value = ""; loadAreasTable(); }
+        else if (result.status === "EXISTS") { showError("هذه المنطقة مسجّلة مسبقًا"); }
         else { showError("تعذر إضافة المنطقة"); }
     } catch (e) { showError("تعذر الاتصال بالسيرفر"); }
 }
 
 function editAreaRow(oldName) {
-    const area = areasCache.find(a => a.area_name === oldName);
-    if (!area) return;
-    const newName = prompt("اسم المنطقة", area.area_name);
-    if (newName === null) return;
-    const newCenter = prompt("المركز الأساسي (" + CENTERS.join(" / ") + ")", area.home_center);
-    if (newCenter === null) return;
-    if (CENTERS.indexOf(newCenter.trim()) === -1) { showError("اسم المركز غير صحيح"); return; }
+    const area = areasCache.find(a => a.area_name === oldName); if (!area) return;
+    const newName = prompt("اسم المنطقة (عربي)", area.area_name); if (newName === null) return;
+    const newNameEn = prompt("اسم المنطقة (إنجليزي)", area.area_name_en || ""); if (newNameEn === null) return;
+    const newGov = prompt("المحافظة (" + GOVERNORATES.join(" / ") + ")", area.governorate); if (newGov === null) return;
+    if (GOVERNORATES.indexOf(newGov.trim()) === -1) { showError("اسم المحافظة غير صحيح"); return; }
+    const newCenter = prompt("المركز الأساسي (فاضي = خارج التغطية) — " + CENTERS.join(" / "), area.home_center || ""); if (newCenter === null) return;
+    if (newCenter.trim() && CENTERS.indexOf(newCenter.trim()) === -1) { showError("اسم المركز غير صحيح"); return; }
     (async () => {
         try {
-            const result = await apiPost("UPDATE_AREA", { token: session.token, old_area_name: oldName, area_name: newName.trim(), home_center: newCenter.trim() });
-            if (result.status === "SUCCESS") { showSuccess("تم تحديث المنطقة"); loadAreasTable(); }
-            else { showError("تعذر حفظ التعديل"); }
+            const result = await apiPost("UPDATE_AREA", { token: session.token, old_area_name: oldName, area_name: newName.trim(), area_name_en: newNameEn.trim(), governorate: newGov.trim(), home_center: newCenter.trim() });
+            if (result.status === "SUCCESS") { showSuccess("تم تحديث المنطقة"); loadAreasTable(); } else { showError("تعذر حفظ التعديل"); }
         } catch (e) { showError("تعذر الاتصال بالسيرفر"); }
     })();
 }
-
 async function deleteAreaRow(areaName) {
     if (!confirm(`هل أنت متأكد من حذف منطقة "${areaName}"؟`)) return;
-    try {
-        const result = await apiPost("DELETE_AREA", { token: session.token, area_name: areaName });
-        if (result.status === "SUCCESS") { showSuccess("تم حذف المنطقة"); loadAreasTable(); }
-        else { showError("تعذر الحذف"); }
-    } catch (e) { showError("تعذر الاتصال بالسيرفر"); }
+    try { const result = await apiPost("DELETE_AREA", { token: session.token, area_name: areaName }); if (result.status === "SUCCESS") { showSuccess("تم حذف المنطقة"); loadAreasTable(); } else { showError("تعذر الحذف"); } }
+    catch (e) { showError("تعذر الاتصال بالسيرفر"); }
 }
 
 /* ---------- إدارة الموظفين (أدمن) ---------- */
@@ -960,69 +923,58 @@ async function loadAllEmployees() {
     const body = document.getElementById("employeesBody");
     try {
         const result = await apiGet({ action: "GET_ALL_EMPLOYEES", token: session.token });
-        if (!Array.isArray(result)) { body.innerHTML = `<tr class="empty-row"><td colspan="4">تعذر جلب قائمة الموظفين</td></tr>`; return; }
-        if (!result.length) { body.innerHTML = `<tr class="empty-row"><td colspan="4">ما فيه موظفين مسجلين بعد</td></tr>`; return; }
+        if (!Array.isArray(result)) { body.innerHTML = `<tr class="empty-row"><td colspan="5">تعذر جلب قائمة الموظفين</td></tr>`; return; }
+        if (!result.length) { body.innerHTML = `<tr class="empty-row"><td colspan="5">ما فيه موظفين مسجلين بعد</td></tr>`; return; }
         body.innerHTML = result.map(emp => `
             <tr data-emp-id="${emp.emp_id}">
                 <td>${emp.emp_id}</td><td>${emp.phone || "-"}</td>
-                <td class="cell-emp-center" data-value="${emp.center}">${emp.center || "-"}</td>
-                <td class="cell-actions">
-                    <button class="row-btn row-edit" onclick="startEditEmployeeRow(this)">تعديل</button>
-                    <button class="row-btn row-delete" onclick="deleteEmployeeRow(this)">حذف حساب</button>
-                </td>
+                <td class="cell-emp-center" data-value="${emp.center}">${centerLabel(emp.center)}</td>
+                <td class="cell-emp-shift" data-value="${emp.shift}">${shiftLabel(emp.shift)}</td>
+                <td class="cell-actions"><button class="row-btn row-edit" onclick="startEditEmployeeRow(this)">${t('edit')}</button><button class="row-btn row-delete" onclick="deleteEmployeeRow(this)">${t('deleteAccount')}</button></td>
             </tr>`).join("");
-    } catch (e) { body.innerHTML = `<tr class="empty-row"><td colspan="4">تعذر الاتصال بالسيرفر</td></tr>`; }
+    } catch (e) { body.innerHTML = `<tr class="empty-row"><td colspan="5">تعذر الاتصال بالسيرفر</td></tr>`; }
 }
-
 function startEditEmployeeRow(btn) {
-    const tr = btn.closest("tr");
-    if (tr.classList.contains("editing")) return;
-    tr.classList.add("editing");
-    const centerTd = tr.querySelector(".cell-emp-center");
-    const current = centerTd.dataset.value;
-    centerTd.innerHTML = `<select class="row-input">${CENTERS.map(c => `<option value="${c}" ${c === current ? "selected" : ""}>${c}</option>`).join("")}</select>`;
+    const tr = btn.closest("tr"); if (tr.classList.contains("editing")) return; tr.classList.add("editing");
+    const centerTd = tr.querySelector(".cell-emp-center"); const shiftTd = tr.querySelector(".cell-emp-shift");
+    const currentCenter = centerTd.dataset.value; const currentShift = shiftTd.dataset.value;
+    centerTd.innerHTML = `<select class="row-input">${CENTERS.map(c => `<option value="${c}" ${c === currentCenter ? "selected" : ""}>${centerLabel(c)}</option>`).join("")}</select>`;
+    shiftTd.innerHTML = `<select class="row-input">${SHIFTS.map(s => `<option value="${s}" ${s === currentShift ? "selected" : ""}>${shiftLabel(s)}</option>`).join("")}</select>`;
     const actionsTd = tr.querySelector(".cell-actions");
-    actionsTd.innerHTML = `<button class="row-btn row-save" onclick="saveEmployeeEditRow(this)">حفظ</button><button class="row-btn row-cancel" onclick="cancelEmployeeEditRow(this)">إلغاء</button>`;
+    actionsTd.innerHTML = `<button class="row-btn row-save" onclick="saveEmployeeEditRow(this)">${t('save')}</button><button class="row-btn row-cancel" onclick="cancelEmployeeEditRow(this)">${t('cancel')}</button>`;
 }
-
 function cancelEmployeeEditRow(btn) {
     const tr = btn.closest("tr"); tr.classList.remove("editing");
-    const centerTd = tr.querySelector(".cell-emp-center");
-    centerTd.textContent = centerTd.dataset.value || "-";
+    const centerTd = tr.querySelector(".cell-emp-center"); const shiftTd = tr.querySelector(".cell-emp-shift");
+    centerTd.textContent = centerLabel(centerTd.dataset.value); shiftTd.textContent = shiftLabel(shiftTd.dataset.value);
     const actionsTd = tr.querySelector(".cell-actions");
-    actionsTd.innerHTML = `<button class="row-btn row-edit" onclick="startEditEmployeeRow(this)">تعديل</button><button class="row-btn row-delete" onclick="deleteEmployeeRow(this)">حذف حساب</button>`;
+    actionsTd.innerHTML = `<button class="row-btn row-edit" onclick="startEditEmployeeRow(this)">${t('edit')}</button><button class="row-btn row-delete" onclick="deleteEmployeeRow(this)">${t('deleteAccount')}</button>`;
 }
-
 async function saveEmployeeEditRow(btn) {
-    const tr = btn.closest("tr");
-    const empId = tr.dataset.empId;
-    const center = tr.querySelector(".cell-emp-center select").value;
+    const tr = btn.closest("tr"); const empId = tr.dataset.empId;
+    const center = tr.querySelector(".cell-emp-center select").value; const shift = tr.querySelector(".cell-emp-shift select").value;
     setBusy(btn, true, "حفظ");
     try {
-        const result = await apiPost("UPDATE_EMPLOYEE_CENTER", { token: session.token, emp_id: empId, center });
+        const result = await apiPost("UPDATE_EMPLOYEE_INFO", { token: session.token, emp_id: empId, center, shift });
         if (result.status === "SUCCESS") {
-            const centerTd = tr.querySelector(".cell-emp-center");
-            centerTd.dataset.value = center; centerTd.textContent = center;
+            const centerTd = tr.querySelector(".cell-emp-center"); const shiftTd = tr.querySelector(".cell-emp-shift");
+            centerTd.dataset.value = center; centerTd.textContent = centerLabel(center);
+            shiftTd.dataset.value = shift; shiftTd.textContent = shiftLabel(shift);
             tr.classList.remove("editing");
             const actionsTd = tr.querySelector(".cell-actions");
-            actionsTd.innerHTML = `<button class="row-btn row-edit" onclick="startEditEmployeeRow(this)">تعديل</button><button class="row-btn row-delete" onclick="deleteEmployeeRow(this)">حذف حساب</button>`;
-            showSuccess("تم تحديث مركز الموظف");
+            actionsTd.innerHTML = `<button class="row-btn row-edit" onclick="startEditEmployeeRow(this)">${t('edit')}</button><button class="row-btn row-delete" onclick="deleteEmployeeRow(this)">${t('deleteAccount')}</button>`;
+            showSuccess("تم تحديث بيانات الموظف");
         } else { showError("تعذر حفظ التعديل"); setBusy(btn, false, "حفظ"); }
     } catch (e) { showError("تعذر الاتصال بالسيرفر"); setBusy(btn, false, "حفظ"); }
 }
-
 async function deleteEmployeeRow(btn) {
-    const tr = btn.closest("tr");
-    const empId = tr.dataset.empId;
+    const tr = btn.closest("tr"); const empId = tr.dataset.empId;
     if (!confirm(`هل أنت متأكد من حذف حساب الموظف رقم ${empId} نهائيًا؟`)) return;
     setBusy(btn, true, "حذف حساب");
     try {
         const result = await apiPost("DELETE_EMPLOYEE", { token: session.token, emp_id: empId });
-        if (result.status === "SUCCESS") {
-            tr.remove(); showSuccess("تم حذف حساب الموظف");
-            const body = document.getElementById("employeesBody");
-            if (!body.children.length) body.innerHTML = `<tr class="empty-row"><td colspan="4">ما فيه موظفين مسجلين بعد</td></tr>`;
-        } else { showError("تعذر حذف الحساب"); setBusy(btn, false, "حذف حساب"); }
+        if (result.status === "SUCCESS") { tr.remove(); showSuccess("تم حذف حساب الموظف"); const body = document.getElementById("employeesBody"); if (!body.children.length) body.innerHTML = `<tr class="empty-row"><td colspan="5">ما فيه موظفين مسجلين بعد</td></tr>`; }
+        else { showError("تعذر حذف الحساب"); setBusy(btn, false, "حذف حساب"); }
     } catch (e) { showError("تعذر الاتصال بالسيرفر"); setBusy(btn, false, "حذف حساب"); }
 }
 </script>
