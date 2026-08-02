@@ -3,374 +3,440 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>بلاغات مبارك الكبير | شبكة الإسعاف</title>
-<meta name="theme-color" content="#0a0e13">
+<title>بلاغات مبارك الكبير</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@500;600;700&family=IBM+Plex+Mono:wght@500;600;700&family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@500;600;700&family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
     :root {
-        --bg: #0a0e13;
-        --bg-glow: radial-gradient(900px 420px at 50% -12%, rgba(239,68,68,0.10) 0%, transparent 60%);
-        --panel: #12181f;
-        --panel-2: #171e26;
-        --input-bg: #0d1218;
-        --line: #232c36;
-        --line-bright: #34404c;
-        --text: #e9eef2;
-        --muted: #8a97a6;
-        --red: #ef4444;
-        --red-dim: #3a1616;
-        --red-border: #6b2323;
-        --amber: #f5a524;
-        --amber-dim: #3a2a0d;
-        --amber-border: #6b4f18;
-        --cyan: #22d3ee;
-        --cyan-dim: #0d2a30;
-        --cyan-border: #175866;
-        --green: #22c55e;
-        --radius: 10px;
-        --shadow: 0 24px 60px -20px rgba(0,0,0,0.65);
+        --ink: #1e2a4a;
+        --ink-soft: #3d4d73;
+        --accent: #2952cc;
+        --accent-dark: #1e3fa3;
+        --accent-soft: #e6ecfb;
+        --amber: #b8860b;
+        --amber-soft: #fdf3d9;
+        --amber-border: #f0dfa0;
+        --danger: #c0392b;
+        --danger-soft: #fbe7e5;
+        --danger-border: #f2c4bd;
+        --success: #1f8b4c;
+        --bg: #eef0f6;
+        --bg-glow-1: #e2e8fb;
+        --bg-glow-2: #e7edf3;
+        --card: #ffffff;
+        --surface: #f7f8fb;
+        --surface-2: #ececf4;
+        --input-bg: #ffffff;
+        --accent-border: #c3d1f5;
+        --line: #dfe2ec;
+        --text: #202535;
+        --muted-fix: #70768a;
+        --radius: 14px;
+        --shadow: 0 10px 30px -14px rgba(30,42,74,0.18);
+        --white-row: transparent;
+        --yellow-row: #fdf3d9;
+        --red-row: #fbe7e5;
     }
-
+    body.dark-mode {
+        --ink: #eef1f8; --ink-soft: #c2c9de; --accent: #6d8bff; --accent-dark: #a9bcff;
+        --accent-soft: #1c274a; --amber: #f0b94f; --amber-soft: #3d2f10; --amber-border: #6b5420;
+        --danger: #f0796a; --danger-soft: #3d201c; --danger-border: #6b3830; --success: #4ade80;
+        --bg: #0b0e16; --bg-glow-1: #131c33; --bg-glow-2: #14202c; --card: #151b28;
+        --surface: #1b2233; --surface-2: #222a3e; --input-bg: #1b2233; --accent-border: #2c3a63;
+        --line: #29314a; --text: #dde1ee; --muted-fix: #8890a6;
+        --white-row: transparent; --yellow-row: #3d2f10; --red-row: #3d201c;
+        --shadow: 0 12px 34px -14px rgba(0,0,0,0.6);
+        color-scheme: dark;
+    }
     * { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
+    html { scroll-behavior: smooth; overflow-x: hidden; width: 100%; }
     body {
         font-family: 'Tajawal', 'Segoe UI', Tahoma, sans-serif;
-        background: var(--bg-glow), var(--bg);
-        color: var(--text);
-        padding: 32px 16px;
-        min-height: 100vh;
-        display: flex;
-        justify-content: center;
-        align-items: flex-start;
+        background: radial-gradient(1200px 500px at 15% -10%, var(--bg-glow-1) 0%, transparent 60%),
+            radial-gradient(900px 500px at 100% 0%, var(--bg-glow-2) 0%, transparent 55%), var(--bg);
+        color: var(--text); padding: 28px 16px; min-height: 100vh; width: 100%; overflow-x: hidden;
+        display: flex; justify-content: center; align-items: flex-start;
     }
-    h1, h2, .display-font { font-family: 'IBM Plex Sans Arabic', 'Tajawal', sans-serif; }
-    .mono { font-family: 'IBM Plex Mono', 'Consolas', monospace; }
+    .container { width: 100%; max-width: 1120px; background: var(--card); border-radius: 20px; box-shadow: var(--shadow); padding: 34px; border: 1px solid var(--line); }
+    header { text-align: center; margin-bottom: 20px; }
+    .brand-row { display: flex; align-items: center; justify-content: center; gap: 10px; margin-bottom: 6px; }
+    .brand-dot { width: 9px; height: 9px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 0 5px var(--accent-soft); }
+    header h1 { color: var(--ink); font-size: 26px; font-weight: 700; font-family: 'IBM Plex Sans Arabic', sans-serif; }
+    header p { color: var(--muted-fix); font-size: 14px; margin-top: 4px; }
 
-    .frame {
-        width: 100%;
-        max-width: 560px;
-        position: relative;
-        padding: 18px;
-    }
-    /* أقواس زوايا بأسلوب لوحة تحكم/رادار — العنصر المميز البصري لهذي الصفحة */
-    .frame::before, .frame::after,
-    .frame .br-tr, .frame .br-bl {
-        content: "";
-        position: absolute;
-        width: 26px; height: 26px;
-        border: 2px solid var(--red);
-        opacity: .85;
-    }
-    .frame::before { top: 0; right: 0; border-left: none; border-bottom: none; }
-    .frame .br-tr   { top: 0; left: 0; border-right: none; border-bottom: none; }
-    .frame::after   { bottom: 0; left: 0; border-right: none; border-top: none; }
-    .frame .br-bl   { bottom: 0; right: 0; border-left: none; border-top: none; }
+    .server-status { display: flex; align-items: center; justify-content: center; gap: 9px; background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 11px 16px; margin-bottom: 16px; font-size: 13.5px; font-weight: 700; }
+    .server-status .dot2 { width: 9px; height: 9px; border-radius: 50%; background: #b7c2ca; flex-shrink: 0; }
+    .server-status.checking { color: #8a6d1f; background: var(--amber-soft); border-color: var(--amber-border); }
+    .server-status.checking .dot2 { background: #d4a017; animation: blink-status 1s infinite; }
+    .server-status.online { color: var(--accent-dark); background: var(--accent-soft); border-color: var(--accent-border); }
+    .server-status.online .dot2 { background: var(--success); }
+    .server-status.offline { color: #7d241a; background: var(--danger-soft); border-color: var(--danger-border); }
+    .server-status.offline .dot2 { background: var(--danger); }
+    @keyframes blink-status { 50% { opacity: .35; } }
 
-    .container {
-        width: 100%;
-        background: var(--panel);
-        border-radius: var(--radius);
-        box-shadow: var(--shadow);
-        padding: 30px 30px 26px;
-        border: 1px solid var(--line);
-    }
-
-    /* ===== شريط الحالة العلوي: ساعة الكويت الحية + حالة السيرفر ===== */
-    .console-bar {
-        display: flex; align-items: center; justify-content: space-between;
-        background: var(--panel-2); border: 1px solid var(--line);
-        border-radius: 8px; padding: 10px 14px; margin-bottom: 22px;
-        font-size: 12.5px;
-    }
-    .console-bar .clock-block { display: flex; flex-direction: column; gap: 2px; }
-    .console-bar .clock-label { color: var(--muted); font-size: 10.5px; letter-spacing: .08em; }
-    .console-bar .clock-value { font-size: 17px; font-weight: 600; color: var(--cyan); letter-spacing: .04em; }
-    .console-bar .shift-tag {
-        font-size: 10.5px; color: var(--amber); background: var(--amber-dim);
-        border: 1px solid var(--amber-border); border-radius: 5px; padding: 3px 8px;
-        letter-spacing: .04em; white-space: nowrap;
-    }
-
-    header { text-align: center; margin-bottom: 22px; }
-    .eyebrow {
-        display: inline-flex; align-items: center; gap: 7px;
-        font-size: 11px; color: var(--muted); letter-spacing: .12em;
-        margin-bottom: 10px; text-transform: uppercase;
-    }
-    .eyebrow .pip { width: 6px; height: 6px; border-radius: 50%; background: var(--red); box-shadow: 0 0 0 4px var(--red-dim); }
-    header h1 { color: var(--text); font-size: 25px; font-weight: 700; letter-spacing: -0.2px; }
-    header p { color: var(--muted); font-size: 13px; margin-top: 6px; line-height: 1.6; }
-
-    .server-status {
-        display: flex; align-items: center; justify-content: center; gap: 9px;
-        background: var(--panel-2); border: 1px solid var(--line); border-radius: 8px;
-        padding: 10px 16px; margin-bottom: 20px; font-size: 13px; font-weight: 600;
-        transition: background-color .2s, border-color .2s, color .2s;
-    }
-    .server-status .dot2 { width: 8px; height: 8px; border-radius: 50%; background: #465262; flex-shrink: 0; }
-    .server-status.checking { color: var(--amber); background: var(--amber-dim); border-color: var(--amber-border); }
-    .server-status.checking .dot2 { background: var(--amber); animation: blink-status 1s infinite; }
-    .server-status.online { color: var(--green); background: #0d2418; border-color: #1c5236; }
-    .server-status.online .dot2 { background: var(--green); box-shadow: 0 0 0 4px rgba(34,197,94,0.18); }
-    .server-status.offline { color: var(--red); background: var(--red-dim); border-color: var(--red-border); }
-    .server-status.offline .dot2 { background: var(--red); }
-    @keyframes blink-status { 50% { opacity: .3; } }
-
-    .auth-screen { background: var(--panel-2); padding: 24px; border-radius: var(--radius); border: 1px solid var(--line); }
-    .auth-title {
-        font-size: 15.5px; font-weight: 700; color: var(--text); margin-bottom: 18px;
-        padding-bottom: 12px; border-bottom: 1px solid var(--line);
-        display: flex; align-items: center; gap: 9px; letter-spacing: .01em;
-    }
-    .auth-title::before { content: ''; width: 3px; height: 15px; background: var(--red); }
+    .auth-screen { background: var(--surface); padding: 26px; border-radius: var(--radius); margin-bottom: 24px; border: 1px solid var(--line); }
+    .auth-title { font-size: 17px; font-weight: 700; color: var(--ink); margin-bottom: 16px; padding-bottom: 10px; border-bottom: 1px solid var(--line); display: flex; align-items: center; gap: 8px; }
+    .auth-title::before { content: ''; width: 4px; height: 16px; background: var(--accent); border-radius: 2px; display: inline-block; }
     .form-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin-bottom: 6px; }
     .form-group { margin-bottom: 10px; }
-    label { display: block; margin-bottom: 7px; font-weight: 600; color: var(--muted); font-size: 12.5px; letter-spacing: .02em; }
-    select, input {
-        width: 100%; padding: 12px 13px; border: 1.5px solid var(--line); border-radius: 8px;
-        font-size: 15px; background-color: var(--input-bg); outline: none; color: var(--text);
-        font-family: inherit; transition: border-color .15s, box-shadow .15s;
-    }
-    input[type="number"], input[type="tel"], input[type="password"] { font-family: 'IBM Plex Mono', monospace; letter-spacing: .03em; }
-    select:focus, input:focus { border-color: var(--red); box-shadow: 0 0 0 3px var(--red-dim); }
-    select option { background: var(--input-bg); }
+    label { display: block; margin-bottom: 6px; font-weight: 600; color: var(--ink-soft); font-size: 13.5px; }
+    select, input, textarea { width: 100%; padding: 11px 12px; border: 1.5px solid var(--line); border-radius: 9px; font-size: 15px; background-color: var(--input-bg); outline: none; color: var(--text); font-family: inherit; }
+    select:focus, input:focus, textarea:focus { border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-soft); }
+    .auth-links { display: flex; gap: 18px; margin-top: 12px; font-size: 13px; }
+    .auth-links span { color: var(--accent-dark); text-decoration: underline; cursor: pointer; }
+    .checkbox-row { display: flex; align-items: center; gap: 8px; margin: 10px 0; font-size: 13.5px; font-weight: 600; color: var(--ink-soft); }
+    .checkbox-row input { width: auto; }
 
-    .auth-links { display: flex; gap: 16px; margin-top: 15px; font-size: 12.5px; flex-wrap: wrap; }
-    .auth-links span { color: var(--cyan); text-decoration: underline; text-underline-offset: 3px; cursor: pointer; }
-    .auth-links span:hover { color: var(--text); }
+    .alert-message { padding: 14px 16px; border-radius: 10px; margin-bottom: 20px; font-size: 14.5px; font-weight: 600; text-align: center; border: 1px solid transparent; }
+    .alert-danger { background-color: var(--danger-soft); color: #7d241a; border-color: var(--danger-border); }
+    .alert-success { background-color: var(--accent-soft); color: var(--accent-dark); border-color: var(--accent-border); }
 
-    .alert-message { padding: 13px 16px; border-radius: 8px; margin-bottom: 20px; font-size: 14px; font-weight: 600; text-align: center; border: 1px solid transparent; }
-    .alert-danger { background-color: var(--red-dim); color: #ff8a80; border-color: var(--red-border); }
-    .alert-success { background-color: #0d2418; color: #6fe3a0; border-color: #1c5236; }
+    #mainDashboard { display: none; }
 
-    .btn-primary {
-        background-color: var(--red); color: #fff; border: none; padding: 14px 20px; font-size: 15px;
-        font-weight: 700; border-radius: 8px; cursor: pointer; width: 100%; margin-top: 16px;
-        font-family: inherit; letter-spacing: .01em; transition: background-color .15s, transform .1s;
-    }
-    .btn-primary:hover:not(:disabled) { background-color: #d33636; }
-    .btn-primary:active:not(:disabled) { transform: scale(0.99); }
-    .btn-primary:disabled { background-color: #3a444d; cursor: not-allowed; }
-    .btn-secondary-action { background-color: var(--cyan); }
-    .btn-secondary-action:hover:not(:disabled) { background-color: #1cb8d4; }
+    .tab-switcher { display: flex; margin-bottom: 20px; background: var(--surface-2); border: 1.5px solid var(--line); border-radius: 12px; padding: 4px; gap: 4px; flex-wrap: wrap; }
+    .tab-btn { flex: 1; min-width: 140px; background: transparent; color: var(--ink-soft); border: none; padding: 12px 14px; font-size: 14px; font-weight: 700; border-radius: 9px; cursor: pointer; font-family: inherit; }
+    .tab-btn:hover:not(.active) { color: var(--ink); }
+    .tab-btn.active { background: var(--card); color: var(--accent-dark); box-shadow: 0 2px 8px -2px rgba(30,42,74,0.18); }
 
-    .loader { display: inline-block; width: 14px; height: 14px; border: 2px solid rgba(255,255,255,0.4); border-top: 2px solid #fff; border-radius: 50%; animation: spin 0.7s linear infinite; vertical-align: middle; margin-left: 8px; }
+    .type-switcher { display: flex; gap: 10px; margin-bottom: 18px; }
+    .type-btn { flex: 1; padding: 16px; border-radius: 12px; border: 2px solid var(--line); background: var(--card); font-family: inherit; font-size: 15px; font-weight: 700; color: var(--ink-soft); cursor: pointer; }
+    .type-btn.active.urgent { border-color: var(--danger); background: var(--danger-soft); color: #7d241a; }
+    .type-btn.active.pts { border-color: var(--accent); background: var(--accent-soft); color: var(--accent-dark); }
+
+    .btn-primary { background-color: var(--accent); color: white; border: none; padding: 14px 20px; font-size: 15.5px; font-weight: 700; border-radius: 10px; cursor: pointer; width: 100%; margin-top: 16px; font-family: inherit; }
+    .btn-primary:hover:not(:disabled) { background-color: var(--accent-dark); }
+    .btn-primary:disabled { background-color: #a9b7bf; cursor: not-allowed; }
+    .btn-secondary { background-color: var(--card); color: var(--ink-soft); border: 1.5px solid var(--line); padding: 11px 18px; font-size: 14px; font-weight: 700; border-radius: 10px; cursor: pointer; margin-top: 10px; font-family: inherit; }
+    .btn-secondary:hover { border-color: var(--ink-soft); color: var(--ink); }
+    .btn-admin { background-color: var(--amber); }
+    .btn-admin:hover:not(:disabled) { background-color: #96690a; }
+    .btn-danger-outline { background: var(--card); border: 1.5px solid var(--danger-border); color: var(--danger); }
+
+    .report-section { background: var(--card); border: 1px solid var(--line); padding: 20px; border-radius: var(--radius); margin-top: 18px; overflow-x: auto; }
+    .report-title { font-size: 16.5px; font-weight: 700; color: var(--ink); margin-bottom: 14px; text-align: center; }
+    .monthly-table { width: 100%; border-collapse: collapse; margin-top: 10px; min-width: 900px; }
+    .monthly-table th, .monthly-table td { border: 1px solid var(--line); padding: 9px 10px; text-align: center; font-size: 12.5px; }
+    .monthly-table th { background-color: var(--ink); color: white; font-weight: 700; }
+    .monthly-table tr.row-white { background-color: var(--white-row); }
+    .monthly-table tr.row-yellow { background-color: var(--yellow-row); }
+    .monthly-table tr.row-red { background-color: var(--red-row); }
+    .zone-badge { display: inline-block; padding: 3px 9px; border-radius: 20px; font-size: 11px; font-weight: 700; border: 1px solid; }
+    .zone-badge.white { background: var(--card); border-color: var(--line); color: var(--ink-soft); }
+    .zone-badge.yellow { background: #fdf3d9; border-color: var(--amber-border); color: #8a6d1f; }
+    .zone-badge.red { background: var(--danger-soft); border-color: var(--danger-border); color: #7d241a; }
+    .row-input { width: 60px; padding: 4px 6px; border: 1.5px solid var(--accent); border-radius: 6px; font-size: 12px; text-align: center; font-family: inherit; }
+    .row-btn { border: none; border-radius: 6px; padding: 5px 10px; font-size: 12px; font-weight: 700; cursor: pointer; margin: 0 2px; font-family: inherit; }
+    .row-edit { background: var(--accent-soft); color: var(--accent-dark); }
+    .row-delete { background: var(--danger-soft); color: var(--danger); }
+    .row-save { background: var(--success); color: #fff; }
+    .row-cancel { background: var(--surface-2); color: var(--ink-soft); }
+    .cell-actions { white-space: nowrap; }
+    .empty-row td { padding: 24px; color: var(--muted-fix); font-style: italic; }
+
+    .summary-bar { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 14px; justify-content: center; }
+    .summary-chip { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 10px 18px; font-size: 13px; font-weight: 700; color: var(--ink-soft); }
+    .summary-chip b { color: var(--ink); font-size: 16px; }
+    .summary-chip.yellow { border-color: var(--amber-border); color: #8a6d1f; }
+    .summary-chip.red { border-color: var(--danger-border); color: #7d241a; }
+
+    .loader { display: inline-block; width: 15px; height: 15px; border: 2px solid rgba(255,255,255,0.5); border-top: 2px solid #fff; border-radius: 50%; animation: spin 0.7s linear infinite; vertical-align: middle; margin-right: 8px; }
     @keyframes spin { to { transform: rotate(360deg); } }
-
-    .placeholder-note {
-        margin-top: 20px; padding: 15px 16px; border-radius: 8px; background: var(--cyan-dim);
-        border: 1px solid var(--cyan-border); color: #a8e6f2; font-size: 12.5px; text-align: center; line-height: 1.7;
-    }
-
-    @media (max-width: 480px) {
-        .container { padding: 24px 18px 22px; }
-        header h1 { font-size: 21px; }
-        .console-bar { flex-direction: column; align-items: flex-start; gap: 10px; }
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-        .server-status.checking .dot2 { animation: none; }
-    }
-
-    :focus-visible { outline: 2px solid var(--red); outline-offset: 2px; }
+    .footer-note { text-align: center; margin-top: 24px; font-size: 12px; color: var(--muted-fix); }
+    @media (max-width: 480px) { .container { padding: 22px 16px; } header h1 { font-size: 21px; } .tab-switcher { flex-direction: column; } .type-switcher { flex-direction: column; } }
 </style>
 </head>
 <body>
 
-<div class="frame">
-    <span class="br-tr"></span><span class="br-bl"></span>
-    <div class="container">
-        <div class="console-bar">
-            <div class="clock-block">
-                <span class="clock-label mono">توقيت الكويت الآن</span>
-                <span class="clock-value mono" id="liveClock">--:--:--</span>
+<div class="container" id="appContainer">
+    <div style="display:flex; justify-content:flex-end; gap:8px; margin-bottom:10px;">
+        <button class="btn-secondary" id="darkModeToggleBtn" onclick="toggleDarkMode()" style="margin-top:0; padding:8px 14px; font-size:13px;">🌙</button>
+    </div>
+    <header>
+        <div class="brand-row"><span class="brand-dot"></span><span style="font-size:12.5px; font-weight:700; color:var(--accent-dark);">نظام البلاغات الذكي</span></div>
+        <h1>بلاغات مبارك الكبير</h1>
+        <p>تسجيل وتوثيق بلاغات الإسعاف — المراكز الستة</p>
+    </header>
+
+    <div class="server-status checking" id="serverStatus">
+        <span class="dot2"></span><span id="serverStatusText">يتم التحقق من حالة السيرفر...</span>
+    </div>
+
+    <div class="alert-message alert-danger" id="errorMessage" role="alert" style="display:none;"></div>
+    <div class="alert-message alert-success" id="successMessage" role="status" style="display:none;"></div>
+
+    <div class="auth-screen" id="authCheckingScreen" style="text-align:center; color: var(--muted-fix);">جاري التحقق من الجلسة...</div>
+
+    <!-- تسجيل الدخول -->
+    <div class="auth-screen" id="loginScreen" style="display:none;">
+        <div class="auth-title">تسجيل الدخول إلى النظام</div>
+        <div class="form-grid">
+            <div class="form-group">
+                <label for="loginEmpId">الرقم الوظيفي</label>
+                <input type="number" id="loginEmpId" placeholder="1234" oninput="limitFourDigits(this); checkLoginEmpIdPreview();" inputmode="numeric">
             </div>
-            <span class="shift-tag mono" id="shiftTag">—</span>
-        </div>
-
-        <header>
-            <div class="eyebrow"><span class="pip"></span>محافظة مبارك الكبير</div>
-            <h1>شبكة بلاغات الإسعاف</h1>
-            <p>القرين · الزهراء · مشرف · جابر العاجلة · جابر غير العاجلة · صبحان</p>
-        </header>
-
-        <div class="server-status checking" id="serverStatus">
-            <span class="dot2" id="serverStatusDot"></span>
-            <span class="mono" id="serverStatusText">SYS.STATUS — جاري التحقق...</span>
-        </div>
-
-        <div class="alert-message alert-danger" id="errorMessage" role="alert" style="display:none;"></div>
-        <div class="alert-message alert-success" id="successMessage" role="status" style="display:none;"></div>
-
-        <!-- شاشة تسجيل الدخول -->
-        <div class="auth-screen" id="loginScreen">
-            <div class="auth-title">تسجيل الدخول</div>
-            <div class="form-grid">
-                <div class="form-group">
-                    <label for="loginEmpId">الرقم الوظيفي</label>
-                    <input type="number" id="loginEmpId" placeholder="1234" oninput="limitFourDigits(this)" inputmode="numeric">
-                </div>
-                <div class="form-group">
-                    <label for="loginPin">الرمز السري</label>
-                    <input type="password" id="loginPin" placeholder="******">
-                </div>
-            </div>
-            <button class="btn-primary" id="loginBtn" onclick="handleLogin()">دخول</button>
-            <div class="auth-links">
-                <span onclick="switchAuthScreen('registerScreen')">إنشاء حساب جديد</span>
-                <span onclick="switchAuthScreen('forgotScreen')">نسيت الرمز؟</span>
-                <span onclick="switchAuthScreen('changePinScreen')">تغيير الرمز السري</span>
+            <div class="form-group">
+                <label for="loginPin">الرمز السري</label>
+                <input type="password" id="loginPin" placeholder="******">
             </div>
         </div>
-
-        <!-- شاشة إنشاء حساب -->
-        <div class="auth-screen" id="registerScreen" style="display:none;">
-            <div class="auth-title">تسجيل موظف جديد</div>
-            <div class="form-grid">
-                <div class="form-group">
-                    <label for="regEmpId">الرقم الوظيفي (4 أرقام)</label>
-                    <input type="number" id="regEmpId" placeholder="1234" oninput="limitFourDigits(this)" inputmode="numeric">
-                </div>
-                <div class="form-group">
-                    <label for="regCivilId">الرقم المدني</label>
-                    <input type="text" id="regCivilId" placeholder="الرقم المدني" inputmode="numeric">
-                </div>
-                <div class="form-group">
-                    <label for="regPhone">رقم الهاتف</label>
-                    <input type="tel" id="regPhone" placeholder="99988877">
-                </div>
-                <div class="form-group">
-                    <label for="regEmail">البريد الإلكتروني</label>
-                    <input type="email" id="regEmail" placeholder="name@example.com" style="font-family:'IBM Plex Mono',monospace;">
-                </div>
-                <div class="form-group">
-                    <label for="regCenter">اختر المركز</label>
-                    <select id="regCenter">
-                        <option value="القرين">القرين</option>
-                        <option value="الزهراء">الزهراء</option>
-                        <option value="مشرف">مشرف</option>
-                        <option value="جابر العاجلة">جابر العاجلة</option>
-                        <option value="جابر غير العاجلة">جابر غير العاجلة</option>
-                        <option value="صبحان">صبحان</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label for="regShift">اختر الشفت</label>
-                    <select id="regShift">
-                        <option value="الشفت الأول">الشفت الأول</option>
-                        <option value="الشفت الثاني">الشفت الثاني</option>
-                        <option value="الشفت الثالث">الشفت الثالث</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label for="regPin">اختر الرمز السري</label>
-                    <input type="password" id="regPin" placeholder="******">
-                </div>
-            </div>
-            <button class="btn-primary" id="registerBtn" onclick="handleRegister()">اعتماد وحفظ الحساب الجديد</button>
-            <div class="auth-links"><span onclick="switchAuthScreen('loginScreen')">العودة للدخول</span></div>
+        <div class="form-group" id="loginCenterPreviewGroup" style="display:none;">
+            <label>المركز المسجّل</label>
+            <input type="text" id="loginCenterPreview" disabled style="background:var(--surface-2); color:var(--muted-fix); cursor:not-allowed;">
         </div>
-
-        <!-- شاشة نسيت الرمز -->
-        <div class="auth-screen" id="forgotScreen" style="display:none;">
-            <div class="auth-title">استرجاع وتحديث الرمز السري</div>
-            <p style="font-size:12.5px; color:var(--muted); margin-bottom:14px; line-height:1.7;">يجب مطابقة البيانات الثلاثة مع بعض (الهاتف + الرقم المدني + الإيميل)</p>
-            <div class="form-grid">
-                <div class="form-group">
-                    <label for="forgotEmpId">الرقم الوظيفي</label>
-                    <input type="number" id="forgotEmpId" placeholder="1234" oninput="limitFourDigits(this)" inputmode="numeric">
-                </div>
-                <div class="form-group">
-                    <label for="forgotPhone">رقم الهاتف المسجل</label>
-                    <input type="tel" id="forgotPhone" placeholder="99988877">
-                </div>
-                <div class="form-group">
-                    <label for="forgotCivilId">الرقم المدني المسجل</label>
-                    <input type="text" id="forgotCivilId" placeholder="الرقم المدني" inputmode="numeric">
-                </div>
-                <div class="form-group">
-                    <label for="forgotEmail">البريد الإلكتروني المسجل</label>
-                    <input type="email" id="forgotEmail" placeholder="name@example.com" style="font-family:'IBM Plex Mono',monospace;">
-                </div>
-                <div class="form-group">
-                    <label for="forgotNewPin">الرمز السري الجديد</label>
-                    <input type="password" id="forgotNewPin" placeholder="******">
-                </div>
-            </div>
-            <button class="btn-primary btn-secondary-action" id="forgotBtn" onclick="handleForgot()">تحديث الرمز والتحقق</button>
-            <div class="auth-links"><span onclick="switchAuthScreen('loginScreen')">العودة للدخول</span></div>
-        </div>
-
-        <!-- شاشة تغيير الرمز -->
-        <div class="auth-screen" id="changePinScreen" style="display:none;">
-            <div class="auth-title">تغيير الرمز السري</div>
-            <div class="form-grid">
-                <div class="form-group">
-                    <label for="changeEmpId">الرقم الوظيفي</label>
-                    <input type="number" id="changeEmpId" placeholder="1234" oninput="limitFourDigits(this)" inputmode="numeric">
-                </div>
-                <div class="form-group">
-                    <label for="changeOldPin">الرمز السري الحالي</label>
-                    <input type="password" id="changeOldPin" placeholder="******">
-                </div>
-                <div class="form-group">
-                    <label for="changeNewPin">الرمز السري الجديد</label>
-                    <input type="password" id="changeNewPin" placeholder="******">
-                </div>
-            </div>
-            <button class="btn-primary" id="changePinBtn" onclick="handleChangePin()">حفظ الرمز الجديد</button>
-            <div class="auth-links"><span onclick="switchAuthScreen('loginScreen')">العودة للدخول</span></div>
-        </div>
-
-        <div class="placeholder-note">
-            هذي صفحة الدخول بس لهذا المشروع لحد الحين — بعد تسجيل الدخول بنجاح، لوحة البلاغات نفسها (الجداول، التلوين، المراكز) بنبنيها بالخطوة الجاية بعد ما تكمّل لي باقي مناطق المراكز.
+        <button class="btn-primary" id="loginBtn" onclick="handleLogin()">تسجيل الدخول وتأكيد الهوية</button>
+        <div class="auth-links">
+            <span onclick="switchAuthScreen('registerScreen')">إنشاء حساب جديد</span>
+            <span onclick="switchAuthScreen('forgotScreen')">استرجاع الرمز</span>
         </div>
     </div>
+
+    <!-- تسجيل حساب -->
+    <div class="auth-screen" id="registerScreen" style="display:none;">
+        <div class="auth-title">تسجيل موظف جديد برقم وظيفي</div>
+        <div class="form-grid">
+            <div class="form-group"><label for="regEmpId">الرقم الوظيفي (4 أرقام)</label><input type="number" id="regEmpId" placeholder="1234" oninput="limitFourDigits(this)" inputmode="numeric"></div>
+            <div class="form-group"><label for="regPhone">رقم الهاتف</label><input type="tel" id="regPhone" placeholder="99988877"></div>
+            <div class="form-group"><label for="regCivilId">الرقم المدني</label><input type="text" id="regCivilId" placeholder="الرقم المدني" inputmode="numeric" maxlength="12" oninput="limitTwelveDigits(this)"></div>
+            <div class="form-group"><label for="regEmail">البريد الإلكتروني</label><input type="email" id="regEmail" placeholder="name@example.com"></div>
+            <div class="form-group">
+                <label for="regCenter">اختر المركز</label>
+                <select id="regCenter"></select>
+            </div>
+            <div class="form-group"><label for="regPin">اختر الرمز السري</label><input type="password" id="regPin" placeholder="******"></div>
+        </div>
+        <button class="btn-primary" id="registerBtn" onclick="handleRegister()">اعتماد وحفظ الحساب الجديد</button>
+        <div class="auth-links"><span onclick="switchAuthScreen('loginScreen')">العودة للدخول</span></div>
+    </div>
+
+    <!-- استرجاع الرمز -->
+    <div class="auth-screen" id="forgotScreen" style="display:none;">
+        <div class="auth-title">استرجاع وتحديث الرمز الخاص</div>
+        <div class="form-grid">
+            <div class="form-group"><label for="forgotEmpId">الرقم الوظيفي</label><input type="number" id="forgotEmpId" placeholder="1234" oninput="limitFourDigits(this)" inputmode="numeric"></div>
+            <div class="form-group"><label for="forgotPhone">رقم الهاتف المسجل</label><input type="tel" id="forgotPhone" placeholder="99988877"></div>
+            <div class="form-group"><label for="forgotCivilId">الرقم المدني المسجل</label><input type="text" id="forgotCivilId" placeholder="الرقم المدني" inputmode="numeric" maxlength="12" oninput="limitTwelveDigits(this)"></div>
+            <div class="form-group"><label for="forgotEmail">البريد الإلكتروني المسجل</label><input type="email" id="forgotEmail" placeholder="name@example.com"></div>
+            <div class="form-group"><label for="forgotNewPin">الرمز السري الجديد</label><input type="password" id="forgotNewPin" placeholder="******"></div>
+        </div>
+        <button class="btn-primary btn-admin" id="forgotBtn" onclick="handleForgot()">تحديث الرمز بالتحقق</button>
+        <div class="auth-links"><span onclick="switchAuthScreen('loginScreen')">العودة للدخول</span></div>
+    </div>
+
+    <!-- لوحة التحكم -->
+    <div id="mainDashboard">
+        <div class="tab-switcher">
+            <button class="tab-btn active" id="tabBtnReports" onclick="switchTab('reports')">🚨 إضافة بلاغ</button>
+            <button class="tab-btn" id="tabBtnAdminView" onclick="switchTab('adminView')" style="display:none;">📋 عرض البلاغات</button>
+            <button class="tab-btn" id="tabBtnAreas" onclick="switchTab('areas')" style="display:none;">🗺️ إدارة المناطق</button>
+            <button class="tab-btn" id="tabBtnEmployees" onclick="switchTab('employees')" style="display:none;">🛠️ إدارة الموظفين</button>
+        </div>
+
+        <!-- ===== قسم إضافة بلاغ ===== -->
+        <div id="reportsSection">
+            <div class="type-switcher">
+                <button class="type-btn urgent active" id="typeBtnUrgent" onclick="switchReportType('urgent')">🚨 بلاغ عاجل</button>
+                <button class="type-btn pts" id="typeBtnPts" onclick="switchReportType('pts')">🚑 بلاغ غير عاجل (نقل مرضى)</button>
+            </div>
+
+            <!-- نموذج البلاغ العاجل -->
+            <div class="auth-screen" id="urgentFormWrap">
+                <div class="auth-title">تسجيل بلاغ عاجل</div>
+                <div class="form-grid">
+                    <div class="form-group"><label for="urgReportNumber">رقم البلاغ</label><input type="text" id="urgReportNumber" placeholder="رقم البلاغ"></div>
+                    <div class="form-group"><label for="urgAmbulanceNumber">رقم الإسعاف</label><input type="text" id="urgAmbulanceNumber" placeholder="رقم الإسعاف"></div>
+                    <div class="form-group"><label for="urgDriverNumber">رقم السائق</label><input type="text" id="urgDriverNumber" placeholder="رقم السائق"></div>
+                    <div class="form-group"><label for="urgMedicNumber">رقم المسعف</label><input type="text" id="urgMedicNumber" placeholder="رقم المسعف"></div>
+                    <div class="form-group" style="grid-column: 1 / -1;"><label for="urgPatientName">اسم المريض</label><input type="text" id="urgPatientName" placeholder="اسم المريض"></div>
+                    <div class="form-group">
+                        <label for="urgArea">اسم المنطقة</label>
+                        <input type="text" id="urgArea" list="areasDatalist" placeholder="اكتب اسم المنطقة" oninput="previewZoneStatus()">
+                        <datalist id="areasDatalist"></datalist>
+                    </div>
+                    <div class="form-group"><label for="urgBlock">قطعة</label><input type="text" id="urgBlock" placeholder="قطعة"></div>
+                    <div class="form-group"><label for="urgStreet">شارع</label><input type="text" id="urgStreet" placeholder="شارع"></div>
+                    <div class="form-group"><label for="urgAvenue">جادة (اختياري)</label><input type="text" id="urgAvenue" placeholder="جادة"></div>
+                    <div class="form-group"><label for="urgHouse">منزل</label><input type="text" id="urgHouse" placeholder="رقم المنزل"></div>
+                </div>
+                <div id="zonePreviewBox" style="display:none; margin-top:6px;"></div>
+                <div class="checkbox-row"><input type="checkbox" id="urgLateEntry"><label for="urgLateEntry" style="margin:0;">بلاغ متأخر — يخص الشفت السابقة</label></div>
+                <button class="btn-primary" id="saveUrgentBtn" onclick="saveUrgentReport()">حفظ البلاغ العاجل</button>
+            </div>
+
+            <!-- نموذج بلاغ PTS -->
+            <div class="auth-screen" id="ptsFormWrap" style="display:none;">
+                <div class="auth-title">تسجيل بلاغ نقل مرضى (غير عاجل)</div>
+                <div class="form-grid">
+                    <div class="form-group"><label for="ptsReportNumber">رقم البلاغ</label><input type="text" id="ptsReportNumber" placeholder="رقم البلاغ"></div>
+                    <div class="form-group"><label for="ptsAmbulanceNumber">رقم الإسعاف</label><input type="text" id="ptsAmbulanceNumber" placeholder="رقم الإسعاف"></div>
+                    <div class="form-group"><label for="ptsMedicNumbers">أرقام المسعفين</label><input type="text" id="ptsMedicNumbers" placeholder="مثال: 1023، 1044"></div>
+                    <div class="form-group"><label for="ptsPatientName">اسم المريض (اختياري)</label><input type="text" id="ptsPatientName" placeholder="اسم المريض"></div>
+                    <div class="form-group"><label for="ptsFrom">من</label><input type="text" id="ptsFrom" placeholder="مكان الانطلاق"></div>
+                    <div class="form-group"><label for="ptsTo">إلى</label><input type="text" id="ptsTo" placeholder="الوجهة"></div>
+                </div>
+                <div class="checkbox-row"><input type="checkbox" id="ptsLateEntry"><label for="ptsLateEntry" style="margin:0;">بلاغ متأخر — يخص الشفت السابقة</label></div>
+                <button class="btn-primary" id="savePtsBtn" onclick="savePtsReport()">حفظ بلاغ النقل</button>
+            </div>
+
+            <!-- بلاغات الشفت الحالية -->
+            <div class="report-section">
+                <div class="report-title" style="display:flex; align-items:center; justify-content:space-between; gap:10px;">
+                    <span>البلاغات العاجلة — الشفت الحالي (<span id="urgentTodayCount">0</span>)</span>
+                    <button class="row-btn row-edit" onclick="loadTodayReports()">🔄 تحديث</button>
+                </div>
+                <table class="monthly-table" id="urgentTodayTable">
+                    <thead><tr>
+                        <th>الوقت</th><th>رقم البلاغ</th><th>رقم الإسعاف</th><th>السائق</th><th>المسعف</th><th>المريض</th>
+                        <th>المنطقة</th><th>قطعة</th><th>شارع</th><th>التغطية</th>
+                    </tr></thead>
+                    <tbody id="urgentTodayBody"><tr class="empty-row"><td colspan="10">ما فيه بلاغات عاجلة مسجّلة بعد بهالشفت</td></tr></tbody>
+                </table>
+                <div class="summary-bar" id="urgentSummaryBar"></div>
+            </div>
+
+            <div class="report-section">
+                <div class="report-title" style="display:flex; align-items:center; justify-content:space-between; gap:10px;">
+                    <span>بلاغات النقل (PTS) — الشفت الحالي (<span id="ptsTodayCount">0</span>)</span>
+                    <button class="row-btn row-edit" onclick="loadTodayReports()">🔄 تحديث</button>
+                </div>
+                <table class="monthly-table" id="ptsTodayTable">
+                    <thead><tr><th>الوقت</th><th>رقم البلاغ</th><th>رقم الإسعاف</th><th>المسعفين</th><th>المريض</th><th>من</th><th>إلى</th></tr></thead>
+                    <tbody id="ptsTodayBody"><tr class="empty-row"><td colspan="7">ما فيه بلاغات نقل مسجّلة بعد بهالشفت</td></tr></tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- ===== قسم عرض البلاغات (أدمن) ===== -->
+        <div id="adminViewSection" style="display:none;">
+            <div class="auth-screen">
+                <div class="auth-title">عرض البلاغات حسب يوم الشفت</div>
+                <div class="form-grid">
+                    <div class="form-group"><label for="adminShiftDay">يوم الشفت</label><input type="date" id="adminShiftDay"></div>
+                    <div class="form-group">
+                        <label for="adminCenterSelect">المركز</label>
+                        <select id="adminCenterSelect"><option value="all">كل المراكز</option></select>
+                    </div>
+                </div>
+                <button class="btn-primary btn-admin" onclick="loadAdminReports()">عرض البلاغات</button>
+            </div>
+
+            <div class="report-section" id="adminUrgentSection" style="display:none;">
+                <div class="report-title">البلاغات العاجلة</div>
+                <table class="monthly-table" id="adminUrgentTable">
+                    <thead><tr>
+                        <th>الوقت</th><th>المركز</th><th>رقم البلاغ</th><th>رقم الإسعاف</th><th>السائق</th><th>المسعف</th>
+                        <th>المريض</th><th>المنطقة</th><th>قطعة</th><th>شارع</th><th>جادة</th><th>منزل</th><th>التغطية</th><th>إجراءات</th>
+                    </tr></thead>
+                    <tbody id="adminUrgentBody"></tbody>
+                </table>
+                <div class="summary-bar" id="adminUrgentSummaryBar"></div>
+            </div>
+
+            <div class="report-section" id="adminPtsSection" style="display:none;">
+                <div class="report-title">بلاغات النقل (PTS)</div>
+                <table class="monthly-table" id="adminPtsTable">
+                    <thead><tr><th>الوقت</th><th>المركز</th><th>رقم البلاغ</th><th>رقم الإسعاف</th><th>المسعفين</th><th>المريض</th><th>من</th><th>إلى</th><th>إجراءات</th></tr></thead>
+                    <tbody id="adminPtsBody"></tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- ===== قسم إدارة المناطق (أدمن) ===== -->
+        <div id="areasSection" style="display:none;">
+            <div class="auth-screen">
+                <div class="auth-title">إضافة منطقة جديدة</div>
+                <div class="form-grid">
+                    <div class="form-group"><label for="newAreaName">اسم المنطقة</label><input type="text" id="newAreaName" placeholder="اسم المنطقة"></div>
+                    <div class="form-group">
+                        <label for="newAreaCenter">المركز الأساسي</label>
+                        <select id="newAreaCenter"></select>
+                    </div>
+                </div>
+                <button class="btn-primary btn-admin" onclick="addArea()">إضافة المنطقة</button>
+            </div>
+            <div class="report-section">
+                <div class="report-title">كل المناطق المسجّلة (<span id="areasCount">0</span>)</div>
+                <table class="monthly-table" id="areasTable">
+                    <thead><tr><th>اسم المنطقة</th><th>المركز الأساسي</th><th>إجراءات</th></tr></thead>
+                    <tbody id="areasBody"><tr class="empty-row"><td colspan="3">جاري التحميل...</td></tr></tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- ===== قسم إدارة الموظفين (أدمن) ===== -->
+        <div id="employeesSection" style="display:none;">
+            <div class="report-section">
+                <div class="report-title">إدارة الموظفين — تعديل المركز</div>
+                <table class="monthly-table" id="employeesTable">
+                    <thead><tr><th>الرقم الوظيفي</th><th>رقم الهاتف</th><th>المركز الحالي</th><th>إجراءات</th></tr></thead>
+                    <tbody id="employeesBody"><tr class="empty-row"><td colspan="4">جاري التحميل...</td></tr></tbody>
+                </table>
+            </div>
+        </div>
+
+        <button class="btn-secondary" onclick="logout()">تسجيل الخروج</button>
+    </div>
+
+    <div class="footer-note">جميع البلاغات تُحفظ وتُوثّق آليًا لحظة الضغط على زر الحفظ — التوقيت بتوقيت الكويت</div>
 </div>
 
 <script>
-const API_URL = "https://script.google.com/macros/s/AKfycbzy5jv_qwEX7CYONshU5nmEgPmpLp8BWaNamKBSN7aBvfOueQWoZPaNFwlBkxryGrhF/exec";
+const API_URL = "PASTE_YOUR_BALAGHAT_WEB_APP_URL_HERE";
 
-let session = { empId: null, token: null };
+const CENTERS = ["القرين", "الزهراء", "مشرف", "جابر العاجلة", "جابر غير العاجلة", "صبحان"];
 
-function limitFourDigits(input) {
-    if (input.value.length > 4) input.value = input.value.slice(0, 4);
+window.addEventListener("error", (e) => {
+    console.error("خطأ غير متوقع:", e.error || e.message);
+    const el = document.getElementById("errorMessage");
+    if (el) { el.textContent = "صار خطأ غير متوقع، جرّب تحدّث الصفحة. لو تكرر، بلّغ الأدمن."; el.style.display = "block"; }
+});
+
+let session = { empId: null, center: null, isAdmin: false, token: null };
+let areasCache = []; // {area_name, home_center}
+
+function toggleDarkMode() {
+    const isDark = document.body.classList.toggle("dark-mode");
+    document.getElementById("darkModeToggleBtn").textContent = isDark ? "☀️" : "🌙";
+    localStorage.setItem("balaghatDarkMode", isDark ? "1" : "0");
 }
+(function initPreferences() {
+    if (localStorage.getItem("balaghatDarkMode") === "1") {
+        document.body.classList.add("dark-mode");
+        document.getElementById("darkModeToggleBtn").textContent = "☀️";
+    }
+})();
+
+function populateCenterSelects() {
+    const targets = ["regCenter", "newAreaCenter"];
+    targets.forEach(id => {
+        const el = document.getElementById(id);
+        el.innerHTML = CENTERS.map(c => `<option value="${c}">${c}</option>`).join("");
+    });
+    document.getElementById("adminCenterSelect").innerHTML =
+        `<option value="all">كل المراكز</option>` + CENTERS.map(c => `<option value="${c}">${c}</option>`).join("");
+}
+populateCenterSelects();
+
+function limitFourDigits(input) { if (input.value.length > 4) input.value = input.value.slice(0, 4); }
+function limitTwelveDigits(input) { if (input.value.length > 12) input.value = input.value.slice(0, 12); }
 
 function showError(msg) {
     const el = document.getElementById("errorMessage");
     document.getElementById("successMessage").style.display = "none";
-    el.textContent = msg;
-    el.style.display = "block";
-    clearTimeout(el._t);
-    el._t = setTimeout(() => { el.style.display = "none"; }, 5000);
+    el.textContent = msg; el.style.display = "block";
+    clearTimeout(el._t); el._t = setTimeout(() => { el.style.display = "none"; }, 5000);
 }
-
 function showSuccess(msg) {
     const el = document.getElementById("successMessage");
     document.getElementById("errorMessage").style.display = "none";
-    el.textContent = msg;
-    el.style.display = "block";
-    clearTimeout(el._t);
-    el._t = setTimeout(() => { el.style.display = "none"; }, 5000);
+    el.textContent = msg; el.style.display = "block";
+    clearTimeout(el._t); el._t = setTimeout(() => { el.style.display = "none"; }, 5000);
 }
-
 function setBusy(buttonEl, busy, originalText) {
-    if (busy) {
-        buttonEl.disabled = true;
-        buttonEl.dataset.originalText = originalText;
-        buttonEl.innerHTML = originalText + '<span class="loader"></span>';
-    } else {
-        buttonEl.disabled = false;
-        buttonEl.textContent = buttonEl.dataset.originalText || originalText;
-    }
+    if (busy) { buttonEl.disabled = true; buttonEl.dataset.originalText = originalText; buttonEl.innerHTML = '<span class="loader"></span>' + originalText; }
+    else { buttonEl.disabled = false; buttonEl.textContent = buttonEl.dataset.originalText || originalText; }
 }
-
 function switchAuthScreen(screenId) {
-    ["loginScreen", "registerScreen", "forgotScreen", "changePinScreen"].forEach(id => {
-        document.getElementById(id).style.display = (id === screenId) ? "block" : "none";
-    });
+    ["loginScreen", "registerScreen", "forgotScreen"].forEach(id => { document.getElementById(id).style.display = (id === screenId) ? "block" : "none"; });
     document.getElementById("errorMessage").style.display = "none";
     document.getElementById("successMessage").style.display = "none";
 }
@@ -382,14 +448,9 @@ async function hashPin(pin) {
 }
 
 async function apiPost(action, payload) {
-    const res = await fetch(API_URL, {
-        method: "POST",
-        headers: { "Content-Type": "text/plain;charset=utf-8" },
-        body: JSON.stringify({ action, ...payload })
-    });
+    const res = await fetch(API_URL, { method: "POST", headers: { "Content-Type": "text/plain;charset=utf-8" }, body: JSON.stringify({ action, ...payload }) });
     return res.json();
 }
-
 async function apiGet(params) {
     const url = new URL(API_URL);
     Object.entries(params).forEach(([k, v]) => url.searchParams.set(k, v));
@@ -400,108 +461,97 @@ async function apiGet(params) {
 async function checkServerStatus() {
     const wrap = document.getElementById("serverStatus");
     const text = document.getElementById("serverStatusText");
-
-    if (API_URL.includes("PASTE_YOUR")) {
-        wrap.className = "server-status offline";
-        text.textContent = "لم يتم ربط رابط السيرفر بعد (API_URL)";
-        return;
-    }
-
+    if (API_URL.includes("PASTE_YOUR")) { wrap.className = "server-status offline"; text.textContent = "لم يتم ربط رابط السيرفر بعد (API_URL)"; return; }
     try {
         const result = await apiGet({ action: "PING" });
-        if (result && result.status === "OK") {
-            wrap.className = "server-status online";
-            text.textContent = "🟢 السيرفر متصل ويعمل بشكل طبيعي";
-        } else {
-            wrap.className = "server-status offline";
-            text.textContent = "🔴 السيرفر يستجيب لكن برد غير متوقع";
-        }
-    } catch (e) {
-        wrap.className = "server-status offline";
-        text.textContent = "🔴 تعذر الاتصال بالسيرفر، تحقق من رابط API أو النشر";
-    }
+        if (result && result.status === "OK") { wrap.className = "server-status online"; text.textContent = "🟢 السيرفر متصل ويعمل بشكل طبيعي"; }
+        else { wrap.className = "server-status offline"; text.textContent = "🔴 السيرفر يستجيب لكن برد غير متوقع"; }
+    } catch (e) { wrap.className = "server-status offline"; text.textContent = "🔴 تعذر الاتصال بالسيرفر، تحقق من رابط API أو النشر"; }
 }
 checkServerStatus();
 
-// ساعة الكويت الحية + مؤشر الشفت — بناءً على حد الساعة 6:30 صباحًا اللي يفصل بين الشفتات
-function updateLiveClock() {
-    const now = new Date();
-    const timeStr = now.toLocaleTimeString("en-GB", { timeZone: "Asia/Kuwait", hour12: false });
-    document.getElementById("liveClock").textContent = timeStr;
+const SESSION_STORAGE_KEY = "balaghatSession";
+function persistSession() { localStorage.setItem(SESSION_STORAGE_KEY, JSON.stringify(session)); }
+function clearPersistedSession() { localStorage.removeItem(SESSION_STORAGE_KEY); }
 
-    const kuwaitParts = new Intl.DateTimeFormat("en-GB", {
-        timeZone: "Asia/Kuwait", hour: "2-digit", minute: "2-digit", hour12: false
-    }).formatToParts(now);
-    const h = parseInt(kuwaitParts.find(p => p.type === "hour").value, 10);
-    const m = parseInt(kuwaitParts.find(p => p.type === "minute").value, 10);
-    const totalMinutes = h * 60 + m;
-    const cutoff = 6 * 60 + 30; // 6:30 صباحًا
-
-    document.getElementById("shiftTag").textContent =
-        totalMinutes >= cutoff ? "ضمن شفت اليوم" : "ضمن شفت الأمس (قبل 6:30ص)";
+async function restoreSession() {
+    const saved = localStorage.getItem(SESSION_STORAGE_KEY);
+    if (!saved) { showLoginScreenNow(); return; }
+    let parsed;
+    try { parsed = JSON.parse(saved); } catch (e) { clearPersistedSession(); showLoginScreenNow(); return; }
+    if (!parsed || !parsed.token) { clearPersistedSession(); showLoginScreenNow(); return; }
+    try {
+        const result = await apiGet({ action: "VALIDATE_SESSION", token: parsed.token });
+        if (result && result.status === "VALID") {
+            session = { empId: parsed.empId, center: parsed.center, isAdmin: result.isAdmin, token: parsed.token };
+            await enterDashboard();
+        } else { clearPersistedSession(); showLoginScreenNow(); }
+    } catch (e) { showLoginScreenNow(); }
 }
-updateLiveClock();
-setInterval(updateLiveClock, 1000);
+function showLoginScreenNow() { document.getElementById("authCheckingScreen").style.display = "none"; switchAuthScreen("loginScreen"); }
+restoreSession();
+
+let empIdPreviewTimer = null;
+function checkLoginEmpIdPreview() {
+    clearTimeout(empIdPreviewTimer);
+    const empId = document.getElementById("loginEmpId").value.trim();
+    const group = document.getElementById("loginCenterPreviewGroup");
+    const preview = document.getElementById("loginCenterPreview");
+    if (empId.length !== 4) { group.style.display = "none"; return; }
+    empIdPreviewTimer = setTimeout(async () => {
+        try {
+            const result = await apiGet({ action: "GET_USER_CENTER", emp_id: empId });
+            if (result && result.status === "FOUND") {
+                preview.value = result.isAdmin ? "حساب مسؤول" : (result.center || "-");
+                group.style.display = "block";
+            } else { group.style.display = "none"; }
+        } catch (e) { group.style.display = "none"; }
+    }, 300);
+}
 
 async function handleLogin() {
     const empId = document.getElementById("loginEmpId").value.trim();
     const pin = document.getElementById("loginPin").value.trim();
     const btn = document.getElementById("loginBtn");
-
     if (!empId || !pin) { showError("الرجاء إدخال الرقم الوظيفي والرمز السري"); return; }
     if (API_URL.includes("PASTE_YOUR")) { showError("لم يتم ربط رابط السيرفر بعد (API_URL)"); return; }
-
-    setBusy(btn, true, "تسجيل الدخول");
+    setBusy(btn, true, "تسجيل الدخول وتأكيد الهوية");
     try {
         const pinHash = await hashPin(pin);
         const result = await apiPost("VERIFY_LOGIN", { emp_id: empId, pin_hash: pinHash });
         if (result.status === "SUCCESS") {
-            session.empId = empId;
-            session.token = result.token;
-            showSuccess(`تم تسجيل الدخول بنجاح — المركز: ${result.center || "-"} — الشفت: ${result.shift || "-"}`);
-            // الخطوة الجاية: تحويله للوحة البلاغات (تُبنى لاحقًا)
-        } else {
-            showError("الرقم الوظيفي أو الرمز السري غير صحيح");
-        }
-    } catch (e) {
-        showError("تعذر الاتصال بالسيرفر");
-    } finally {
-        setBusy(btn, false, "تسجيل الدخول");
-    }
+            session.empId = empId; session.isAdmin = !!result.isAdmin; session.token = result.token;
+            session.center = result.isAdmin ? null : (result.center || null);
+            if (!session.isAdmin && !session.center) {
+                showError("حسابك ما فيه مركز مسجّل. تواصل مع المسؤول، أو سجّل حساب جديد.");
+                setBusy(btn, false, "تسجيل الدخول وتأكيد الهوية"); return;
+            }
+            persistSession();
+            await enterDashboard();
+        } else { showError("الرقم الوظيفي أو الرمز السري غير صحيح"); }
+    } catch (e) { showError("تعذر الاتصال بالسيرفر، تحقق من رابط API"); }
+    finally { setBusy(btn, false, "تسجيل الدخول وتأكيد الهوية"); }
 }
 
 async function handleRegister() {
     const empId = document.getElementById("regEmpId").value.trim();
-    const civilId = document.getElementById("regCivilId").value.trim();
     const phone = document.getElementById("regPhone").value.trim();
+    const civilId = document.getElementById("regCivilId").value.trim();
     const email = document.getElementById("regEmail").value.trim();
     const center = document.getElementById("regCenter").value;
-    const shift = document.getElementById("regShift").value;
     const pin = document.getElementById("regPin").value.trim();
     const btn = document.getElementById("registerBtn");
-
-    if (!empId || !civilId || !phone || !email || !pin) { showError("الرجاء تعبئة جميع الحقول"); return; }
+    if (!empId || !phone || !civilId || !email || !pin) { showError("الرجاء تعبئة جميع الحقول"); return; }
     if (empId.length !== 4) { showError("الرقم الوظيفي يجب أن يكون 4 أرقام"); return; }
-
     setBusy(btn, true, "اعتماد وحفظ الحساب الجديد");
     try {
         const pinHash = await hashPin(pin);
-        const result = await apiPost("REGISTER_SECURE", {
-            emp_id: empId, civil_id: civilId, phone, email, center, shift, pin_hash: pinHash
-        });
-        if (result.status === "SUCCESS") {
-            showSuccess("تم إنشاء الحساب بنجاح، يمكنك تسجيل الدخول الآن");
-            switchAuthScreen("loginScreen");
-        } else if (result.status === "EXISTS") {
-            showError("هذا الرقم الوظيفي مسجل مسبقًا");
-        } else {
-            showError("تعذر إنشاء الحساب، حاول مجددًا");
-        }
-    } catch (e) {
-        showError("تعذر الاتصال بالسيرفر");
-    } finally {
-        setBusy(btn, false, "اعتماد وحفظ الحساب الجديد");
-    }
+        const result = await apiPost("REGISTER_SECURE", { emp_id: empId, phone, pin_hash: pinHash, civil_id: civilId, email, center });
+        if (result.status === "SUCCESS") { showSuccess("تم إنشاء الحساب بنجاح، يمكنك تسجيل الدخول الآن"); switchAuthScreen("loginScreen"); }
+        else if (result.status === "EXISTS") { showError("هذا الرقم الوظيفي مسجل مسبقًا"); }
+        else { showError("تعذر إنشاء الحساب، حاول مجددًا"); }
+    } catch (e) { showError("تعذر الاتصال بالسيرفر"); }
+    finally { setBusy(btn, false, "اعتماد وحفظ الحساب الجديد"); }
 }
 
 async function handleForgot() {
@@ -511,54 +561,469 @@ async function handleForgot() {
     const email = document.getElementById("forgotEmail").value.trim();
     const newPin = document.getElementById("forgotNewPin").value.trim();
     const btn = document.getElementById("forgotBtn");
-
     if (!empId || !phone || !civilId || !email || !newPin) { showError("الرجاء تعبئة جميع الحقول"); return; }
-
     setBusy(btn, true, "تحديث الرمز والتحقق");
     try {
         const newPinHash = await hashPin(newPin);
-        const result = await apiPost("FORGOT_PIN_SECURE", {
-            emp_id: empId, phone, civil_id: civilId, email, new_pin_hash: newPinHash
-        });
-        if (result.status === "SUCCESS") {
-            showSuccess("تم تحديث الرمز السري بنجاح");
-            switchAuthScreen("loginScreen");
-        } else {
-            showError("لم يتم العثور على حساب مطابق لهذه البيانات");
-        }
-    } catch (e) {
-        showError("تعذر الاتصال بالسيرفر");
-    } finally {
-        setBusy(btn, false, "تحديث الرمز والتحقق");
+        const result = await apiPost("FORGOT_PIN_SECURE", { emp_id: empId, phone, civil_id: civilId, email, new_pin_hash: newPinHash });
+        if (result.status === "SUCCESS") { showSuccess("تم تحديث الرمز السري بنجاح"); switchAuthScreen("loginScreen"); }
+        else { showError("لم يتم العثور على حساب مطابق لهذه البيانات"); }
+    } catch (e) { showError("تعذر الاتصال بالسيرفر"); }
+    finally { setBusy(btn, false, "تحديث الرمز والتحقق"); }
+}
+
+function logout() {
+    session = { empId: null, center: null, isAdmin: false, token: null };
+    clearPersistedSession();
+    document.getElementById("mainDashboard").style.display = "none";
+    document.getElementById("loginEmpId").value = ""; document.getElementById("loginPin").value = "";
+    switchTab("reports"); switchAuthScreen("loginScreen");
+}
+
+async function enterDashboard() {
+    ["loginScreen", "registerScreen", "forgotScreen", "authCheckingScreen"].forEach(id => { document.getElementById(id).style.display = "none"; });
+    document.getElementById("mainDashboard").style.display = "block";
+    document.getElementById("tabBtnAdminView").style.display = session.isAdmin ? "block" : "none";
+    document.getElementById("tabBtnAreas").style.display = session.isAdmin ? "block" : "none";
+    document.getElementById("tabBtnEmployees").style.display = session.isAdmin ? "block" : "none";
+    document.getElementById("tabBtnReports").style.display = session.isAdmin ? "none" : "block";
+
+    await loadAreas();
+    if (session.isAdmin) {
+        document.getElementById("adminShiftDay").value = new Date().toLocaleDateString("en-CA");
+        switchTab("adminView");
+    } else {
+        switchTab("reports");
+        loadTodayReports();
     }
 }
 
-async function handleChangePin() {
-    const empId = document.getElementById("changeEmpId").value.trim();
-    const oldPin = document.getElementById("changeOldPin").value.trim();
-    const newPin = document.getElementById("changeNewPin").value.trim();
-    const btn = document.getElementById("changePinBtn");
+function switchTab(tab) {
+    document.getElementById("reportsSection").style.display = tab === "reports" ? "block" : "none";
+    document.getElementById("adminViewSection").style.display = tab === "adminView" ? "block" : "none";
+    document.getElementById("areasSection").style.display = tab === "areas" ? "block" : "none";
+    document.getElementById("employeesSection").style.display = tab === "employees" ? "block" : "none";
+    document.getElementById("tabBtnReports").classList.toggle("active", tab === "reports");
+    document.getElementById("tabBtnAdminView").classList.toggle("active", tab === "adminView");
+    document.getElementById("tabBtnAreas").classList.toggle("active", tab === "areas");
+    document.getElementById("tabBtnEmployees").classList.toggle("active", tab === "employees");
+    if (tab === "areas") loadAreasTable();
+    if (tab === "employees") loadAllEmployees();
+}
 
-    if (!empId || !oldPin || !newPin) { showError("الرجاء تعبئة جميع الحقول"); return; }
+function switchReportType(type) {
+    document.getElementById("urgentFormWrap").style.display = type === "urgent" ? "block" : "none";
+    document.getElementById("ptsFormWrap").style.display = type === "pts" ? "block" : "none";
+    document.getElementById("typeBtnUrgent").classList.toggle("active", type === "urgent");
+    document.getElementById("typeBtnPts").classList.toggle("active", type === "pts");
+}
 
-    setBusy(btn, true, "حفظ الرمز الجديد");
+/* ---------- المناطق (تحميل + اقتراحات + معاينة لون التغطية) ---------- */
+
+async function loadAreas() {
     try {
-        const oldPinHash = await hashPin(oldPin);
-        const newPinHash = await hashPin(newPin);
-        const result = await apiPost("CHANGE_PIN", {
-            emp_id: empId, old_pin_hash: oldPinHash, new_pin_hash: newPinHash
-        });
-        if (result.status === "SUCCESS") {
-            showSuccess("تم تغيير الرمز السري بنجاح");
-            switchAuthScreen("loginScreen");
-        } else {
-            showError("الرمز الحالي غير صحيح");
+        const result = await apiGet({ action: "GET_AREAS", token: session.token });
+        if (Array.isArray(result)) {
+            areasCache = result;
+            const datalist = document.getElementById("areasDatalist");
+            if (datalist) datalist.innerHTML = areasCache.map(a => `<option value="${a.area_name}"></option>`).join("");
         }
-    } catch (e) {
-        showError("تعذر الاتصال بالسيرفر");
-    } finally {
-        setBusy(btn, false, "حفظ الرمز الجديد");
+    } catch (e) { /* تجاهل بصمت */ }
+}
+
+function findAreaHomeCenter(areaName) {
+    const found = areasCache.find(a => a.area_name === (areaName || "").trim());
+    return found ? found.home_center : null;
+}
+
+function previewZoneStatus() {
+    const box = document.getElementById("zonePreviewBox");
+    const areaName = document.getElementById("urgArea").value.trim();
+    if (!areaName) { box.style.display = "none"; return; }
+    const homeCenter = findAreaHomeCenter(areaName);
+    let status, label;
+    if (!homeCenter) { status = "red"; label = "⚠️ منطقة غير موجودة بقائمة المراكز الستة — بلاغ خارج التغطية"; }
+    else if (homeCenter === session.center) { status = "white"; label = "✅ ضمن تغطية مركزك"; }
+    else { status = "yellow"; label = `تغطية من مركز آخر (${homeCenter}) — ضمن مبارك الكبير`; }
+    box.style.display = "block";
+    box.innerHTML = `<span class="zone-badge ${status}">${label}</span>`;
+}
+
+/* ---------- إضافة بلاغ عاجل ---------- */
+
+async function saveUrgentReport() {
+    const btn = document.getElementById("saveUrgentBtn");
+    const payload = {
+        token: session.token, emp_id: session.empId, center: session.center,
+        report_number: document.getElementById("urgReportNumber").value.trim(),
+        ambulance_number: document.getElementById("urgAmbulanceNumber").value.trim(),
+        driver_number: document.getElementById("urgDriverNumber").value.trim(),
+        medic_number: document.getElementById("urgMedicNumber").value.trim(),
+        patient_name: document.getElementById("urgPatientName").value.trim(),
+        area_name: document.getElementById("urgArea").value.trim(),
+        block: document.getElementById("urgBlock").value.trim(),
+        street: document.getElementById("urgStreet").value.trim(),
+        avenue: document.getElementById("urgAvenue").value.trim(),
+        house: document.getElementById("urgHouse").value.trim(),
+        late_entry: document.getElementById("urgLateEntry").checked
+    };
+    if (!payload.report_number || !payload.ambulance_number) { showError("الرجاء إدخال رقم البلاغ ورقم الإسعاف على الأقل"); return; }
+    if (API_URL.includes("PASTE_YOUR")) { showError("لم يتم ربط رابط السيرفر بعد (API_URL)"); return; }
+
+    setBusy(btn, true, "حفظ البلاغ العاجل");
+    try {
+        const result = await apiPost("ADD_URGENT_REPORT", payload);
+        if (result.status === "SUCCESS") {
+            showSuccess("تم حفظ البلاغ بنجاح");
+            clearUrgentForm();
+            loadTodayReports();
+        } else { showError("فشل الحفظ، حاول مرة أخرى"); }
+    } catch (e) { showError("تعذر الاتصال بالسيرفر أثناء الحفظ"); }
+    finally { setBusy(btn, false, "حفظ البلاغ العاجل"); }
+}
+
+function clearUrgentForm() {
+    ["urgReportNumber","urgAmbulanceNumber","urgDriverNumber","urgMedicNumber","urgPatientName","urgArea","urgBlock","urgStreet","urgAvenue","urgHouse"]
+        .forEach(id => document.getElementById(id).value = "");
+    document.getElementById("urgLateEntry").checked = false;
+    document.getElementById("zonePreviewBox").style.display = "none";
+    document.getElementById("urgReportNumber").focus();
+}
+
+/* ---------- إضافة بلاغ PTS ---------- */
+
+async function savePtsReport() {
+    const btn = document.getElementById("savePtsBtn");
+    const payload = {
+        token: session.token, emp_id: session.empId, center: session.center,
+        report_number: document.getElementById("ptsReportNumber").value.trim(),
+        ambulance_number: document.getElementById("ptsAmbulanceNumber").value.trim(),
+        medic_numbers: document.getElementById("ptsMedicNumbers").value.trim(),
+        patient_name: document.getElementById("ptsPatientName").value.trim(),
+        from_place: document.getElementById("ptsFrom").value.trim(),
+        to_place: document.getElementById("ptsTo").value.trim(),
+        late_entry: document.getElementById("ptsLateEntry").checked
+    };
+    if (!payload.report_number || !payload.ambulance_number) { showError("الرجاء إدخال رقم البلاغ ورقم الإسعاف على الأقل"); return; }
+    if (API_URL.includes("PASTE_YOUR")) { showError("لم يتم ربط رابط السيرفر بعد (API_URL)"); return; }
+
+    setBusy(btn, true, "حفظ بلاغ النقل");
+    try {
+        const result = await apiPost("ADD_PTS_REPORT", payload);
+        if (result.status === "SUCCESS") {
+            showSuccess("تم حفظ بلاغ النقل بنجاح");
+            clearPtsForm();
+            loadTodayReports();
+        } else { showError("فشل الحفظ، حاول مرة أخرى"); }
+    } catch (e) { showError("تعذر الاتصال بالسيرفر أثناء الحفظ"); }
+    finally { setBusy(btn, false, "حفظ بلاغ النقل"); }
+}
+
+function clearPtsForm() {
+    ["ptsReportNumber","ptsAmbulanceNumber","ptsMedicNumbers","ptsPatientName","ptsFrom","ptsTo"].forEach(id => document.getElementById(id).value = "");
+    document.getElementById("ptsLateEntry").checked = false;
+    document.getElementById("ptsReportNumber").focus();
+}
+
+/* ---------- بلاغات الشفت الحالي (للموظف) ---------- */
+
+async function loadTodayReports() {
+    if (API_URL.includes("PASTE_YOUR") || session.isAdmin) return;
+    try {
+        const [urgent, pts] = await Promise.all([
+            apiGet({ action: "GET_URGENT_REPORTS", token: session.token, center: session.center }),
+            apiGet({ action: "GET_PTS_REPORTS", token: session.token, center: session.center })
+        ]);
+        if (Array.isArray(urgent)) renderUrgentTable(urgent, "urgentTodayBody", "urgentTodayCount", "urgentSummaryBar", false);
+        if (Array.isArray(pts)) renderPtsTable(pts, "ptsTodayBody", "ptsTodayCount", false);
+    } catch (e) { /* تجاهل بصمت */ }
+}
+
+function zoneLabel(status) { return status === "white" ? "ضمن التغطية" : status === "yellow" ? "تغطية مقبولة" : "خارج التغطية"; }
+
+function renderUrgentTable(rows, bodyId, countId, summaryId, withActions) {
+    const body = document.getElementById(bodyId);
+    if (countId) document.getElementById(countId).textContent = rows.length;
+
+    if (!rows.length) {
+        const colspan = withActions ? 14 : 10;
+        body.innerHTML = `<tr class="empty-row"><td colspan="${colspan}">ما فيه بلاغات مسجّلة</td></tr>`;
+        if (summaryId) document.getElementById(summaryId).innerHTML = "";
+        return;
     }
+
+    let white = 0, yellow = 0, red = 0;
+    rows.forEach(r => { if (r.zone_status === "white") white++; else if (r.zone_status === "yellow") yellow++; else red++; });
+
+    body.innerHTML = rows.slice().reverse().map(r => {
+        const rowClass = "row-" + (r.zone_status || "white");
+        const centerCell = withActions ? `<td>${r.center}</td>` : "";
+        const actionsCell = withActions ? `
+            <td class="cell-actions">
+                <button class="row-btn row-edit" onclick="editUrgentRow('${r.id}')">تعديل</button>
+                <button class="row-btn row-delete" onclick="deleteUrgentRow('${r.id}')">حذف</button>
+            </td>` : "";
+        const extraCols = withActions ? `<td>${r.avenue || "-"}</td><td>${r.house || "-"}</td>` : "";
+        return `<tr class="${rowClass}" data-id="${r.id}">
+            <td>${r.time || "-"}</td>${centerCell}<td>${r.report_number}</td><td>${r.ambulance_number}</td>
+            <td>${r.driver_number || "-"}</td><td>${r.medic_number || "-"}</td><td>${r.patient_name || "-"}</td>
+            <td>${r.area_name || "-"}</td><td>${r.block || "-"}</td><td>${r.street || "-"}</td>${extraCols}
+            <td><span class="zone-badge ${r.zone_status}">${zoneLabel(r.zone_status)}</span></td>${actionsCell}
+        </tr>`;
+    }).join("");
+
+    if (summaryId) {
+        document.getElementById(summaryId).innerHTML = `
+            <div class="summary-chip">الإجمالي <b>${rows.length}</b></div>
+            <div class="summary-chip">ضمن التغطية <b>${white}</b></div>
+            <div class="summary-chip yellow">تغطية مقبولة <b>${yellow}</b></div>
+            <div class="summary-chip red">خارج التغطية <b>${red}</b></div>`;
+    }
+}
+
+function renderPtsTable(rows, bodyId, countId, withActions) {
+    const body = document.getElementById(bodyId);
+    if (countId) document.getElementById(countId).textContent = rows.length;
+    if (!rows.length) {
+        const colspan = withActions ? 9 : 7;
+        body.innerHTML = `<tr class="empty-row"><td colspan="${colspan}">ما فيه بلاغات نقل مسجّلة</td></tr>`;
+        return;
+    }
+    body.innerHTML = rows.slice().reverse().map(r => {
+        const centerCell = withActions ? `<td>${r.center}</td>` : "";
+        const actionsCell = withActions ? `
+            <td class="cell-actions">
+                <button class="row-btn row-edit" onclick="editPtsRow('${r.id}')">تعديل</button>
+                <button class="row-btn row-delete" onclick="deletePtsRow('${r.id}')">حذف</button>
+            </td>` : "";
+        return `<tr data-id="${r.id}">
+            <td>${r.time || "-"}</td>${centerCell}<td>${r.report_number}</td><td>${r.ambulance_number}</td>
+            <td>${r.medic_numbers || "-"}</td><td>${r.patient_name || "-"}</td><td>${r.from_place || "-"}</td><td>${r.to_place || "-"}</td>${actionsCell}
+        </tr>`;
+    }).join("");
+}
+
+/* ---------- عرض البلاغات (أدمن) ---------- */
+
+let adminUrgentCache = [];
+let adminPtsCache = [];
+
+async function loadAdminReports() {
+    const shiftDay = document.getElementById("adminShiftDay").value;
+    if (!shiftDay) { showError("اختر يوم الشفت أولاً"); return; }
+    const center = document.getElementById("adminCenterSelect").value;
+
+    try {
+        const [urgent, pts] = await Promise.all([
+            apiGet({ action: "GET_URGENT_REPORTS", token: session.token, center, shift_day: shiftDay }),
+            apiGet({ action: "GET_PTS_REPORTS", token: session.token, center, shift_day: shiftDay })
+        ]);
+        if (Array.isArray(urgent)) {
+            adminUrgentCache = urgent;
+            renderUrgentTable(urgent, "adminUrgentBody", null, "adminUrgentSummaryBar", true);
+            document.getElementById("adminUrgentSection").style.display = "block";
+        }
+        if (Array.isArray(pts)) {
+            adminPtsCache = pts;
+            renderPtsTable(pts, "adminPtsBody", null, true);
+            document.getElementById("adminPtsSection").style.display = "block";
+        }
+    } catch (e) { showError("تعذر الاتصال بالسيرفر أثناء جلب البلاغات"); }
+}
+
+async function deleteUrgentRow(id) {
+    if (!confirm("هل أنت متأكد من حذف هذا البلاغ نهائيًا؟")) return;
+    try {
+        const result = await apiPost("DELETE_URGENT_REPORT", { token: session.token, id });
+        if (result.status === "SUCCESS") { showSuccess("تم حذف البلاغ"); loadAdminReports(); }
+        else { showError("تعذر الحذف"); }
+    } catch (e) { showError("تعذر الاتصال بالسيرفر"); }
+}
+
+async function deletePtsRow(id) {
+    if (!confirm("هل أنت متأكد من حذف هذا البلاغ نهائيًا؟")) return;
+    try {
+        const result = await apiPost("DELETE_PTS_REPORT", { token: session.token, id });
+        if (result.status === "SUCCESS") { showSuccess("تم حذف البلاغ"); loadAdminReports(); }
+        else { showError("تعذر الحذف"); }
+    } catch (e) { showError("تعذر الاتصال بالسيرفر"); }
+}
+
+function editUrgentRow(id) {
+    const r = adminUrgentCache.find(x => x.id === id);
+    if (!r) return;
+    const newVals = {};
+    const fields = [
+        ["report_number", "رقم البلاغ", r.report_number], ["ambulance_number", "رقم الإسعاف", r.ambulance_number],
+        ["driver_number", "رقم السائق", r.driver_number], ["medic_number", "رقم المسعف", r.medic_number],
+        ["patient_name", "اسم المريض", r.patient_name], ["area_name", "اسم المنطقة", r.area_name],
+        ["block", "قطعة", r.block], ["street", "شارع", r.street], ["avenue", "جادة", r.avenue], ["house", "منزل", r.house]
+    ];
+    for (const [key, label, current] of fields) {
+        const val = prompt(label, current || "");
+        if (val === null) return; // إلغاء التعديل بالكامل لو ألغى بأي خطوة
+        newVals[key] = val.trim();
+    }
+    (async () => {
+        try {
+            const result = await apiPost("UPDATE_URGENT_REPORT", { token: session.token, id, ...newVals });
+            if (result.status === "SUCCESS") { showSuccess("تم تحديث البلاغ"); loadAdminReports(); }
+            else { showError("تعذر حفظ التعديل"); }
+        } catch (e) { showError("تعذر الاتصال بالسيرفر"); }
+    })();
+}
+
+function editPtsRow(id) {
+    const r = adminPtsCache.find(x => x.id === id);
+    if (!r) return;
+    const newVals = {};
+    const fields = [
+        ["report_number", "رقم البلاغ", r.report_number], ["ambulance_number", "رقم الإسعاف", r.ambulance_number],
+        ["medic_numbers", "أرقام المسعفين", r.medic_numbers], ["patient_name", "اسم المريض", r.patient_name],
+        ["from_place", "من", r.from_place], ["to_place", "إلى", r.to_place]
+    ];
+    for (const [key, label, current] of fields) {
+        const val = prompt(label, current || "");
+        if (val === null) return;
+        newVals[key] = val.trim();
+    }
+    (async () => {
+        try {
+            const result = await apiPost("UPDATE_PTS_REPORT", { token: session.token, id, ...newVals });
+            if (result.status === "SUCCESS") { showSuccess("تم تحديث البلاغ"); loadAdminReports(); }
+            else { showError("تعذر حفظ التعديل"); }
+        } catch (e) { showError("تعذر الاتصال بالسيرفر"); }
+    })();
+}
+
+/* ---------- إدارة المناطق (أدمن) ---------- */
+
+async function loadAreasTable() {
+    await loadAreas();
+    const body = document.getElementById("areasBody");
+    document.getElementById("areasCount").textContent = areasCache.length;
+    if (!areasCache.length) { body.innerHTML = `<tr class="empty-row"><td colspan="3">ما فيه مناطق مسجّلة بعد</td></tr>`; return; }
+    body.innerHTML = areasCache.map(a => `
+        <tr data-area="${a.area_name}">
+            <td>${a.area_name}</td><td>${a.home_center}</td>
+            <td class="cell-actions">
+                <button class="row-btn row-edit" onclick="editAreaRow('${a.area_name}')">تعديل</button>
+                <button class="row-btn row-delete" onclick="deleteAreaRow('${a.area_name}')">حذف</button>
+            </td>
+        </tr>`).join("");
+}
+
+async function addArea() {
+    const areaName = document.getElementById("newAreaName").value.trim();
+    const homeCenter = document.getElementById("newAreaCenter").value;
+    if (!areaName) { showError("اكتب اسم المنطقة"); return; }
+    try {
+        const result = await apiPost("ADD_AREA", { token: session.token, area_name: areaName, home_center: homeCenter });
+        if (result.status === "SUCCESS") {
+            showSuccess("تمت إضافة المنطقة");
+            document.getElementById("newAreaName").value = "";
+            loadAreasTable();
+        } else if (result.status === "EXISTS") { showError("هذه المنطقة مسجّلة مسبقًا"); }
+        else { showError("تعذر إضافة المنطقة"); }
+    } catch (e) { showError("تعذر الاتصال بالسيرفر"); }
+}
+
+function editAreaRow(oldName) {
+    const area = areasCache.find(a => a.area_name === oldName);
+    if (!area) return;
+    const newName = prompt("اسم المنطقة", area.area_name);
+    if (newName === null) return;
+    const newCenter = prompt("المركز الأساسي (" + CENTERS.join(" / ") + ")", area.home_center);
+    if (newCenter === null) return;
+    if (CENTERS.indexOf(newCenter.trim()) === -1) { showError("اسم المركز غير صحيح"); return; }
+    (async () => {
+        try {
+            const result = await apiPost("UPDATE_AREA", { token: session.token, old_area_name: oldName, area_name: newName.trim(), home_center: newCenter.trim() });
+            if (result.status === "SUCCESS") { showSuccess("تم تحديث المنطقة"); loadAreasTable(); }
+            else { showError("تعذر حفظ التعديل"); }
+        } catch (e) { showError("تعذر الاتصال بالسيرفر"); }
+    })();
+}
+
+async function deleteAreaRow(areaName) {
+    if (!confirm(`هل أنت متأكد من حذف منطقة "${areaName}"؟`)) return;
+    try {
+        const result = await apiPost("DELETE_AREA", { token: session.token, area_name: areaName });
+        if (result.status === "SUCCESS") { showSuccess("تم حذف المنطقة"); loadAreasTable(); }
+        else { showError("تعذر الحذف"); }
+    } catch (e) { showError("تعذر الاتصال بالسيرفر"); }
+}
+
+/* ---------- إدارة الموظفين (أدمن) ---------- */
+
+async function loadAllEmployees() {
+    const body = document.getElementById("employeesBody");
+    try {
+        const result = await apiGet({ action: "GET_ALL_EMPLOYEES", token: session.token });
+        if (!Array.isArray(result)) { body.innerHTML = `<tr class="empty-row"><td colspan="4">تعذر جلب قائمة الموظفين</td></tr>`; return; }
+        if (!result.length) { body.innerHTML = `<tr class="empty-row"><td colspan="4">ما فيه موظفين مسجلين بعد</td></tr>`; return; }
+        body.innerHTML = result.map(emp => `
+            <tr data-emp-id="${emp.emp_id}">
+                <td>${emp.emp_id}</td><td>${emp.phone || "-"}</td>
+                <td class="cell-emp-center" data-value="${emp.center}">${emp.center || "-"}</td>
+                <td class="cell-actions">
+                    <button class="row-btn row-edit" onclick="startEditEmployeeRow(this)">تعديل</button>
+                    <button class="row-btn row-delete" onclick="deleteEmployeeRow(this)">حذف حساب</button>
+                </td>
+            </tr>`).join("");
+    } catch (e) { body.innerHTML = `<tr class="empty-row"><td colspan="4">تعذر الاتصال بالسيرفر</td></tr>`; }
+}
+
+function startEditEmployeeRow(btn) {
+    const tr = btn.closest("tr");
+    if (tr.classList.contains("editing")) return;
+    tr.classList.add("editing");
+    const centerTd = tr.querySelector(".cell-emp-center");
+    const current = centerTd.dataset.value;
+    centerTd.innerHTML = `<select class="row-input">${CENTERS.map(c => `<option value="${c}" ${c === current ? "selected" : ""}>${c}</option>`).join("")}</select>`;
+    const actionsTd = tr.querySelector(".cell-actions");
+    actionsTd.innerHTML = `<button class="row-btn row-save" onclick="saveEmployeeEditRow(this)">حفظ</button><button class="row-btn row-cancel" onclick="cancelEmployeeEditRow(this)">إلغاء</button>`;
+}
+
+function cancelEmployeeEditRow(btn) {
+    const tr = btn.closest("tr"); tr.classList.remove("editing");
+    const centerTd = tr.querySelector(".cell-emp-center");
+    centerTd.textContent = centerTd.dataset.value || "-";
+    const actionsTd = tr.querySelector(".cell-actions");
+    actionsTd.innerHTML = `<button class="row-btn row-edit" onclick="startEditEmployeeRow(this)">تعديل</button><button class="row-btn row-delete" onclick="deleteEmployeeRow(this)">حذف حساب</button>`;
+}
+
+async function saveEmployeeEditRow(btn) {
+    const tr = btn.closest("tr");
+    const empId = tr.dataset.empId;
+    const center = tr.querySelector(".cell-emp-center select").value;
+    setBusy(btn, true, "حفظ");
+    try {
+        const result = await apiPost("UPDATE_EMPLOYEE_CENTER", { token: session.token, emp_id: empId, center });
+        if (result.status === "SUCCESS") {
+            const centerTd = tr.querySelector(".cell-emp-center");
+            centerTd.dataset.value = center; centerTd.textContent = center;
+            tr.classList.remove("editing");
+            const actionsTd = tr.querySelector(".cell-actions");
+            actionsTd.innerHTML = `<button class="row-btn row-edit" onclick="startEditEmployeeRow(this)">تعديل</button><button class="row-btn row-delete" onclick="deleteEmployeeRow(this)">حذف حساب</button>`;
+            showSuccess("تم تحديث مركز الموظف");
+        } else { showError("تعذر حفظ التعديل"); setBusy(btn, false, "حفظ"); }
+    } catch (e) { showError("تعذر الاتصال بالسيرفر"); setBusy(btn, false, "حفظ"); }
+}
+
+async function deleteEmployeeRow(btn) {
+    const tr = btn.closest("tr");
+    const empId = tr.dataset.empId;
+    if (!confirm(`هل أنت متأكد من حذف حساب الموظف رقم ${empId} نهائيًا؟`)) return;
+    setBusy(btn, true, "حذف حساب");
+    try {
+        const result = await apiPost("DELETE_EMPLOYEE", { token: session.token, emp_id: empId });
+        if (result.status === "SUCCESS") {
+            tr.remove(); showSuccess("تم حذف حساب الموظف");
+            const body = document.getElementById("employeesBody");
+            if (!body.children.length) body.innerHTML = `<tr class="empty-row"><td colspan="4">ما فيه موظفين مسجلين بعد</td></tr>`;
+        } else { showError("تعذر حذف الحساب"); setBusy(btn, false, "حذف حساب"); }
+    } catch (e) { showError("تعذر الاتصال بالسيرفر"); setBusy(btn, false, "حذف حساب"); }
 }
 </script>
 </body>
